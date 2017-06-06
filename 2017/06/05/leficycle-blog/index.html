@@ -2,30 +2,32 @@
 <html>
 <head>
   <meta charset="utf-8">
+  <meta name="baidu-site-verification" content="L6Lm9d5Crl"/>
+  
+  
+  
   
   <title>Architecture_Components  leficycle | yangjiang</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Handling Lifecycles（处理生命周期）在自定义活动和片段实现LifecycleOwner 该android.arch.lifecycle 包提供的类和接口，让您构建生命周期感知 组件-这是可以基于一个活动或片段的当前生命周期自动调整自己的行为组件。 注意：要导adding components to your project。">
-<meta name="keywords" content="Architecture_Components  leficycle">
+  <meta name="description" content="Handling Lifecycles（处理生命周期）在自定义活动和片段实现LifecycleOwner 该android.arch.lifecycle 包提供的类和接口，让您构建生命周期感知 组件-这是可以基于一个活动或片段的当前生命周期自动调整自己的行为组件。  注意：要导adding components to your project。">
+<meta name="keywords" content="Architecture_Components,leficycle">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Architecture_Components  leficycle">
 <meta property="og:url" content="http://yangchaojiang.cn/2017/06/05/leficycle-blog/index.html">
 <meta property="og:site_name" content="yangjiang">
-<meta property="og:description" content="Handling Lifecycles（处理生命周期）在自定义活动和片段实现LifecycleOwner 该android.arch.lifecycle 包提供的类和接口，让您构建生命周期感知 组件-这是可以基于一个活动或片段的当前生命周期自动调整自己的行为组件。 注意：要导adding components to your project。">
+<meta property="og:description" content="Handling Lifecycles（处理生命周期）在自定义活动和片段实现LifecycleOwner 该android.arch.lifecycle 包提供的类和接口，让您构建生命周期感知 组件-这是可以基于一个活动或片段的当前生命周期自动调整自己的行为组件。  注意：要导adding components to your project。">
 <meta property="og:image" content="http://yangchaojiang.cn/img/lifecycle-states.png">
-<meta property="og:updated_time" content="2017-06-05T09:15:22.802Z">
+<meta property="og:updated_time" content="2017-06-06T10:59:50.466Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Architecture_Components  leficycle">
-<meta name="twitter:description" content="Handling Lifecycles（处理生命周期）在自定义活动和片段实现LifecycleOwner 该android.arch.lifecycle 包提供的类和接口，让您构建生命周期感知 组件-这是可以基于一个活动或片段的当前生命周期自动调整自己的行为组件。 注意：要导adding components to your project。">
+<meta name="twitter:description" content="Handling Lifecycles（处理生命周期）在自定义活动和片段实现LifecycleOwner 该android.arch.lifecycle 包提供的类和接口，让您构建生命周期感知 组件-这是可以基于一个活动或片段的当前生命周期自动调整自己的行为组件。  注意：要导adding components to your project。">
 <meta name="twitter:image" content="http://yangchaojiang.cn/img/lifecycle-states.png">
-  
-    <link rel="alternative" href="/atom.xml" title="yangjiang" type="application/atom+xml">
   
   
     <link rel="icon" href="/img/favicon.png">
   
   
-      <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+  <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
   
   <link rel="stylesheet" href="/css/style.css">
   <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
@@ -39,7 +41,6 @@
     <link href="/css/pace/pace-theme-flash.css" rel="stylesheet" />
   <script>
       var yiliaConfig = {
-          rootUrl: '/',
           fancybox: true,
           animate: true,
           isHome: false,
@@ -57,16 +58,16 @@
     <div class="overlay"></div>
 <div class="intrude-less">
     <header id="header" class="inner">
+        <script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
         <a href="/" class="profilepic">
             
-            <img lazy-src="/img/head.jpg" class="js-avatar">
+            <img lazy-src="/img/avatar.png" class="js-avatar">
             
         </a>
-
         <hgroup>
-          <h1 class="header-author"><a href="/" title="Hi Mate">杨朝江</a></h1>
+          <h1 class="header-author"><a href="/">杨朝江</a></h1>
         </hgroup>
-
+        
         
         
         
@@ -81,11 +82,6 @@
                             <div class="ribbon"></div>
                         </div>
                         
-                        <div class="icon-wrap icon-link hide" data-idx="2">
-                            <div class="loopback_l"></div>
-                            <div class="loopback_r"></div>
-                        </div>
-                        
                         
                         <div class="icon-wrap icon-me hide" data-idx="3">
                             <div class="user"></div>
@@ -93,15 +89,12 @@
                         </div>
                         
                     </div>
-                    
                 </div>
                 <div class="tips-box hide">
                     <div class="tips-arrow"></div>
                     <ul class="tips-inner">
                         <li>菜单</li>
                         <li>标签</li>
-                        
-                        <li>友情链接</li>
                         
                         
                         <li>关于我</li>
@@ -110,171 +103,90 @@
                 </div>
             </div>
         
-
         <div id="switch-area" class="switch-area">
             <div class="switch-wrap">
                 <section class="switch-part switch-part1">
                     <nav class="header-menu">
                         <ul>
                         
-                            <li><a href="/Home">博客首页</a></li>
+                            <li><a  href="/archives/">所有文章</a></li>
                         
-                            <li><a href="/works">作品展示</a></li>
+                            <li><a  href="/categories/开发工具/">玩转开发工具</a></li>
                         
-                            <li><a href="/about">留言打卡</a></li>
+                            <li><a  href="/categories/digital">玩转数码</a></li>
                         
-                            <li><a href="/FrontEndGuide">前端导航</a></li>
+                            <li><a  href="/categories/cognition">认知提升</a></li>
+                        
+                            <li><a  href="/about/">关于我</a></li>
                         
                         </ul>
                     </nav>
                     <nav class="header-nav">
                         <ul class="social">
                             
-                                <a class="fl mail" target="_blank" href="mailto:yangchaojiang@outlook.com" title="mail">mail</a>
+                                <a class="fl mail"  target="_blank" href="mailto:yangchaojiang@outlook.com" title="mail">mail</a>
                             
-                                <a class="fl github" target="_blank" href="https://github.com/yangchaojiang" title="github">github</a>
+                                <a class="fl github"  target="_blank" href="https://github.com/yangchaojiang" title="github">github</a>
                             
-                                <a class="fl weibo" target="_blank" href="http://weibo.com/u/5114674051?topnav=1&wvr=6&topsug=1&is_all=1" title="weibo">weibo</a>
+                                <a class="fl google"  target="_blank" href="#" title="google">google</a>
                             
-                                <a class="fl google" target="_blank" href="#" title="google">google</a>
+                                <a class="fl facebook"  target="_blank" href="#" title="facebook">facebook</a>
                             
-                                <a class="fl twitter" target="_blank" href="#" title="twitter">twitter</a>
-                            
-                                <a class="fl linkedin" target="_blank" href="#" title="linkedin">linkedin</a>
+                                <a class="fl weibo"  target="_blank" href="http://weibo.com/u/5114674051?topnav=1&wvr=6&topsug=1&is_all=1" title="weibo">weibo</a>
                             
                         </ul>
                     </nav>
                 </section>
                 
-                
                 <section class="switch-part switch-part2">
                     <div class="widget tagcloud" id="js-tagcloud">
-                        <a href="/tags/Architecture-Components-Lifecycles-LiveDatra-Room-组件架构学习/" style="font-size: 10px;">Architecture Components( Lifecycles LiveDatra Room) 组件架构学习</a> <a href="/tags/Architecture-Components-leficycle/" style="font-size: 10px;">Architecture_Components  leficycle</a> <a href="/tags/我的第一个博客/" style="font-size: 10px;">我的第一个博客</a>
+                        <a href="/tags/Architecture-Components/" style="font-size: 10px;">Architecture Components</a> <a href="/tags/Architecture-Components/" style="font-size: 20px;">Architecture_Components</a> <a href="/tags/LiveData/" style="font-size: 10px;">LiveData</a> <a href="/tags/Room-Persistence/" style="font-size: 10px;">Room Persistence</a> <a href="/tags/leficycle/" style="font-size: 10px;">leficycle</a>
                     </div>
                 </section>
+                
                 
                 
                 
                 <section class="switch-part switch-part3">
-                    <div id="js-friends">
-                    
-                      <a target="_blank" class="main-nav-link switch-friends-link" href="/n">0</a>
-                    
-                      <a target="_blank" class="main-nav-link switch-friends-link" href="/a">1</a>
-                    
-                      <a target="_blank" class="main-nav-link switch-friends-link" href="/m">2</a>
-                    
-                      <a target="_blank" class="main-nav-link switch-friends-link" href="/e">3</a>
-                    
-                      <a target="_blank" class="main-nav-link switch-friends-link" href="/:">4</a>
-                    
-                      <a target="_blank" class="main-nav-link switch-friends-link" href="/h">5</a>
-                    
-                      <a target="_blank" class="main-nav-link switch-friends-link" href="/t">6</a>
-                    
-                      <a target="_blank" class="main-nav-link switch-friends-link" href="/t">7</a>
-                    
-                      <a target="_blank" class="main-nav-link switch-friends-link" href="/p">8</a>
-                    
-                      <a target="_blank" class="main-nav-link switch-friends-link" href="/s">9</a>
-                    
-                      <a target="_blank" class="main-nav-link switch-friends-link" href="/:">10</a>
-                    
-                      <a target="_blank" class="main-nav-link switch-friends-link" href="/">11</a>
-                    
-                      <a target="_blank" class="main-nav-link switch-friends-link" href="/">12</a>
-                    
-                      <a target="_blank" class="main-nav-link switch-friends-link" href="/g">13</a>
-                    
-                      <a target="_blank" class="main-nav-link switch-friends-link" href="/i">14</a>
-                    
-                      <a target="_blank" class="main-nav-link switch-friends-link" href="/t">15</a>
-                    
-                      <a target="_blank" class="main-nav-link switch-friends-link" href="/h">16</a>
-                    
-                      <a target="_blank" class="main-nav-link switch-friends-link" href="/u">17</a>
-                    
-                      <a target="_blank" class="main-nav-link switch-friends-link" href="/b">18</a>
-                    
-                      <a target="_blank" class="main-nav-link switch-friends-link" href="/.">19</a>
-                    
-                      <a target="_blank" class="main-nav-link switch-friends-link" href="/c">20</a>
-                    
-                      <a target="_blank" class="main-nav-link switch-friends-link" href="/o">21</a>
-                    
-                      <a target="_blank" class="main-nav-link switch-friends-link" href="/m">22</a>
-                    
-                      <a target="_blank" class="main-nav-link switch-friends-link" href="/">23</a>
-                    
-                      <a target="_blank" class="main-nav-link switch-friends-link" href="/y">24</a>
-                    
-                      <a target="_blank" class="main-nav-link switch-friends-link" href="/a">25</a>
-                    
-                      <a target="_blank" class="main-nav-link switch-friends-link" href="/n">26</a>
-                    
-                      <a target="_blank" class="main-nav-link switch-friends-link" href="/g">27</a>
-                    
-                      <a target="_blank" class="main-nav-link switch-friends-link" href="/c">28</a>
-                    
-                      <a target="_blank" class="main-nav-link switch-friends-link" href="/h">29</a>
-                    
-                      <a target="_blank" class="main-nav-link switch-friends-link" href="/a">30</a>
-                    
-                      <a target="_blank" class="main-nav-link switch-friends-link" href="/o">31</a>
-                    
-                      <a target="_blank" class="main-nav-link switch-friends-link" href="/j">32</a>
-                    
-                      <a target="_blank" class="main-nav-link switch-friends-link" href="/i">33</a>
-                    
-                      <a target="_blank" class="main-nav-link switch-friends-link" href="/a">34</a>
-                    
-                      <a target="_blank" class="main-nav-link switch-friends-link" href="/n">35</a>
-                    
-                      <a target="_blank" class="main-nav-link switch-friends-link" href="/g">36</a>
-                    
-                    </div>
-                </section>
-                
-
-                
-                
-                <section class="switch-part switch-part4">
                 
                     <div id="js-aboutme">海迷、爱运动、爱交友、爱旅行、喜欢接触新鲜事物、迎接新的挑战，更爱游离于错综复杂的编码与逻辑中</div>
                 </section>
                 
             </div>
         </div>
-    </header>                
+    </header>
 </div>
+
     </div>
     <div class="mid-col">
       <nav id="mobile-nav">
       <div class="overlay">
           <div class="slider-trigger"></div>
-          <h1 class="header-author js-mobile-header hide"><a href="/" title="Me">杨朝江</a></h1>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">杨朝江</a></h1>
       </div>
     <div class="intrude-less">
         <header id="header" class="inner">
             <a href="/" class="profilepic">
                 
-                    <img lazy-src="/img/head.jpg" class="js-avatar">
+                    <img lazy-src="/img/avatar.png" class="js-avatar">
                 
             </a>
             <hgroup>
-              <h1 class="header-author"><a href="/" title="Me">杨朝江</a></h1>
+              <h1 class="header-author"><a href="/" title="回到主页">杨朝江</a></h1>
             </hgroup>
             
             <nav class="header-menu">
                 <ul>
                 
-                    <li><a href="/Home">博客首页</a></li>
+                    <li><a href="/archives/">所有文章</a></li>
                 
-                    <li><a href="/works">作品展示</a></li>
+                    <li><a href="/categories/开发工具/">玩转开发工具</a></li>
                 
-                    <li><a href="/about">留言打卡</a></li>
+                    <li><a href="/categories/digital">玩转数码</a></li>
                 
-                    <li><a href="/FrontEndGuide">前端导航</a></li>
+                    <li><a href="/categories/cognition">认知提升</a></li>
+                
+                    <li><a href="/about/">关于我</a></li>
                 
                 <div class="clearfix"></div>
                 </ul>
@@ -286,13 +198,11 @@
                     
                         <a class="github" target="_blank" href="https://github.com/yangchaojiang" title="github">github</a>
                     
-                        <a class="weibo" target="_blank" href="http://weibo.com/u/5114674051?topnav=1&wvr=6&topsug=1&is_all=1" title="weibo">weibo</a>
-                    
                         <a class="google" target="_blank" href="#" title="google">google</a>
                     
-                        <a class="twitter" target="_blank" href="#" title="twitter">twitter</a>
+                        <a class="facebook" target="_blank" href="#" title="facebook">facebook</a>
                     
-                        <a class="linkedin" target="_blank" href="#" title="linkedin">linkedin</a>
+                        <a class="weibo" target="_blank" href="http://weibo.com/u/5114674051?topnav=1&wvr=6&topsug=1&is_all=1" title="weibo">weibo</a>
                     
                 </div>
             </nav>
@@ -302,9 +212,10 @@
       <div class="body-wrap"><article id="post-leficycle-blog" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2017/06/05/leficycle-blog/" class="article-date">
+      <a  href="/2017/06/05/leficycle-blog/" class="article-date">
       <time datetime="2017-06-05T02:14:26.000Z" itemprop="datePublished">2017-06-05</time>
 </a>
+
     </div>
   
   <div class="article-inner">
@@ -320,6 +231,7 @@
     </h1>
   
 
+
       </header>
       
       <div class="article-info article-info-post">
@@ -327,7 +239,7 @@
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Architecture-Components-leficycle/">Architecture_Components  leficycle</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Architecture-Components/">Architecture_Components</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leficycle/">leficycle</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -337,9 +249,11 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h1 id="Handling-Lifecycles（处理生命周期）"><a href="#Handling-Lifecycles（处理生命周期）" class="headerlink" title="Handling Lifecycles（处理生命周期）"></a>Handling Lifecycles（处理生命周期）</h1><p>在自定义活动和片段实现<a href="https://developer.android.google.cn/reference/android/arch/lifecycle/package-summary.html" target="_blank" rel="external">LifecycleOwner</a></p>
+        <h2 id="Handling-Lifecycles（处理生命周期）"><a href="#Handling-Lifecycles（处理生命周期）" class="headerlink" title="Handling Lifecycles（处理生命周期）"></a>Handling Lifecycles（处理生命周期）</h2><p>在自定义活动和片段实现<a href="https://developer.android.google.cn/reference/android/arch/lifecycle/package-summary.html" target="_blank" rel="external">LifecycleOwner</a></p>
 <p>该android.arch.lifecycle 包提供的类和接口，让您构建生命周期感知 组件-这是可以基于一个活动或片段的当前生命周期自动调整自己的行为组件。</p>
+<blockquote>
 <p>注意：要导<a href="https://developer.android.google.cn/topic/libraries/architecture/adding-components.html" target="_blank" rel="external">adding components to your project</a>。</p>
+</blockquote>
 <a id="more"></a>
 <p>大多数在Android框架中定义的应用程序组件都安装到他们的生命周期。这些生命周期是由操作系统或在你的进程中运行的框架代码管理。</p>
 <p>他们是核心到Android是如何工作的，你的应用程序必须尊重他们。不这样做可能会触发内存泄漏，甚至应用程序崩溃。</p>
@@ -349,15 +263,14 @@
 <p>此外，一些部件不能刚刚开始onStart()。如果我们需要在开始位置的观察者之前检查一些配置？这可能是在某些情况下，活动后检查结束停止</p>
 <p>，这意味着myLocationListener.start()被称为之后 myLocationListener.stop()被调用时，基本上保持连接直到永远。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyActivity</span> <span class="keyword">extends</span> <span class="title">AppCompatActivity</span> </span>&#123;</div><div class="line">    <span class="keyword">private</span> MyLocationListener myLocationListener;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(...)</span> </span>&#123;</div><div class="line">        myLocationListener = <span class="keyword">new</span> MyLocationListener(<span class="keyword">this</span>, location -&gt; &#123;</div><div class="line">            <span class="comment">// update UI</span></div><div class="line">        &#125;);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onStart</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>.onStart();</div><div class="line">        Util.checkUserStatus(result -&gt; &#123;</div><div class="line">            <span class="comment">// what if this callback is invoked AFTER activity is stopped?</span></div><div class="line">            <span class="keyword">if</span> (result) &#123;</div><div class="line">                myLocationListener.start();</div><div class="line">            &#125;</div><div class="line">        &#125;);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onStop</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>.onStop();</div><div class="line">        myLocationListener.stop();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>该<a href="https://developer.android.google.cn/reference/android/arch/lifecycle/package-summary.html" target="_blank" rel="external">android.arch.lifecycle</a> 包提供的类和接口，帮助您解决在弹性和孤立的方式这些问题。</p>
-<p>##Lifecycle<br><a href="https://developer.android.google.cn/reference/android/arch/lifecycle/Lifecycle.html" target="_blank" rel="external">Lifecycle</a> 是，其保持关于一个组件的生命周期状态的信息（如一个活动或片段），并允许其它的目的，观察该状态的一个类。</p>
+<h2 id="Lifecycle"><a href="#Lifecycle" class="headerlink" title="Lifecycle"></a>Lifecycle</h2><p><a href="https://developer.android.google.cn/reference/android/arch/lifecycle/Lifecycle.html" target="_blank" rel="external">Lifecycle</a> 是，其保持关于一个组件的生命周期状态的信息（如一个活动或片段），并允许其它的目的，观察该状态的一个类。</p>
 <p><a href="https://developer.android.google.cn/reference/android/arch/lifecycle/Lifecycle.html" target="_blank" rel="external">Lifecycle</a> 使用两个主要的枚举跟踪其相关组件的生命周期状态。</p>
-<p><img src="/img/lifecycle-states.png" alt="">  </p>
+<p>  <img src="/img/lifecycle-states.png" alt="">  </p>
 <p>事件<br>这是从架构和调度的生命周期事件 <a href="https://developer.android.google.cn/reference/android/arch/lifecycle/Lifecycle.html" target="_blank" rel="external">Lifecycle类</a>。这些事件映射到活动和片段的回调事件。</p>
 <p>的组件的当前状态由跟踪 Lifecycle对象。</p>
 <p>状态看作图的节点和事件，这些节点之间的边缘。</p>
 <p>一个类可以通过添加注解它的方法监控组件的生命周期状态。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyObserver</span> <span class="keyword">implements</span> <span class="title">LifecycleObserver</span> </span>&#123;</div><div class="line">    <span class="meta">@OnLifecycleEvent</span>(Lifecycle.Event.ON_RESUME)</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onResume</span><span class="params">()</span> </span>&#123;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@OnLifecycleEvent</span>(Lifecycle.Event.ON_PAUSE)</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onPause</span><span class="params">()</span> </span>&#123;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="comment">//实现类调用 MainActivity extends LifecycleActivity 或者   interfaceLifecycleActivity extends AppCompatActivity implements LifecycleRegistryOwner</span></div><div class="line"></div><div class="line">aLifecycleOwner.getLifecycle().addObserver(<span class="keyword">new</span> MyObserver());</div></pre></td></tr></table></figure></p>
-<p>###LifecycleOwner</p>
-<p><a href="https://developer.android.google.cn/reference/android/arch/lifecycle/Lifecycle.html" target="_blank" rel="external">LifecycleOwner</a>是表示该类有一个单一的方法接口 Lifecycle。它有一个方法 getLifecycle()，它必须由类实现。</p>
+<h3 id="LifecycleOwner"><a href="#LifecycleOwner" class="headerlink" title="LifecycleOwner"></a>LifecycleOwner</h3><p><a href="https://developer.android.google.cn/reference/android/arch/lifecycle/Lifecycle.html" target="_blank" rel="external">LifecycleOwner</a>是表示该类有一个单一的方法接口 Lifecycle。它有一个方法 getLifecycle()，它必须由类实现。</p>
 <p>这类抽象的所有权 <a href="https://developer.android.google.cn/reference/android/arch/lifecycle/Lifecycle.html" target="_blank" rel="external">Lifecycle</a>从个人类（例如，活动和片段），并允许编写的组件，它可以与他们的工作。</p>
 <p>任何自定义应用程序类可以实现 LifecycleOwner 接口。</p>
 <p>注：由于架构的组件是处于alpha阶段，Fragment而AppCompatActivity类不能执行它（因为我们不能从一个稳定的组件添加依赖不稳定的API）。</p>
@@ -400,8 +313,7 @@
 <p>可与工作类 Lifecycle被称为 生命周期感知组件。</p>
 <p>鼓励提供需要的是Android生命周期工作类图书馆提供生命周期数据的组件，从而使他们的客户可以很容易地集成在客户端无需人工生命周期管理这些类。</p>
 <p>LiveData在生命周期的感知部件的一个例子。使用 LiveData连同 ViewModel使得它更容易填充的用户界面与数据，同时尊重Android的生命周期。</p>
-<p> ###Best practices for Lifecycles (对于生命周期的最佳实践)</p>
-<ul>
+<h3 id="Best-practices-for-Lifecycles-对于生命周期的最佳实践"><a href="#Best-practices-for-Lifecycles-对于生命周期的最佳实践" class="headerlink" title="Best practices for Lifecycles (对于生命周期的最佳实践)"></a>Best practices for Lifecycles (对于生命周期的最佳实践)</h3><ul>
 <li><p>保持您的UI控制器（活动和碎片）尽可能瘦。他们不应该试图获取自己的数据;而是使用<a href="https://developer.android.google.cn/reference/android/arch/lifecycle/ViewModel.html" target="_blank" rel="external">ViewModel</a><br>来执行此操作，并观察<a href="https://developer.android.google.cn/reference/android/arch/lifecycle/LiveData.html" target="_blank" rel="external">LiveData</a>以将更改反映到视图中<br>试着写数据驱动的用户界面在您的UI控制器的责任是更新视图的数据变化，或通知用户操作回 ViewModel。</p>
 </li>
 <li><p>尝试编写数据驱动的UI，您的UI控制器的责任是在数据更改时更新视图，或将用户操作通知给<a href="https://developer.android.google.cn/reference/android/arch/lifecycle/ViewModel.html" target="_blank" rel="external">ViewModel</a></p>
@@ -431,68 +343,19 @@
 <p>，如果他们执行的片段和活动自动完成 LifecycleRegistryOwner界面</p>
 
       
-      
-        <div class="page-reward">
-          <p><a href="javascript:void(0)" onclick="dashangToggle()" class="dashang">赏</a></p>
-          <div class="hide_box"></div>
-          <div class="shang_box">
-            <a class="shang_close" href="javascript:void(0)" onclick="dashangToggle()">×</a>
-            <div class="shang_tit">
-              <p>纯属好玩</p>
-            </div>
-            <div class="shang_payimg">
-              <img src="/img/alipayimg.jpg" alt="扫码支持" title="扫一扫" />
-            </div>
-              <div class="pay_explain">扫码打赏，你说多少就多少</div>
-            <div class="shang_payselect">
-              
-                <div class="pay_item checked" data-id="alipay">
-                  <span class="radiobox"></span>
-                  <span class="pay_logo"><img src="/img/alipay.png" alt="支付宝" /></span>
-                </div>
-              
-              
-                <div class="pay_item" data-id="wechat">
-                  <span class="radiobox"></span>
-                  <span class="pay_logo"><img src="/img/weixin.png" alt="微信" /></span>
-                </div>
-              
-            </div>
-            <div class="shang_info">
-              <p>打开<span id="shang_pay_txt">支付宝</span>扫一扫，即可进行扫码打赏哦</p>
-            </div>
-          </div>
-        </div>
-        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/zepto/1.2.0/zepto.min.js"></script>
-        <script type="text/javascript">
-          $(".pay_item").click(function(){
-            $(this).addClass('checked').siblings('.pay_item').removeClass('checked');
-            var dataid=$(this).attr('data-id');
-            $(".shang_payimg img").attr("src","/img/"+dataid+"img.jpg");
-            $("#shang_pay_txt").text(dataid=="alipay"?"支付宝":"微信");
-          });
-          function dashangToggle(){
-            
-            $(".hide_box").fadeToggle();
-            $(".shang_box").fadeToggle();
-          }
-        </script>
-      
     </div>
     
   </div>
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2017/06/05/leficycle-blog/">Architecture_Components  leficycle</a></p>
-        <p><span>文章作者:</span><a href="/" title="访问 杨朝江 的个人博客">杨朝江</a></p>
+        <p><span>本文标题:</span><a  href="/2017/06/05/leficycle-blog/">Architecture_Components  leficycle</a></p>
+        <p><span>文章作者:</span><a  href="/" title="访问 杨朝江 的个人博客">杨朝江</a></p>
         <p><span>发布时间:</span>2017年06月05日 - 10时14分</p>
-        <p><span>最后更新:</span>2017年06月05日 - 17时15分</p>
+        <p><span>最后更新:</span>2017年06月06日 - 18时59分</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2017/06/05/leficycle-blog/" title="Architecture_Components  leficycle">http://yangchaojiang.cn/2017/06/05/leficycle-blog/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://yangchaojiang.cn/2017/06/05/leficycle-blog/　　作者: 杨朝江" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
-            <script src="/js/clipboard.min.js"></script>
-            <script> var clipboard = new Clipboard('.copy-path'); </script>
+            <span class="copy-path" data-clipboard-text="原文: http://yangchaojiang.cn/2017/06/05/leficycle-blog/　　作者: 杨朝江" title=""></span>
         </p>
         <p>
             <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" title="中国大陆 (CC BY-NC-SA 3.0 CN)" target = "_blank">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。
@@ -503,37 +366,35 @@
 
 <nav id="article-nav">
   
-    <a href="/2017/06/05/architecture/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption"><</strong>
-      <div class="article-nav-title">
-        
-          google 新出开发应用架构 Architecture Components ( Lifecycles LiveDatra Room) 组件架构，目前公开测试阶段
-        
-      </div>
-    </a>
   
-  
-    <a href="/2017/06/04/my-first-blog/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">我的第一个博客</div>
+    <a  href="/2017/06/05/room-blod/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Architecture_Components Room Persistence</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
 </nav>
+
 
   
 </article>
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Handling-Lifecycles（处理生命周期）"><span class="toc-number">1.</span> <span class="toc-text">Handling Lifecycles（处理生命周期）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#附录"><span class="toc-number">1.0.1.</span> <span class="toc-text">附录</span></a></li></ol></li></ol></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Handling-Lifecycles（处理生命周期）"><span class="toc-number">1.</span> <span class="toc-text">Handling Lifecycles（处理生命周期）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Lifecycle"><span class="toc-number">2.</span> <span class="toc-text">Lifecycle</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#LifecycleOwner"><span class="toc-number">2.1.</span> <span class="toc-text">LifecycleOwner</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Best-practices-for-Lifecycles-对于生命周期的最佳实践"><span class="toc-number">2.2.</span> <span class="toc-text">Best practices for Lifecycles (对于生命周期的最佳实践)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#附录"><span class="toc-number">2.3.</span> <span class="toc-text">附录</span></a></li></ol></li></ol>
 </div>
+<style>
+    .left-col .switch-btn {
+        display: none;
+    }
+    .left-col .switch-area {
+        display: none;
+    }
+</style>
 <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
-
-<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
 <script>
     var valueHide = "隐藏目录";
     var valueShow = "显示目录";
-
     if ($(".left-col").is(":hidden")) {
         $("#tocButton").attr("value", valueShow);
     }
@@ -541,17 +402,19 @@
         if ($("#toc").is(":hidden")) {
             $("#tocButton").attr("value", valueHide);
             $("#toc").slideDown(320);
+            $(".switch-btn, .switch-area").fadeOut(300);
         }
         else {
             $("#tocButton").attr("value", valueShow);
             $("#toc").slideUp(350);
+            $(".switch-btn, .switch-area").fadeIn(500);
         }
     })
     if ($(".toc").length < 1) {
         $("#toc, #tocButton").hide();
+        $(".switch-btn, .switch-area").show();
     }
 </script>
-
 
 
 
@@ -565,59 +428,67 @@
 	<a href="#" class="fx fa-linkedin bds_linkedin" data-cmd="linkedin" title="分享到linkedin"></a>
 	<a href="#" class="fx fa-files-o bds_copy" data-cmd="copy" title="分享到复制网址"></a>
 </div>
-<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
 
 
 
 
     
-        <section class="youyan" id="comments">
- <div id="uyan_frame"></div>
-<script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2135696"></script>
+        <section class="changyan" id="comments">
+  <!--<div id="uyan_frame"></div>-->
+  <div id="SOHUCS"></div>
+  <script charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/changyan.js"></script>
+  <script type="text/javascript">
+    window.changyan.api.config({
+      appid: 'cyt36tWXs',
+      conf: '42b79e0329709ef48318d7d6739122c2'
+    });
+  </script>
 </section>
-
     
 
 
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2017/06/05/architecture/" title="上一篇: google 新出开发应用架构 Architecture Components ( Lifecycles LiveDatra Room) 组件架构，目前公开测试阶段">
-                <i class="fa fa-angle-left"></i>
-            </a>
+            <a  href="/" title="回到主页"><i class="fa fa-home"></i></a>
         
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
         
-            <a href="/2017/06/04/my-first-blog/" title="下一篇: 我的第一个博客">
+            <a  href="/2017/06/05/room-blod/" title="下一篇: Architecture_Components Room Persistence">
                 <i class="fa fa-angle-right"></i>
             </a>
         
     </div>
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/06/05/architecture/">google 新出开发应用架构 Architecture Components ( Lifecycles LiveDatra Room) 组件架构，目前公开测试阶段</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/05/leficycle-blog/">Architecture_Components  leficycle</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/04/my-first-blog/">我的第一个博客</a></li></ul>
-    <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/06/05/leficycle-blog/">Architecture_Components  leficycle</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/05/room-blod/">Architecture_Components Room Persistence</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/05/livedata-blog/">Architecture_Components  LiveData 学习</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/04/architecture/">google 新出开发应用架构 Architecture Components ( Lifecycles LiveDatra Room) 组件架构，目前公开测试阶段</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/04/my-first-blog/">我的第一个博客</a></li></ul>
+    <script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
     <script>
         $(".post-list").addClass("toc-article");
-        $(".post-list-item a").attr("target","_blank");
+        // $(".post-list-item a").attr("target","_blank");
         $("#post-nav-button > a:nth-child(2)").click(function() {
             $(".fa-bars, .fa-times").toggle();
             $(".post-list").toggle(300);
             if ($(".toc").length > 0) {
                 $("#toc, #tocButton").toggle(200, function() {
                     if ($(".switch-area").is(":visible")) {
+                        $("#toc, .switch-btn, .switch-area").toggle();
                         $("#tocButton").attr("value", valueHide);
                         }
                     })
             }
             else {
+                $(".switch-btn, .switch-area").fadeToggle(300);
             }
         })
     </script>
 
 
 
+
     <script>
         
     </script>
+
 </div>
       <footer id="footer">
     <div class="outer">
@@ -626,14 +497,14 @@
                 &copy; 2017 杨朝江
             </div>
             <div class="footer-right">
-                <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/luuman/hexo-theme-spfk" target="_blank">spfk</a> by luuman
+                <a href="http://hexo.io/" target="_blank">Hexo</a><a href="https://github.com/maochunguang" target="_blank">Blog</a> by tommy
             </div>
         </div>
         
             <div class="visit">
                 
                     <span id="busuanzi_container_site_pv" style='display:none'>
-                        <span id="site-visit" >海贼到访数: 
+                        <span id="site-visit" >极客到访数: 
                             <span id="busuanzi_value_site_uv"></span>
                         </span>
                     </span>
@@ -654,12 +525,12 @@
 </footer>
 
     </div>
-    <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+    <script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
 <script src="/js/main.js"></script>
 
     <script>
         $(document).ready(function() {
-            var backgroundnum = 24;
+            var backgroundnum = 4;
             var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
             $("#mobile-nav").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
             $(".left-col").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
@@ -667,7 +538,52 @@
     </script>
 
 
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
+ga('create', 'xxxxx', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+
+	<script>
+	var _hmt = _hmt || [];
+	(function() {
+	  var hm = document.createElement("script");
+	  hm.src = "//hm.baidu.com/hm.js?xxxxxx";
+	  var s = document.getElementsByTagName("script")[0]; 
+	  s.parentNode.insertBefore(hm, s);
+	})();
+	</script>
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
 
 
 <div class="scroll" id="scroll">
@@ -693,7 +609,6 @@
             var title = a.attr('title');
             if (title == undefined || title == "") return;
             a.data('title', title).removeAttr('title').hover(
-
             function() {
                 var offset = a.offset();
                 $("<div id=\"anchortitlecontainer\"></div>").appendTo($("body")).html(title).css({

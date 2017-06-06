@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="baidu-site-verification" content="L6Lm9d5Crl"/>
+  
+  
+  
+  
+  <title>Architecture_Components  LiveData 学习 | yangjiang</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="LiveDataLiveData是数据保持器类的值和运算。不像常规可见，LiveData该生命周期的应用程序组件，使得遵守者可以指定Lifecycle它在哪应注意观察。 注：实时为您导入Android项目添加组件你的项目。">
+<meta name="keywords" content="Architecture_Components,LiveData">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Architecture_Components  LiveData 学习">
+<meta property="og:url" content="http://yangchaojiang.cn/2017/06/05/livedata-blog/index.html">
+<meta property="og:site_name" content="yangjiang">
+<meta property="og:description" content="LiveDataLiveData是数据保持器类的值和运算。不像常规可见，LiveData该生命周期的应用程序组件，使得遵守者可以指定Lifecycle它在哪应注意观察。 注：实时为您导入Android项目添加组件你的项目。">
+<meta property="og:updated_time" content="2017-06-06T10:59:50.482Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Architecture_Components  LiveData 学习">
+<meta name="twitter:description" content="LiveDataLiveData是数据保持器类的值和运算。不像常规可见，LiveData该生命周期的应用程序组件，使得遵守者可以指定Lifecycle它在哪应注意观察。 注：实时为您导入Android项目添加组件你的项目。">
+  
+  
+    <link rel="icon" href="/img/favicon.png">
+  
+  
+  <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  
+  
+      <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  
+  <!-- 加载特效 -->
+    <script src="/js/pace.js"></script>
+    <link href="/css/pace/pace-theme-flash.css" rel="stylesheet" />
+  <script>
+      var yiliaConfig = {
+          fancybox: true,
+          animate: true,
+          isHome: false,
+          isPost: true,
+          isArchive: false,
+          isTag: false,
+          isCategory: false,
+          open_in_new: false
+      }
+  </script>
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+        <a href="/" class="profilepic">
+            
+            <img lazy-src="/img/avatar.png" class="js-avatar">
+            
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/">杨朝江</a></h1>
+        </hgroup>
+        
+        
+        
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a  href="/archives/">所有文章</a></li>
+                        
+                            <li><a  href="/categories/开发工具/">玩转开发工具</a></li>
+                        
+                            <li><a  href="/categories/digital">玩转数码</a></li>
+                        
+                            <li><a  href="/categories/cognition">认知提升</a></li>
+                        
+                            <li><a  href="/about/">关于我</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fl mail"  target="_blank" href="mailto:yangchaojiang@outlook.com" title="mail">mail</a>
+                            
+                                <a class="fl github"  target="_blank" href="https://github.com/yangchaojiang" title="github">github</a>
+                            
+                                <a class="fl google"  target="_blank" href="#" title="google">google</a>
+                            
+                                <a class="fl facebook"  target="_blank" href="#" title="facebook">facebook</a>
+                            
+                                <a class="fl weibo"  target="_blank" href="http://weibo.com/u/5114674051?topnav=1&wvr=6&topsug=1&is_all=1" title="weibo">weibo</a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <a href="/tags/Architecture-Components/" style="font-size: 10px;">Architecture Components</a> <a href="/tags/Architecture-Components/" style="font-size: 20px;">Architecture_Components</a> <a href="/tags/LiveData/" style="font-size: 10px;">LiveData</a> <a href="/tags/Room-Persistence/" style="font-size: 10px;">Room Persistence</a> <a href="/tags/leficycle/" style="font-size: 10px;">leficycle</a>
+                    </div>
+                </section>
+                
+                
+                
+                
+                <section class="switch-part switch-part3">
+                
+                    <div id="js-aboutme">海迷、爱运动、爱交友、爱旅行、喜欢接触新鲜事物、迎接新的挑战，更爱游离于错综复杂的编码与逻辑中</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">杨朝江</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                
+                    <img lazy-src="/img/avatar.png" class="js-avatar">
+                
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">杨朝江</a></h1>
+            </hgroup>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/archives/">所有文章</a></li>
+                
+                    <li><a href="/categories/开发工具/">玩转开发工具</a></li>
+                
+                    <li><a href="/categories/digital">玩转数码</a></li>
+                
+                    <li><a href="/categories/cognition">认知提升</a></li>
+                
+                    <li><a href="/about/">关于我</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a class="mail" target="_blank" href="mailto:yangchaojiang@outlook.com" title="mail">mail</a>
+                    
+                        <a class="github" target="_blank" href="https://github.com/yangchaojiang" title="github">github</a>
+                    
+                        <a class="google" target="_blank" href="#" title="google">google</a>
+                    
+                        <a class="facebook" target="_blank" href="#" title="facebook">facebook</a>
+                    
+                        <a class="weibo" target="_blank" href="http://weibo.com/u/5114674051?topnav=1&wvr=6&topsug=1&is_all=1" title="weibo">weibo</a>
+                    
+                </div>
+            </nav>
+        </header>                
+    </div>
+</nav>
+      <div class="body-wrap"><article id="post-livedata-blog" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a  href="/2017/06/05/livedata-blog/" class="article-date">
+      <time datetime="2017-06-05T01:00:26.000Z" itemprop="datePublished">2017-06-05</time>
+</a>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Architecture_Components  LiveData 学习
+    </h1>
+  
+
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Architecture-Components/">Architecture_Components</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/LiveData/">LiveData</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="LiveData"><a href="#LiveData" class="headerlink" title="LiveData"></a>LiveData</h2><p><a href="https://developer.android.google.cn/reference/android/arch/lifecycle/LiveData.html" target="_blank" rel="external">LiveData</a>是数据保持器类的值和运算。<br>不像常规可见，LiveData该生命周期的应用程序组件，使得遵守者可以指定Lifecycle它在哪应注意观察。</p>
+<p>注：实时为您导入Android项目添加组件你的项目。<br><a id="more"></a><br><a href="https://developer.android.google.cn/reference/android/arch/lifecycle/LiveData.html" target="_blank" rel="external">LiveData</a><br>认为遵守者在活跃状态中如果遵守者’sLifecycle是的STARTED作业代表RESUMED状态。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">public class LocationLiveData extends LiveData&lt;Location&gt; &#123;</div><div class="line">    private LocationManager locationManager;</div><div class="line"></div><div class="line">    private SimpleLocationListener listener = new SimpleLocationListener() &#123;</div><div class="line">        @Override</div><div class="line">        public void onLocationChanged(Location location) &#123;</div><div class="line">            setValue(location);</div><div class="line">        &#125;</div><div class="line">    &#125;;</div><div class="line"></div><div class="line">    public LocationLiveData(Context context) &#123;</div><div class="line">        locationManager = (LocationManager) context.getSystemService(</div><div class="line">                Context.LOCATI+-ON_SERVICE);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    protected void onActive() &#123;</div><div class="line">        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, listener);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    protected void onInactive() &#123;</div><div class="line">        locationManager.removeUpdates(listener);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>有三个重要部分中的这种实现<a href="https://developer.android.google.cn/reference/android/location/Location.html" target="_blank" rel="external">Location</a>：</p>
+<font color="##006666">onActive()</font>
+
+<p>当该方法被称为 <a href="https://developer.android.google.cn/reference/android/arch/lifecycle/LiveData.html" target="_blank" rel="external">LiveData</a>具有有源观察者。这意味着我们需要开始观测从设备的位置更新。</p>
+<font color="##006666">onInactive()</font>
+
+<p>当这种方法被称为 <a href="https://developer.android.google.cn/reference/android/arch/lifecycle/LiveData.html" target="_blank" rel="external">LiveData</a>没有任何积极的观察员。<br>由于没有观察们监听，也没有理由保持连接到<a href="https://developer.android.google.cn/reference/android/location/LocationManager.html" target="_blank" rel="external">LocationManager</a>服务。这很重要，因为保持连接会消耗显著电池电量没有任何好处。</p>
+<font color="##006666">setValue()</font>
+
+<p>调用此方法将更新后的值 <a href="https://developer.android.google.cn/reference/android/arch/lifecycle/LiveData.html" target="_blank" rel="external">LiveData</a>与实例观察员活动通知。<br>我们可以用新的<font color="##006666">LocationLiveData()</font> 如下所示：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyFragment</span> <span class="keyword">extends</span> <span class="title">LifecycleFragment</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onActivityCreated</span> <span class="params">(Bundle savedInstanceState)</span> </span>&#123;</div><div class="line">        LiveData&lt;Location&gt; myLocationListener = ...;</div><div class="line">        Util.checkUserStatus(result -&gt; &#123;</div><div class="line">            <span class="keyword">if</span> (result) &#123;</div><div class="line">                myLocationListener.addObserver(<span class="keyword">this</span>, location -&gt; &#123;</div><div class="line">                    <span class="comment">// update UI</span></div><div class="line">                &#125;);</div><div class="line">            &#125;</div><div class="line">        &#125;);</div><div class="line">    &#125;</div><div class="line">&#125;  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<blockquote>
+<p>请注意，该<font color="##006666" size="3">addObserver()</font>方法通过了 <a href="https://developer.android.google.cn/reference/android/arch/lifecycle/LifecycleOwner.html" target="_blank" rel="external">LifecycleOwner</a>作为第一个参数。<br>这样做就表示该观察者应该绑定到 Lifecycle，意思是：</p>
+</blockquote>
+<ul>
+<li><p>如果<a href="https://developer.android.google.cn/reference/android/arch/lifecycle/Lifecycle.html" target="_blank" rel="external">Lifecycle</a><br>处于激活状态不是（STARTED或RESUMED），观察者不叫即使该值的变化。</p>
+</li>
+<li><p>如果<a href="https://developer.android.google.cn/reference/android/arch/lifecycle/Lifecycle.html" target="_blank" rel="external">Lifecycle</a>被破坏，观察者被自动删除。</p>
+</li>
+</ul>
+<p>这事实上<a href="https://developer.android.google.cn/reference/android/arch/lifecycle/LiveData.html" target="_blank" rel="external">LiveData</a><br>是生命周期感知为我们提供了新的契机<br>：我们可以在多个活动，片段等之间的分享。为了保持我们的例子简单，我们可以按照如下使单：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LocationLiveData</span> <span class="keyword">extends</span> <span class="title">LiveData</span>&lt;<span class="title">Location</span>&gt; </span>&#123;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> LocationLiveData sInstance;</div><div class="line">    <span class="keyword">private</span> LocationManager locationManager;</div><div class="line"></div><div class="line">    <span class="meta">@MainThread</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> LocationLiveData <span class="title">get</span><span class="params">(Context context)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (sInstance == <span class="keyword">null</span>) &#123;</div><div class="line">            sInstance = <span class="keyword">new</span> LocationLiveData(context.getApplicationContext());</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> sInstance;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">private</span> SimpleLocationListener listener = <span class="keyword">new</span> SimpleLocationListener() &#123;</div><div class="line">        <span class="meta">@Override</span></div><div class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onLocationChanged</span><span class="params">(Location location)</span> </span>&#123;</div><div class="line">            setValue(location);</div><div class="line">        &#125;</div><div class="line">    &#125;;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="title">LocationLiveData</span><span class="params">(Context context)</span> </span>&#123;</div><div class="line">        locationManager = (LocationManager) context.getSystemService(</div><div class="line">                Context.LOCATION_SERVICE);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onActive</span><span class="params">()</span> </span>&#123;</div><div class="line">        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, <span class="number">0</span>, <span class="number">0</span>, listener);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onInactive</span><span class="params">()</span> </span>&#123;</div><div class="line">        locationManager.removeUpdates(listener);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>现在片段按如下方式使用它：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyFragment</span> <span class="keyword">extends</span> <span class="title">LifecycleFragment</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onActivityCreated</span> <span class="params">(Bundle savedInstanceState)</span> </span>&#123;</div><div class="line">        Util.checkUserStatus(result -&gt; &#123;</div><div class="line">            <span class="keyword">if</span> (result) &#123;</div><div class="line">                LocationLiveData.get(getActivity()).observe(<span class="keyword">this</span>, location -&gt; &#123;</div><div class="line">                   <span class="comment">// update UI</span></div><div class="line">                &#125;);</div><div class="line">            &#125;</div><div class="line">        &#125;);</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>可能有多个片段和活动正在观察我们的<font color="##006666"> MyLocationListener</font>实例，<br>并 <a href="https://developer.android.google.cn/reference/android/arch/lifecycle/LiveData.html" target="_blank" rel="external">LiveData</a>优雅地管理它们，使其连接到系统服务只有当他们中任何一个可见的（即活动）。</p>
+<p>本<a href="https://developer.android.google.cn/reference/android/arch/lifecycle/LiveData.html" target="_blank" rel="external">LiveData</a>类提供了以下优点：</p>
+<ul>
+<li><p><font face="微软雅黑" weight="bold">没有内存泄漏:</font>由于Observers的束缚自己的Lifecycle对象，当他们被自动清除 Lifecycle被破坏。</p>
+</li>
+<li><p><font face="微软雅黑" weight="bold"> 没有崩溃，由于停止活动:</font>如果Observer的 Lifecycle是无效的（就像在后面堆栈的活动），他们将不会收到更改事件。</p>
+</li>
+<li><p><font face="微软雅黑" weight="bold">始终保持最新数据：</font>如果 Lifecycle再次开始（如活动可以追溯到从后面堆启动的状态），它接收到的最新位置数据（如果没有的话）。</p>
+</li>
+<li><p><font face="微软雅黑" weight="bold">适当的配置变化：</font>如果一个活动或片段由于重新创建到的配置改变（如设备旋转），它立即接收的最后一个可用Location的数据。</p>
+</li>
+<li><p><font face="微软雅黑" weight="bold">资源共享：</font>现在我们能保持的单个实例 MyLocationListener，连接到系统服务只有一次，并适当支持的应用程序的所有观察员。</p>
+</li>
+<li><p><font face="微软雅黑" weight="bold">没有更多的人工生命周期处理：</font>正如你可能已经注意到，我们的片段只是当它想，不担心被停止或启动停止后观察观察数据。LiveData 由于片段提供了自动管理所有的这 Lifecycle一边观察。</p>
+</li>
+</ul>
+<h3 id="LiveData的转换"><a href="#LiveData的转换" class="headerlink" title="LiveData的转换"></a>LiveData的转换</h3><p>有时候，你可能希望更改 <a href="https://developer.android.google.cn/reference/android/arch/lifecycle/LiveData.html" target="_blank" rel="external">LiveData</a>其派遣到观察员前值，<br>或者您可能需要返回不同的 <a href="https://developer.android.google.cn/reference/android/arch/lifecycle/LiveData.html" target="_blank" rel="external">LiveData</a>基础上另外一个的值实例。</p>
+<p>生命周期包提供了一个 <a href="https://developer.android.google.cn/reference/android/arch/lifecycle/Transformations.html" target="_blank" rel="external">Transformations</a>，包含对这些操作的辅助方法</p>
+<p><a href="&#39;https://developer.android.google.cn/reference/android/arch/lifecycle/Transformations.html#map(android.arch.lifecycle.LiveData&lt;X&gt;,%20android.arch.core.util.Function&lt;X, Y">Transformations.map()</a>‘)</p>
+<p>在应用函数 <a href="https://developer.android.google.cn/reference/android/arch/lifecycle/LiveData.html" target="_blank" rel="external">LiveData</a>值，和下游传播的结果。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">LiveData&lt;User&gt; userLiveData = ...;</div><div class="line">LiveData&lt;String&gt; userName = Transformations.map(userLiveData, user -&gt; &#123;</div><div class="line">    user.name + <span class="string">" "</span> + user.lastName</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p><a href="&#39;https://developer.android.google.cn/reference/android/arch/lifecycle/Transformations.html#switchMap(android.arch.lifecycle.LiveData&lt;X&gt;,%20android.arch.core.util.Function&lt;X,%20android.arch.lifecycle.LiveData&lt;Y&gt;">Transformations.switchMap()</a>‘)</p>
+<p>类似于<a href="&#39;https://developer.android.google.cn/reference/android/arch/lifecycle/Transformations.html#map(android.arch.lifecycle.LiveData&lt;X&gt;,%20android.arch.core.util.Function&lt;X, Y">map()</a>‘)<br>,应用一个函数的值，并解开和下游调度的结果。传递给函数 <a href="&#39;https://developer.android.google.cn/reference/android/arch/lifecycle/Transformations.html#switchMap(android.arch.lifecycle.LiveData&lt;X&gt;,%20android.arch.core.util.Function&lt;X,%20android.arch.lifecycle.LiveData&lt;Y&gt;">switchMap()</a>‘)<br>必须返回 <a href="https://developer.android.google.cn/reference/android/arch/lifecycle/Lifecycle.html" target="_blank" rel="external">Lifecycle</a>。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">private</span> LiveData&lt;User&gt; <span class="title">getUser</span><span class="params">(String id)</span> </span>&#123;</div><div class="line">  ...;</div><div class="line">&#125;</div><div class="line"></div><div class="line">LiveData&lt;String&gt; userId = ...;</div><div class="line">LiveData&lt;User&gt; user = Transformations.switchMap(userId, id -&gt; getUser(id) );</div></pre></td></tr></table></figure></p>
+<p>使用这些转换允许结转观察者 <a href="https://developer.android.google.cn/reference/android/arch/lifecycle/Lifecycle.html" target="_blank" rel="external">Lifecycle</a>对面，使得这些转换没有被计算，<br>除非一个观察者观察返回链路信息<a href="https://developer.android.google.cn/reference/android/arch/lifecycle/LiveData.html" target="_blank" rel="external">LiveData</a><br>转换的这种懒惰的计算特性允许隐传下来的生命周期相关的行为，而不增加显式调用或依赖关系<br>每当你认为你需要 <a href="https://developer.android.google.cn/reference/android/arch/lifecycle/Lifecycle.html" target="_blank" rel="external">Lifecycle</a>内部的对象ViewModel一、转化是可能的解决方案。</p>
+<p>例如，我们假设一个UI，用户将在地址和他们的邮政编码的地址。<br>幼稚的<a href="https://developer.android.google.cn/reference/android/arch/lifecycle/LiveData.html" target="_blank" rel="external">LiveData</a><br>对于这种UI可以像这样：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyViewModel</span> <span class="keyword">extends</span> <span class="title">ViewModel</span> </span>&#123;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">final</span> PostalCodeRepository repository;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">MyViewModel</span><span class="params">(PostalCodeRepository repository)</span> </span>&#123;</div><div class="line">       <span class="keyword">this</span>.repository = repository;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">private</span> LiveData&lt;String&gt; <span class="title">getPostalCode</span><span class="params">(String address)</span> </span>&#123;</div><div class="line">       <span class="comment">// DON'T DO THIS</span></div><div class="line">       <span class="keyword">return</span> repository.getPostCode(address);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>如果是这样的实现中，UI将需要从之前的注销LiveData和重新登记，在每个时间实例新呼叫他们getPostalCode()。</p>
+<p>此外，如果所述UI是重新创建，则它触发另一个调用repository.getPostCode()代替使用在先前呼叫的结果。</p>
+<p>代替使用该方法时，可以实现如邮政编码信息一种变换地址的输入：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyViewModel</span> <span class="keyword">extends</span> <span class="title">ViewModel</span> </span>&#123;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">final</span> PostalCodeRepository repository;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">final</span> MutableLiveData&lt;String&gt; addressInput = <span class="keyword">new</span> MutableLiveData();</div><div class="line">    <span class="keyword">public</span> <span class="keyword">final</span> LiveData&lt;String&gt; postalCode =</div><div class="line">            Transformations.switchMap(addressInput, (address) -&gt; &#123;</div><div class="line">                <span class="keyword">return</span> repository.getPostCode(address);</div><div class="line">             &#125;);</div><div class="line"></div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="title">MyViewModel</span><span class="params">(PostalCodeRepository repository)</span> </span>&#123;</div><div class="line">      <span class="keyword">this</span>.repository = repository</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">setInput</span><span class="params">(String address)</span> </span>&#123;</div><div class="line">      addressInput.setValue(address);</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<blockquote>
+<p>请注意，我们还送了<b>postalCode</b>场 <b>public final</b>，因为它永远不会改变。</p>
+</blockquote>
+<p>它被定义为所述的变换<font color="##006666">addressInput</font>，使得当<font color="##006666">addressInpu</font>t变化，如果存在活动的观察者，<br> <font color="##006666">repository.getPostCode()</font>被调用。如果没有活动的观察员出席了通话的时间，也不执行计算，直到观察员加入。</p>
+<p>这种机制允许应用水平较低，以创建 <a href="https://developer.android.google.cn/reference/android/arch/lifecycle/LiveData.html" target="_blank" rel="external">LiveData</a>即是按需计算懒洋洋的对象。<br><a href="https://developer.android.google.cn/reference/android/arch/lifecycle/LiveData.html" target="_blank" rel="external">LiveData</a>可以很容易地获得它们，在它们上面定义转换规则。</p>
+<h3 id="创建新转换（Creating-new-transformations）"><a href="#创建新转换（Creating-new-transformations）" class="headerlink" title="创建新转换（Creating new transformations）"></a>创建新转换（Creating new transformations）</h3><p>有迹象表明，可能在你的应用程序非常有用十几个不同的特定的转换，但默认情况下不提供。为了实现自己的转型，</p>
+<p>你可以使用 <a href="https://developer.android.google.cn/reference/android/arch/lifecycle/MediatorLiveData.html" target="_blank" rel="external">MediatorLiveData</a> 类，它是专门创建适当听取其他<a href="https://developer.android.google.cn/reference/android/arch/lifecycle/LiveData.html" target="_blank" rel="external">LiveData</a>实例，<br>通过它们发出的处理事件。<br><a href="https://developer.android.google.cn/reference/android/arch/lifecycle/MediatorLiveData.html" target="_blank" rel="external">MediatorLiveData</a> 需要关心到正确地传播其活动/非活动状态到所述源 <a href="https://developer.android.google.cn/reference/android/arch/lifecycle/LiveData.html" target="_blank" rel="external">LiveData</a><br>您可以检查执行 <a href="https://developer.android.google.cn/reference/android/arch/lifecycle/Transformations.html" target="_blank" rel="external">Transformations</a>的细节。</p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a  href="/2017/06/05/livedata-blog/">Architecture_Components  LiveData 学习</a></p>
+        <p><span>文章作者:</span><a  href="/" title="访问 杨朝江 的个人博客">杨朝江</a></p>
+        <p><span>发布时间:</span>2017年06月05日 - 09时00分</p>
+        <p><span>最后更新:</span>2017年06月06日 - 18时59分</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2017/06/05/livedata-blog/" title="Architecture_Components  LiveData 学习">http://yangchaojiang.cn/2017/06/05/livedata-blog/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://yangchaojiang.cn/2017/06/05/livedata-blog/　　作者: 杨朝江" title=""></span>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" title="中国大陆 (CC BY-NC-SA 3.0 CN)" target = "_blank">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+<nav id="article-nav">
+  
+    <a  href="/2017/06/05/room-blod/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          Architecture_Components Room Persistence
+        
+      </div>
+    </a>
+  
+  
+    <a  href="/2017/06/04/architecture/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">google 新出开发应用架构 Architecture Components ( Lifecycles LiveDatra Room) 组件架构，目前公开测试阶段</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#LiveData"><span class="toc-number">1.</span> <span class="toc-text">LiveData</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#LiveData的转换"><span class="toc-number">1.1.</span> <span class="toc-text">LiveData的转换</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#创建新转换（Creating-new-transformations）"><span class="toc-number">1.2.</span> <span class="toc-text">创建新转换（Creating new transformations）</span></a></li></ol></li></ol>
+</div>
+<style>
+    .left-col .switch-btn {
+        display: none;
+    }
+    .left-col .switch-area {
+        display: none;
+    }
+</style>
+<input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script>
+    var valueHide = "隐藏目录";
+    var valueShow = "显示目录";
+    if ($(".left-col").is(":hidden")) {
+        $("#tocButton").attr("value", valueShow);
+    }
+    $("#tocButton").click(function() {
+        if ($("#toc").is(":hidden")) {
+            $("#tocButton").attr("value", valueHide);
+            $("#toc").slideDown(320);
+            $(".switch-btn, .switch-area").fadeOut(300);
+        }
+        else {
+            $("#tocButton").attr("value", valueShow);
+            $("#toc").slideUp(350);
+            $(".switch-btn, .switch-area").fadeIn(500);
+        }
+    })
+    if ($(".toc").length < 1) {
+        $("#toc, #tocButton").hide();
+        $(".switch-btn, .switch-area").show();
+    }
+</script>
+
+
+
+
+<div class="bdsharebuttonbox">
+	<a href="#" class="fx fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+	<a href="#" class="fx fa-weixin bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+	<a href="#" class="fx fa-qq bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+	<a href="#" class="fx fa-facebook-official bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+	<a href="#" class="fx fa-twitter bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+	<a href="#" class="fx fa-linkedin bds_linkedin" data-cmd="linkedin" title="分享到linkedin"></a>
+	<a href="#" class="fx fa-files-o bds_copy" data-cmd="copy" title="分享到复制网址"></a>
+</div>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+
+
+
+    
+        <section class="changyan" id="comments">
+  <!--<div id="uyan_frame"></div>-->
+  <div id="SOHUCS"></div>
+  <script charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/changyan.js"></script>
+  <script type="text/javascript">
+    window.changyan.api.config({
+      appid: 'cyt36tWXs',
+      conf: '42b79e0329709ef48318d7d6739122c2'
+    });
+  </script>
+</section>
+    
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a  href="/2017/06/05/room-blod/" title="上一篇: Architecture_Components Room Persistence">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+        
+            <a  href="/2017/06/04/architecture/" title="下一篇: google 新出开发应用架构 Architecture Components ( Lifecycles LiveDatra Room) 组件架构，目前公开测试阶段">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/06/05/leficycle-blog/">Architecture_Components  leficycle</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/05/room-blod/">Architecture_Components Room Persistence</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/05/livedata-blog/">Architecture_Components  LiveData 学习</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/04/architecture/">google 新出开发应用架构 Architecture Components ( Lifecycles LiveDatra Room) 组件架构，目前公开测试阶段</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/04/my-first-blog/">我的第一个博客</a></li></ul>
+    <script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+    <script>
+        $(".post-list").addClass("toc-article");
+        // $(".post-list-item a").attr("target","_blank");
+        $("#post-nav-button > a:nth-child(2)").click(function() {
+            $(".fa-bars, .fa-times").toggle();
+            $(".post-list").toggle(300);
+            if ($(".toc").length > 0) {
+                $("#toc, #tocButton").toggle(200, function() {
+                    if ($(".switch-area").is(":visible")) {
+                        $("#toc, .switch-btn, .switch-area").toggle();
+                        $("#tocButton").attr("value", valueHide);
+                        }
+                    })
+            }
+            else {
+                $(".switch-btn, .switch-area").fadeToggle(300);
+            }
+        })
+    </script>
+
+
+
+
+    <script>
+        
+    </script>
+
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                &copy; 2017 杨朝江
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank">Hexo</a><a href="https://github.com/maochunguang" target="_blank">Blog</a> by tommy
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" >极客到访数: 
+                            <span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>, </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit">本页阅读量: 
+                            <span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+
+    </div>
+    <script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var backgroundnum = 4;
+            var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+            $("#mobile-nav").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+            $(".left-col").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+        })
+    </script>
+
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'xxxxx', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+
+	<script>
+	var _hmt = _hmt || [];
+	(function() {
+	  var hm = document.createElement("script");
+	  hm.src = "//hm.baidu.com/hm.js?xxxxxx";
+	  var s = document.getElementsByTagName("script")[0]; 
+	  s.parentNode.insertBefore(hm, s);
+	})();
+	</script>
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+<div class="scroll" id="scroll">
+    <a href="#"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    $(document).ready(function() {
+        if ($("#comments").length < 1) {
+            $("#scroll > a:nth-child(2)").hide();
+        };
+    })
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+  <script language="javascript">
+    $(function() {
+        $("a[title]").each(function() {
+            var a = $(this);
+            var title = a.attr('title');
+            if (title == undefined || title == "") return;
+            a.data('title', title).removeAttr('title').hover(
+            function() {
+                var offset = a.offset();
+                $("<div id=\"anchortitlecontainer\"></div>").appendTo($("body")).html(title).css({
+                    top: offset.top - a.outerHeight() - 15,
+                    left: offset.left + a.outerWidth()/2 + 1
+                }).fadeIn(function() {
+                    var pop = $(this);
+                    setTimeout(function() {
+                        pop.remove();
+                    }, pop.text().length * 800);
+                });
+            }, function() {
+                $("#anchortitlecontainer").remove();
+            });
+        });
+    });
+</script>
+
+
+  </div>
+</body>
+</html>
