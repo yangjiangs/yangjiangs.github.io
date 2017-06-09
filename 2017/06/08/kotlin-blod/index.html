@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="baidu-site-verification" content="L6Lm9d5Crl"/>
+  
+  
+  
+  
+  <title>快速上手kotlin13招 | yangjiang</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="用 Kotlin 怎么写” 的问题，作为有经验的程序员，我们已经掌握了一门或者多门语言，那么学 Kotlin 的时候就经常会有类似 “ ‘再见’用日语怎么说？”、“ ‘你好’ 用西班牙语怎么说？” 的问题，所以我决定把一些常用的语法对照列举出来，如果大家熟悉 Java，那么快速上手 Kotlin 会变得非常地容易。">
+<meta name="keywords" content="Android,Kotlin">
+<meta property="og:type" content="article">
+<meta property="og:title" content="快速上手kotlin13招">
+<meta property="og:url" content="http://yangchaojiang.cn/2017/06/08/kotlin-blod/index.html">
+<meta property="og:site_name" content="yangjiang">
+<meta property="og:description" content="用 Kotlin 怎么写” 的问题，作为有经验的程序员，我们已经掌握了一门或者多门语言，那么学 Kotlin 的时候就经常会有类似 “ ‘再见’用日语怎么说？”、“ ‘你好’ 用西班牙语怎么说？” 的问题，所以我决定把一些常用的语法对照列举出来，如果大家熟悉 Java，那么快速上手 Kotlin 会变得非常地容易。">
+<meta property="og:updated_time" content="2017-06-09T05:51:49.633Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="快速上手kotlin13招">
+<meta name="twitter:description" content="用 Kotlin 怎么写” 的问题，作为有经验的程序员，我们已经掌握了一门或者多门语言，那么学 Kotlin 的时候就经常会有类似 “ ‘再见’用日语怎么说？”、“ ‘你好’ 用西班牙语怎么说？” 的问题，所以我决定把一些常用的语法对照列举出来，如果大家熟悉 Java，那么快速上手 Kotlin 会变得非常地容易。">
+  
+  
+    <link rel="icon" href="/img/favicon.png">
+  
+  
+  <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  
+  
+      <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  
+  <!-- 加载特效 -->
+    <script src="/js/pace.js"></script>
+    <link href="/css/pace/pace-theme-flash.css" rel="stylesheet" />
+  <script>
+      var yiliaConfig = {
+          fancybox: true,
+          animate: true,
+          isHome: false,
+          isPost: true,
+          isArchive: false,
+          isTag: false,
+          isCategory: false,
+          open_in_new: false
+      }
+  </script>
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+        <a href="/" class="profilepic">
+            
+            <img lazy-src="/img/avatar.png" class="js-avatar">
+            
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/">杨朝江</a></h1>
+        </hgroup>
+        
+        
+        
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a  href="/archives/">所有文章</a></li>
+                        
+                            <li><a  href="/categories/开发工具/">玩转开发工具</a></li>
+                        
+                            <li><a  href="/categories/digital">玩转数码</a></li>
+                        
+                            <li><a  href="/categories/cognition">认知提升</a></li>
+                        
+                            <li><a  href="/about/">关于我</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fl mail"  target="_blank" href="mailto:yangchaojiang@outlook.com" title="mail">mail</a>
+                            
+                                <a class="fl github"  target="_blank" href="https://github.com/yangchaojiang" title="github">github</a>
+                            
+                                <a class="fl google"  target="_blank" href="#" title="google">google</a>
+                            
+                                <a class="fl facebook"  target="_blank" href="#" title="facebook">facebook</a>
+                            
+                                <a class="fl weibo"  target="_blank" href="http://weibo.com/u/5114674051?topnav=1&wvr=6&topsug=1&is_all=1" title="weibo">weibo</a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <a href="/tags/Android/" style="font-size: 10px;">Android</a> <a href="/tags/Architecture-Components/" style="font-size: 10px;">Architecture Components</a> <a href="/tags/Architecture-Components/" style="font-size: 20px;">Architecture_Components</a> <a href="/tags/Kotlin/" style="font-size: 10px;">Kotlin</a> <a href="/tags/LiveData/" style="font-size: 10px;">LiveData</a> <a href="/tags/Room-Persistence/" style="font-size: 10px;">Room Persistence</a> <a href="/tags/leficycle/" style="font-size: 10px;">leficycle</a>
+                    </div>
+                </section>
+                
+                
+                
+                
+                <section class="switch-part switch-part3">
+                
+                    <div id="js-aboutme">海迷、爱运动、爱交友、爱旅行、喜欢接触新鲜事物、迎接新的挑战，更爱游离于错综复杂的编码与逻辑中</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">杨朝江</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                
+                    <img lazy-src="/img/avatar.png" class="js-avatar">
+                
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">杨朝江</a></h1>
+            </hgroup>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/archives/">所有文章</a></li>
+                
+                    <li><a href="/categories/开发工具/">玩转开发工具</a></li>
+                
+                    <li><a href="/categories/digital">玩转数码</a></li>
+                
+                    <li><a href="/categories/cognition">认知提升</a></li>
+                
+                    <li><a href="/about/">关于我</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a class="mail" target="_blank" href="mailto:yangchaojiang@outlook.com" title="mail">mail</a>
+                    
+                        <a class="github" target="_blank" href="https://github.com/yangchaojiang" title="github">github</a>
+                    
+                        <a class="google" target="_blank" href="#" title="google">google</a>
+                    
+                        <a class="facebook" target="_blank" href="#" title="facebook">facebook</a>
+                    
+                        <a class="weibo" target="_blank" href="http://weibo.com/u/5114674051?topnav=1&wvr=6&topsug=1&is_all=1" title="weibo">weibo</a>
+                    
+                </div>
+            </nav>
+        </header>                
+    </div>
+</nav>
+      <div class="body-wrap"><article id="post-kotlin-blod" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a  href="/2017/06/08/kotlin-blod/" class="article-date">
+      <time datetime="2017-06-08T14:08:52.000Z" itemprop="datePublished">2017-06-08</time>
+</a>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      快速上手kotlin13招
+    </h1>
+  
+
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Kotlin/">Kotlin</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p> 用 Kotlin 怎么写” 的问题，作为有经验的程序员，我们已经掌握了一门或者多门语言，那么学 Kotlin 的时候就经常会有类似 “ ‘再见’用日语怎么说？”、“ ‘你好’ 用西班牙语怎么说？” 的问题，所以我决定把一些常用的语法对照列举出来，如果大家熟悉 Java，那么快速上手 Kotlin 会变得非常地容易。<br><a id="more"></a></p>
+<p>这篇文章主要是写给需要快速上手 Kotlin 的 Java 程序员看的，这时候他们关注的是如何 Kotlin 写出类似某些 Java 的写法，所以本文基本不涉及 Kotlin 的高级特性。</p>
+<h2 id="1-如何定义变量"><a href="#1-如何定义变量" class="headerlink" title="1. 如何定义变量"></a>1. 如何定义变量</h2><ul>
+<li>Java 定义变量的写法：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">String string = &quot;Hello&quot;;</div></pre></td></tr></table></figure>
+<p>基本等价的 Kotlin 定义变量的写法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">var string: String = &quot;Hello&quot;</div></pre></td></tr></table></figure>
+<ul>
+<li>Java 定义 final 变量的写法：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">final String string = &quot;Hello&quot;;</div></pre></td></tr></table></figure>
+<p>注意到前面的是一个编译期常量，Kotlin 当中应该这么写：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">const val string: String = &quot;Hello&quot;</div></pre></td></tr></table></figure>
+<ul>
+<li>同样是 final 变量，Java 这么写：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">final String string = getString();</div></pre></td></tr></table></figure>
+<p>注意到，这个不是编译期常量，Kotlin 这么写：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">val string: String = getString()</div></pre></td></tr></table></figure>
+<p>另外， Kotlin 有类型推导的特性，因此上述变量定义基本上都可以省略掉类型 String。</p>
+<h2 id="2-如何定义函数"><a href="#2-如何定义函数" class="headerlink" title="2. 如何定义函数"></a>2. 如何定义函数</h2><p>Java 当中如何定义函数，也就是方法，需要定义到一个类当中：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">public boolean testString(String name)&#123;</div><div class="line">    ...</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>等价的 Kotlin 写法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">fun testString(name: String): Boolean &#123;</div><div class="line">    ...</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>注意到返回值的位置放到了参数之后。</p>
+<h2 id="3-如何定义静态变量、方法"><a href="#3-如何定义静态变量、方法" class="headerlink" title="3. 如何定义静态变量、方法"></a>3. 如何定义静态变量、方法</h2><p>Java 的静态方法或者变量只需要加一个 static 即可：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">public class Singleton&#123;  </div><div class="line"></div><div class="line">  private static Singleton instance = ...; </div><div class="line"></div><div class="line">       public static Singleton getInstance()&#123;</div><div class="line"></div><div class="line">        ...                return instance;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>用 Kotlin 直译过来就是：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">class KotlinSingleton&#123;</div><div class="line"></div><div class="line">    companion object&#123;     </div><div class="line"></div><div class="line">   private val kotlinSingleton = KotlinSingleton()   </div><div class="line"></div><div class="line">       @JvmStatic</div><div class="line"></div><div class="line">        fun getInstance() = kotlinSingleton</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>注意 getInstance 的写法。 JvmStatic 这个注解会将 getInstance 这个方法编译成与 Java 的静态方法一样的签名，如果不加这个注解，Java 当中无法像调用 Java 静态方法那样调用这个方法。</p>
+<p>另外，对于静态方法、变量的场景，在 Kotlin 当中建议使用包级函数。</p>
+<h2 id="4-如何定义数组"><a href="#4-如何定义数组" class="headerlink" title="4. 如何定义数组"></a>4. 如何定义数组</h2><p>Java 的数组非常简单，当然也有些抽象，毕竟是编译期生成的类：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">String[] names = new String[]&#123;&quot;Kyo&quot;, &quot;Ryu&quot;, &quot;Iory&quot;&#125;;</div><div class="line"></div><div class="line">String[] emptyStrings = new String[10];</div></pre></td></tr></table></figure>
+<p>Kotlin 的数组其实更真实一些，看上去更让人容易理解：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">val names: Array&lt;String&gt; = arrayOf(&quot;Kyo&quot;, &quot;Ryu&quot;, &quot;Iory&quot;)</div><div class="line"></div><div class="line">val emptyStrings: Array&lt;String?&gt; = arrayOfNulls(10)</div></pre></td></tr></table></figure>
+<p>注意到，Array<t>T 即数组元素的类型。另外，String? 表示可以为 null 的 String 类型。</t></p>
+<p>数组的使用基本一致。需要注意的是，为了避免装箱和拆箱的开销，Kotlin 对基本类型包括 Int、Short、Byte、Long、Float、Double、Char 等基本类型提供了定制版数组类型，写法为 XArray，例如 Int 的定制版数组为 IntArray，如果我们要定义一个整型数组，写法如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">val ints = intArrayOf(1, 3, 5)</div></pre></td></tr></table></figure>
+<h2 id="5-如何写变长参数"><a href="#5-如何写变长参数" class="headerlink" title="5. 如何写变长参数"></a>5. 如何写变长参数</h2><p>Java 的变长参数写法如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">void hello(String... names)&#123;</div><div class="line">    ...</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>Kotlin 的变长参数写法如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">fun hello(vararg names: String)&#123;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="6-如何写三元运算符"><a href="#6-如何写三元运算符" class="headerlink" title="6. 如何写三元运算符"></a>6. 如何写三元运算符</h2><p>Java 可以写三元运算符：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">int code = isSuccessfully? 200: 400;</div></pre></td></tr></table></figure>
+<p>很多人抱怨 Kotlin 为什么没有这个运算符。。。据说是因为 Kotlin 当中 : 使用的场景比 Java 复杂得多，因此如果加上这个三元运算符的话，会给语法解析器带来较多的麻烦，Scala 也是类似的情况。那么这中情况下，我们用 Kotlin 该怎么写呢？</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">int code = if(isSuccessfully) 200 else 400</div></pre></td></tr></table></figure>
+<p>注意到，if else 这样的语句也是表达式，这一点与 Java 不同。</p>
+<h2 id="7-如何写-main-函数"><a href="#7-如何写-main-函数" class="headerlink" title="7. 如何写 main 函数"></a>7. 如何写 main 函数</h2><p>Java 的写法只有一种：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">class Main&#123;</div><div class="line"></div><div class="line">    public static void main(String... args)&#123;</div><div class="line">        ...</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>注意到参数可以是变长参数或者数组，这二者都可。</p>
+<p>对应 Kotlin，main 函数的写法如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">class KotlinMain&#123;</div><div class="line"></div><div class="line">    companion object&#123;</div><div class="line"></div><div class="line">        @JvmStatic</div><div class="line"></div><div class="line">        fun main(args: Array&lt;String&gt;) &#123;</div><div class="line"></div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>Kotlin 可以有包级函数，因此我们并不需要声明一个类来包装 main 函数：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">fun main(args: Array&lt;String&gt;)&#123;</div><div class="line">    ...</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="8-如何实例化类"><a href="#8-如何实例化类" class="headerlink" title="8. 如何实例化类"></a>8. 如何实例化类</h2><p>Java 和 C++ 这样的语言，在构造对象的时候经常需要用到 new 这个关键字，比如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Date date = new Date();</div></pre></td></tr></table></figure>
+<p>Kotlin 构造对象时，不需要 new 这个关键字，所以上述写法等价于：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">val date = Date()</div></pre></td></tr></table></figure>
+<h2 id="9-如何写-Getter-和-Setter-方法"><a href="#9-如何写-Getter-和-Setter-方法" class="headerlink" title="9. 如何写 Getter 和 Setter 方法"></a>9. 如何写 Getter 和 Setter 方法</h2><p>Java 的 Getter 和 Setter 是一种约定俗称，而不是语法特性，所以定义起来相对自由：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">public class GetterAndSetter&#123;  </div><div class="line">  private int x = 0;  </div><div class="line">  public int getX() &#123;  </div><div class="line"></div><div class="line">      return x;</div><div class="line"></div><div class="line">    &#125;   </div><div class="line"></div><div class="line"> public void setX(int x) &#123;  </div><div class="line"></div><div class="line">      this.x = x;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>Kotlin 是有属性的：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">class KotlinGetterAndSetter&#123;</div><div class="line"></div><div class="line">    var x: Int = 0</div><div class="line"></div><div class="line">        set(value) &#123; field = value &#125;</div><div class="line"></div><div class="line">        get() = field</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>注意看到，我们为 x 显式定义了 getter 和 setter，field 是 x 背后真正的变量，所以 setter 当中其实就是为 field 赋值，而 getter 则是返回 field。如果你想要对 x 的访问做控制，那么你就可以通过自定义 getter 和 setter 来实现了：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line">class KotlinGetterAndSetter&#123;</div><div class="line"></div><div class="line">    var x: Int = 0</div><div class="line"></div><div class="line">        set(value) &#123;</div><div class="line"></div><div class="line">            val date = Calendar.getInstance().apply &#123;</div><div class="line"></div><div class="line">                set(2017, 2, 18)</div><div class="line"></div><div class="line">            &#125;            if(System.currentTimeMillis() &lt; date.timeInMillis)&#123;</div><div class="line"></div><div class="line">                println(&quot;Cannot be set before 2017.3.18&quot;)</div><div class="line"></div><div class="line">            &#125;else&#123;</div><div class="line"></div><div class="line">                field = value</div><div class="line">            &#125;</div><div class="line"></div><div class="line">        &#125;</div><div class="line"></div><div class="line">        get()&#123;</div><div class="line"></div><div class="line">            println(&quot;Get field x: $field&quot;)   </div><div class="line"></div><div class="line">         return field</div><div class="line"></div><div class="line">        &#125;   </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="10-如何延迟初始化成员变量"><a href="#10-如何延迟初始化成员变量" class="headerlink" title="10. 如何延迟初始化成员变量"></a>10. 如何延迟初始化成员变量</h2><p>Java 定义的类成员变量如果不初始化，那么基本类型被初始化为其默认值，比如 int 初始化为 0，boolean 初始化为 false，非基本类型的成员则会被初始化为 null。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">public class Hello&#123;  </div><div class="line"></div><div class="line">  private String name;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>类似的代码在 Kotlin 当中直译为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">class Hello&#123; </div><div class="line"></div><div class="line">   private var name: String? = null</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>使用了可空类型，副作用就是后面每次你想要用 name 的时候，都需要判断其是否为 null。如果不使用可控类型，需要加 lateinit 关键字：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">class Hello&#123;  </div><div class="line"></div><div class="line">  private lateinit var name: String</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>lateinit 是用来告诉编译器，name 这个变量后续会妥善处置的。</p>
+<p>对于 final 的成员变量，Java 要求它们必须在构造方法或者构造块当中对他们进行初始化：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">public class Hello&#123; </div><div class="line"></div><div class="line">   private final String name = &quot;Peter&quot;;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>也就是说，如果我要想定义一个可以延迟到一定实际再使用并初始化的 final 变量，这在 Java 中是做不到的。</p>
+<p>Kotlin 有办法，使用 lazy 这个 delegate 即可：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">class Hello&#123;  </div><div class="line"></div><div class="line">  private val name by lazy&#123;</div><div class="line"></div><div class="line">        NameProvider.getName() </div><div class="line"></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>只有使用到 name 这个属性的时候，lazy 后面的 Lambda 才会执行，name 的值才会真正计算出来。</p>
+<h2 id="11-如何获得-class-的实例"><a href="#11-如何获得-class-的实例" class="headerlink" title="11. 如何获得 class 的实例"></a>11. 如何获得 class 的实例</h2><p>Java 当中：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">public class Hello&#123;</div><div class="line">    ...</div><div class="line">&#125;</div><div class="line">...</div><div class="line"></div><div class="line">Class&lt;?&gt; clazz = Hello.class;</div><div class="line"></div><div class="line">Hello hello = new Hello();</div><div class="line"></div><div class="line">Class&lt;?&gt; clazz2 = hello.getClass();</div></pre></td></tr></table></figure>
+<p>前面我们展示了两种获得 class 的途径，一种直接用类名，一种通过类实例。刚刚接触 Kotlin 的时候，获取 Java Class 的方法却是容易让人困惑。</p>
+<p>同样效果的 Kotlin 代码看上去确实很奇怪，实际上 Hello::class 拿到的是 Kotlin 的 KClass，这个是 Kotlin 的类型，如果想要拿到 Java 的 Class 实例，那么就需要前面的办法了。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">class Helloval clazz = Hello::class.javaval hello = Hello()</div><div class="line"></div><div class="line">val clazz2 = hello.javaClass</div></pre></td></tr></table></figure>
+<h2 id="12-如何使使用单例模式"><a href="#12-如何使使用单例模式" class="headerlink" title="12. 如何使使用单例模式"></a>12. 如何使使用单例模式</h2><p>Java 当中： （建议使用）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">/**</div><div class="line"> * Created by yangc on 2017/6/9.</div><div class="line"> * E-Mail:yangchaojiang@outlook.com</div><div class="line"> * Deprecated: 定义一个私有的内部类，在第一次用这个嵌套类时，会创建一个实例。</div><div class="line"> * 而类型为SingletonHolder的类，只有在Singleton.getInstance()中调用，</div><div class="line"> * 由于私有的属性，他人无法使用SingleHolder，不</div><div class="line"> * 调用Singleton.getInstance()就不会创建实例。</div><div class="line"> * 优点：达到了lazy loading的效果，即按需创建实例</div><div class="line"> */</div><div class="line"></div><div class="line">public class UserSingle &#123;</div><div class="line"></div><div class="line">    static UserSingle getInstance() &#123;</div><div class="line">        return Holder.userSingle;</div><div class="line">    &#125;</div><div class="line">    // 定义一个私有的构造方法</div><div class="line">    private UserSingle() &#123;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    private static class Holder &#123;</div><div class="line">        static final UserSingle userSingle = new UserSingle();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>Kotlin 中： 关键字 object 这个类属于单例</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"> </div><div class="line"></div><div class="line">class UserSingle private constructor() &#123;</div><div class="line"></div><div class="line">    companion object &#123;</div><div class="line">        @JvmStatic //java 访问</div><div class="line">        fun getInstance(): UserSingle &#123;</div><div class="line">            return Holder.instance</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    private object Holder &#123;</div><div class="line">        val instance = UserSingle()</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p> 单例模式 生对象更多的用途是用来创建一个单例类。</p>
+<ul>
+<li>如果只是简单的写，直接用伴生对象返回一个 val 修饰的外部类对象就可以了，</li>
+<li>但是更多的时候我们希望在类被调用的时候才去初始化他的对象。</li>
+<li>以下代码将线程安全问题交给虚拟机在静态内部类加载时处理，是一种推荐的写</li>
+</ul>
+<h2 id="13-如何使使用回调函数"><a href="#13-如何使使用回调函数" class="headerlink" title="13. 如何使使用回调函数"></a>13. 如何使使用回调函数</h2><p>Java 当中：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">textView.setOnClickListener(new View.OnClickListener() &#123;</div><div class="line">          @Override</div><div class="line">          public void onClick(View v) &#123;</div><div class="line">              </div><div class="line">          &#125;</div><div class="line">      &#125;);</div><div class="line">      textView.setOnLongClickListener(new View.OnLongClickListener() &#123;</div><div class="line">          @Override</div><div class="line">          public boolean onLongClick(View v) &#123;</div><div class="line">              return false;</div><div class="line">          &#125;</div><div class="line">      &#125;);</div></pre></td></tr></table></figure></p>
+<p>Kotlin 中：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"> //不使用参数 返回void</div><div class="line"> btnWrite.setOnClickListener &#123; fileWrite() &#125;</div><div class="line">  //使用参数 返回void</div><div class="line">  btnWrite.setOnClickListener &#123; </div><div class="line">    view-&gt;</div><div class="line">   fileWrite(c.getid()</div><div class="line">    &#125;</div><div class="line"> //使用参数 返回void</div><div class="line">  btnWrite.setOnClickListener &#123; </div><div class="line">    view-&gt;</div><div class="line">   fileWrite(c.getid()</div><div class="line">  true</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>在  kotlin 使用lambda 表达式，不用new 匿名内部类进行回调 {}括号中，直接添加代码</p>
+<p>demo: <a href="https://github.com/yangchaojiang/FrameWorkDemo" target="_blank" rel="external">https://github.com/yangchaojiang/FrameWorkDemo</a></p>
+<p>demo 只能在 Android Sudio 3.0 编译的，</p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a  href="/2017/06/08/kotlin-blod/">快速上手kotlin13招</a></p>
+        <p><span>文章作者:</span><a  href="/" title="访问 杨朝江 的个人博客">杨朝江</a></p>
+        <p><span>发布时间:</span>2017年06月08日 - 22时08分</p>
+        <p><span>最后更新:</span>2017年06月09日 - 13时51分</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2017/06/08/kotlin-blod/" title="快速上手kotlin13招">http://yangchaojiang.cn/2017/06/08/kotlin-blod/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://yangchaojiang.cn/2017/06/08/kotlin-blod/　　作者: 杨朝江" title=""></span>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" title="中国大陆 (CC BY-NC-SA 3.0 CN)" target = "_blank">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+<nav id="article-nav">
+  
+  
+    <a  href="/2017/06/05/leficycle-blog/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Architecture_Components  leficycle</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-如何定义变量"><span class="toc-number">1.</span> <span class="toc-text">1. 如何定义变量</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-如何定义函数"><span class="toc-number">2.</span> <span class="toc-text">2. 如何定义函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-如何定义静态变量、方法"><span class="toc-number">3.</span> <span class="toc-text">3. 如何定义静态变量、方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-如何定义数组"><span class="toc-number">4.</span> <span class="toc-text">4. 如何定义数组</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-如何写变长参数"><span class="toc-number">5.</span> <span class="toc-text">5. 如何写变长参数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-如何写三元运算符"><span class="toc-number">6.</span> <span class="toc-text">6. 如何写三元运算符</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-如何写-main-函数"><span class="toc-number">7.</span> <span class="toc-text">7. 如何写 main 函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-如何实例化类"><span class="toc-number">8.</span> <span class="toc-text">8. 如何实例化类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#9-如何写-Getter-和-Setter-方法"><span class="toc-number">9.</span> <span class="toc-text">9. 如何写 Getter 和 Setter 方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#10-如何延迟初始化成员变量"><span class="toc-number">10.</span> <span class="toc-text">10. 如何延迟初始化成员变量</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#11-如何获得-class-的实例"><span class="toc-number">11.</span> <span class="toc-text">11. 如何获得 class 的实例</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#12-如何使使用单例模式"><span class="toc-number">12.</span> <span class="toc-text">12. 如何使使用单例模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#13-如何使使用回调函数"><span class="toc-number">13.</span> <span class="toc-text">13. 如何使使用回调函数</span></a></li></ol>
+</div>
+<style>
+    .left-col .switch-btn {
+        display: none;
+    }
+    .left-col .switch-area {
+        display: none;
+    }
+</style>
+<input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script>
+    var valueHide = "隐藏目录";
+    var valueShow = "显示目录";
+    if ($(".left-col").is(":hidden")) {
+        $("#tocButton").attr("value", valueShow);
+    }
+    $("#tocButton").click(function() {
+        if ($("#toc").is(":hidden")) {
+            $("#tocButton").attr("value", valueHide);
+            $("#toc").slideDown(320);
+            $(".switch-btn, .switch-area").fadeOut(300);
+        }
+        else {
+            $("#tocButton").attr("value", valueShow);
+            $("#toc").slideUp(350);
+            $(".switch-btn, .switch-area").fadeIn(500);
+        }
+    })
+    if ($(".toc").length < 1) {
+        $("#toc, #tocButton").hide();
+        $(".switch-btn, .switch-area").show();
+    }
+</script>
+
+
+
+
+<div class="bdsharebuttonbox">
+	<a href="#" class="fx fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+	<a href="#" class="fx fa-weixin bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+	<a href="#" class="fx fa-qq bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+	<a href="#" class="fx fa-facebook-official bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+	<a href="#" class="fx fa-twitter bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+	<a href="#" class="fx fa-linkedin bds_linkedin" data-cmd="linkedin" title="分享到linkedin"></a>
+	<a href="#" class="fx fa-files-o bds_copy" data-cmd="copy" title="分享到复制网址"></a>
+</div>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+
+
+
+    
+        <section class="changyan" id="comments">
+  <!--<div id="uyan_frame"></div>-->
+  <div id="SOHUCS"></div>
+  <script charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/changyan.js"></script>
+  <script type="text/javascript">
+    window.changyan.api.config({
+      appid: 'cyt36tWXs',
+      conf: '42b79e0329709ef48318d7d6739122c2'
+    });
+  </script>
+</section>
+    
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a  href="/" title="回到主页"><i class="fa fa-home"></i></a>
+        
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+        
+            <a  href="/2017/06/05/leficycle-blog/" title="下一篇: Architecture_Components  leficycle">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/06/08/kotlin-blod/">快速上手kotlin13招</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/05/leficycle-blog/">Architecture_Components  leficycle</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/05/room-blod/">Architecture_Components Room Persistence</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/05/livedata-blog/">Architecture_Components  LiveData 学习</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/04/architecture/">google 新出开发应用架构 Architecture Components ( Lifecycles LiveDatra Room) 组件架构，目前公开测试阶段</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/04/my-first-blog/">我的第一个博客</a></li></ul>
+    <script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+    <script>
+        $(".post-list").addClass("toc-article");
+        // $(".post-list-item a").attr("target","_blank");
+        $("#post-nav-button > a:nth-child(2)").click(function() {
+            $(".fa-bars, .fa-times").toggle();
+            $(".post-list").toggle(300);
+            if ($(".toc").length > 0) {
+                $("#toc, #tocButton").toggle(200, function() {
+                    if ($(".switch-area").is(":visible")) {
+                        $("#toc, .switch-btn, .switch-area").toggle();
+                        $("#tocButton").attr("value", valueHide);
+                        }
+                    })
+            }
+            else {
+                $(".switch-btn, .switch-area").fadeToggle(300);
+            }
+        })
+    </script>
+
+
+
+
+    <script>
+        
+    </script>
+
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                &copy; 2017 杨朝江
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank">Hexo</a><a href="https://github.com/maochunguang" target="_blank">Blog</a> by tommy
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" >极客到访数: 
+                            <span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>, </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit">本页阅读量: 
+                            <span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+
+    </div>
+    <script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var backgroundnum = 4;
+            var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+            $("#mobile-nav").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+            $(".left-col").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+        })
+    </script>
+
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'xxxxx', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+
+	<script>
+	var _hmt = _hmt || [];
+	(function() {
+	  var hm = document.createElement("script");
+	  hm.src = "//hm.baidu.com/hm.js?xxxxxx";
+	  var s = document.getElementsByTagName("script")[0]; 
+	  s.parentNode.insertBefore(hm, s);
+	})();
+	</script>
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+<div class="scroll" id="scroll">
+    <a href="#"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    $(document).ready(function() {
+        if ($("#comments").length < 1) {
+            $("#scroll > a:nth-child(2)").hide();
+        };
+    })
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+  <script language="javascript">
+    $(function() {
+        $("a[title]").each(function() {
+            var a = $(this);
+            var title = a.attr('title');
+            if (title == undefined || title == "") return;
+            a.data('title', title).removeAttr('title').hover(
+            function() {
+                var offset = a.offset();
+                $("<div id=\"anchortitlecontainer\"></div>").appendTo($("body")).html(title).css({
+                    top: offset.top - a.outerHeight() - 15,
+                    left: offset.left + a.outerWidth()/2 + 1
+                }).fadeIn(function() {
+                    var pop = $(this);
+                    setTimeout(function() {
+                        pop.remove();
+                    }, pop.text().length * 800);
+                });
+            }, function() {
+                $("#anchortitlecontainer").remove();
+            });
+        });
+    });
+</script>
+
+
+  </div>
+</body>
+</html>
