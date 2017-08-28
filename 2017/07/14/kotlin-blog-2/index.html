@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>快速上手Kotlin14招 第二期 | yangjiang</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="yangjiang Blog" />
+  
+  <meta name="description" content="这篇文章主要，接着快速上手Kotlin11招 第一期的补充">
+<meta name="keywords" content="Android,Kotlin">
+<meta property="og:type" content="article">
+<meta property="og:title" content="快速上手Kotlin14招 第二期">
+<meta property="og:url" content="http://yangchaojiang.cn/2017/07/14/kotlin-blog-2/index.html">
+<meta property="og:site_name" content="yangjiang">
+<meta property="og:description" content="这篇文章主要，接着快速上手Kotlin11招 第一期的补充">
+<meta property="og:updated_time" content="2017-07-14T04:56:51.307Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="快速上手Kotlin14招 第二期">
+<meta name="twitter:description" content="这篇文章主要，接着快速上手Kotlin11招 第一期的补充">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="/js/pace.min.js"></script>
+  
+
+  
+  
+
+</head>
+
+<body>
+  <div id="container">
+      <header id="header">
+    <div id="banner"></div>
+    <div id="header-outer">
+        <div id="header-row">
+            <div id="logo">
+                <a href="/">
+                    <img src="/images/logo.png" alt="logo">
+                </a>
+            </div>
+            <div class="header-info">
+                <div id="header-title">
+                    
+                    <h2>
+                        杨 江
+                    </h2>
+                    
+                </div>
+                <div id="header-description">
+                    
+                    <h3>
+                        海迷、爱运动、爱交友、爱旅行、喜欢接触新鲜事物、迎接新的挑战，更爱游离于错综复杂的编码与逻辑中
+                    </h3>
+                    
+                </div>
+            </div>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a title="Home" target="_blank" href="//yanganan.cn">
+                            <i class="fa fa-home fa-2x"></i></a>
+                    
+                        <a title="Github" target="_blank" href="//github.com/yangchaojiang">
+                            <i class="fa fa-github fa-2x"></i></a>
+                    
+                        <a title="Weibo" target="_blank" href="//weibo.com/u/5114674051?topnav=1&wvr=6&topsug=1&is_all=1">
+                            <i class="fa fa-weibo fa-2x"></i></a>
+                    
+                        <a title="Mail" target="_blank" href="//mailto:yangchaojiang@outlook.com">
+                            <i class="fa fa-mail fa-2x"></i></a>
+                    
+                        <a title="qq" target="_blank" href="//wpa.qq.com/msgrd?v=3&uin=1007181167&site=qq&menu=yes">
+                            <i class="fa fa-qq fa-2x"></i></a>
+                    
+                </div>
+            </nav>
+        </div>
+    </div>
+</header>
+      <div class="outer">
+        <section id="main" class="body-wrap"><article id="post-kotlin-blog-2" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="post-title" itemprop="name">
+      快速上手Kotlin14招 第二期
+    </h1>
+    <div class="post-title-bar">
+      <ul>
+          
+        <li>
+          <i class="fa fa-calendar"></i>  2017-07-14
+        </li>
+        <li>
+          <i class="fa fa-eye"></i>
+          <span id="busuanzi_value_page_pv"></span>
+        </li>
+      </ul>
+    </div>
+  
+
+          
+      </header>
+    
+    <div class="article-entry post-content" itemprop="articleBody">
+      
+            
+            <p> 这篇文章主要，接着快速上手Kotlin11招 第一期的补充</p>
+ <a id="more"></a>
+<h2 id="1-如何println-输出"><a href="#1-如何println-输出" class="headerlink" title="1. 如何println 输出"></a>1. 如何println 输出</h2><ul>
+<li><p>Java println 输出</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">System.out.print(&quot;Amit Shekhar&quot;);</div><div class="line">System.out.println(&quot;Amit Shekhar&quot;);</div></pre></td></tr></table></figure>
+</li>
+<li><p>基本等价的 Kotlin </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">print(&quot;Amit Shekhar&quot;)</div><div class="line">println(&quot;Amit Shekhar&quot;)</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="2-如何取到字符长度"><a href="#2-如何取到字符长度" class="headerlink" title="2. 如何取到字符长度"></a>2. 如何取到字符长度</h2><ul>
+<li><p>Java 取到字符长度 </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">if(text != null)&#123;</div><div class="line">  int length = text.length();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>Kotlin 取到字符长度 形式不同java</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">text?.let &#123;</div><div class="line">    val length = text.length</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="3-如何拼接字符串"><a href="#3-如何拼接字符串" class="headerlink" title="3. 如何拼接字符串"></a>3. 如何拼接字符串</h2><ul>
+<li><p>Java 拼接字符用“+”链接字符，麻烦容易出错，反复双引号，代码很糟糕</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">String firstName = &quot;Amit&quot;;</div><div class="line">String lastName = &quot;Shekhar&quot;;</div><div class="line">String message = &quot;My name is: &quot; + firstName + &quot; &quot; + lastName;</div></pre></td></tr></table></figure>
+</li>
+<li><p>等价 Kotlin 就整洁很多 “$变量名” 或者${变量名} 添加需要插入字符位置 </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">val firstName = &quot;Amit&quot;</div><div class="line">val lastName = &quot;Shekhar&quot;</div><div class="line">val message = &quot;My name is: $firstName $lastName&quot;</div><div class="line">val message = &quot;My name is: $&#123;firstName&#125; $&#123;lastName&#125;&quot;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="4-如何类之间转换"><a href="#4-如何类之间转换" class="headerlink" title="4. 如何类之间转换"></a>4. 如何类之间转换</h2><ul>
+<li><p>Java  需要当前类实例 使用 关键字 “instanceof”   是否属于需要转换类 然后强制转换该类</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">if(object instanceof Car)&#123;</div><div class="line">&#125;</div><div class="line">Car car = (Car) object;</div></pre></td></tr></table></figure>
+</li>
+<li><p>Kotlin  等价 是 关键 “is” 是否属于需要转换  然后用 关键字 “as” 转换类</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">if (object is Car) &#123;</div><div class="line">&#125;</div><div class="line">var car = object as Car</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="5-如何数字判断在范围内"><a href="#5-如何数字判断在范围内" class="headerlink" title="5. 如何数字判断在范围内"></a>5. 如何数字判断在范围内</h2><ul>
+<li><p>Java</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">if(score &gt;= 0 &amp;&amp; score &lt;= 300 )&#123;&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>Kotlin  同等 使用关键字 “in” 起始值..结束值</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">if (score in 0..300) &#123; &#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="6-如何使用分支条件"><a href="#6-如何使用分支条件" class="headerlink" title="6. 如何使用分支条件"></a>6. 如何使用分支条件</h2><ul>
+<li><p>Java 使用 “switch” 关键字 </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">int score = // some score;</div><div class="line">String grade;</div><div class="line">switch (score) &#123;</div><div class="line">    case 10:</div><div class="line">    case 9:</div><div class="line">        grade = &quot;Excellent&quot;;</div><div class="line">        break;</div><div class="line">    case 8:</div><div class="line">    case 7:</div><div class="line">    case 6:</div><div class="line">        grade = &quot;Good&quot;;</div><div class="line">        break;</div><div class="line">    case 5:</div><div class="line">    case 4:</div><div class="line">        grade = &quot;Ok&quot;;</div><div class="line">        break;</div><div class="line">    case 3:</div><div class="line">    case 2:</div><div class="line">    case 1:</div><div class="line">        grade = &quot;Fail&quot;;</div><div class="line">        break;</div><div class="line">    default:</div><div class="line">        grade = &quot;Fail&quot;;                </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>Kotlin    使用 when  很多分支需要用相同的方式处理，则可以把多个分支条件放在一起，用逗号分隔：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">var score = // some score</div><div class="line">var grade = when (score) &#123;</div><div class="line">    9, 10 -&gt; &quot;Excellent&quot; </div><div class="line">    in 6..8 -&gt; &quot;Good&quot;</div><div class="line">    4, 5 -&gt; &quot;Ok&quot;</div><div class="line">    in 1..3 -&gt; &quot;Fail&quot;</div><div class="line">    else -&gt; &quot;Fail&quot;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p><a href="https://www.kotlincn.net/docs/reference/grammar.html#when" target="_blank" rel="external">when语法</a></p>
+</li>
+</ul>
+<h2 id="7-for-循环差别"><a href="#7-for-循环差别" class="headerlink" title="7. for 循环差别"></a>7. for 循环差别</h2><ul>
+<li><p>Java </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">for (int i = 1; i &lt;= 10 ; i++) &#123; &#125;</div><div class="line"></div><div class="line">for (int i = 1; i &lt; 10 ; i++) &#123; &#125;</div><div class="line"></div><div class="line">for (int i = 10; i &gt;= 0 ; i--) &#123; &#125;</div><div class="line"></div><div class="line">for (int i = 1; i &lt;= 10 ; i+=2) &#123; &#125;</div><div class="line"></div><div class="line">for (int i = 10; i &gt;= 0 ; i-=2) &#123; &#125;</div><div class="line"></div><div class="line">for (String item : collection) &#123; &#125;</div><div class="line"></div><div class="line">for (Map.Entry&lt;String, String&gt; entry: map.entrySet()) &#123; &#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>Kotlin   for 循环可以对任何提供迭代器（iterator）的对象进行遍历</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">for (i in 1..10) &#123; &#125;</div><div class="line"></div><div class="line">for (i in 1 until 10) &#123; &#125;</div><div class="line"></div><div class="line">for (i in 10 downTo 0) &#123; &#125;</div><div class="line"></div><div class="line">for (i in 1..10 step 2) &#123;&#125;</div><div class="line"></div><div class="line">for (i in 10 downTo 1 step 2) &#123;&#125;</div><div class="line"></div><div class="line">for (item in collection) &#123;&#125;</div><div class="line"></div><div class="line">for ((key, value) in map) &#123;&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="8-集合操作差别"><a href="#8-集合操作差别" class="headerlink" title="8.  集合操作差别"></a>8.  集合操作差别</h2><ul>
+<li><p>Java</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">final List&lt;Integer&gt; listOfNumber = Arrays.asList(1, 2, 3, 4);</div><div class="line"></div><div class="line">final Map&lt;Integer, String&gt; keyValue = new HashMap&lt;Integer, String&gt;();</div><div class="line">map.put(1, &quot;Amit&quot;);</div><div class="line">map.put(2, &quot;Ali&quot;);</div><div class="line">map.put(3, &quot;Mindorks&quot;);</div><div class="line"></div><div class="line">// Java 9</div><div class="line">final List&lt;Integer&gt; listOfNumber = List.of(1, 2, 3, 4);</div><div class="line"></div><div class="line">final Map&lt;Integer, String&gt; keyValue = Map.of(1, &quot;Amit&quot;,</div><div class="line">                                             2, &quot;Ali&quot;,</div><div class="line">                                             3, &quot;Mindorks&quot;);</div></pre></td></tr></table></figure>
+</li>
+<li><p>Kotlin</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">val listOfNumber = listOf(1, 2, 3, 4)</div><div class="line">val keyValue = mapOf(1 to &quot;Amit&quot;,</div><div class="line">                     2 to &quot;Ali&quot;,</div><div class="line">                     3 to &quot;Mindorks&quot;)</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="9-forEach-循环变化"><a href="#9-forEach-循环变化" class="headerlink" title="9.  forEach 循环变化"></a>9.  forEach 循环变化</h2><p>Java<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">// Java 7 and below</div><div class="line">for (Car car : cars) &#123;</div><div class="line">  System.out.println(car.speed);</div><div class="line">&#125;</div><div class="line"></div><div class="line">// Java 8+</div><div class="line">cars.forEach(car -&gt; System.out.println(car.speed));</div><div class="line"></div><div class="line">// Java 7 and below</div><div class="line">for (Car car : cars) &#123;</div><div class="line">  if(car.speed &gt; 100) &#123;</div><div class="line">    System.out.println(car.speed);</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line">// Java 8+</div><div class="line">cars.stream().filter(car -&gt; car.speed &gt; 100).forEach(car -&gt; System.out.println(car.speed));</div></pre></td></tr></table></figure></p>
+<ul>
+<li>Kotlin <a href="https://www.kotlincn.net/docs/reference/grammar.html#for" target="_blank" rel="external">for语法</a><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">cars.forEach &#123;</div><div class="line">    println(it.speed)</div><div class="line">&#125;</div><div class="line">cars.filter  &#123; it.speed &gt; 100 &#125;</div><div class="line">      .forEach &#123; println(it.speed)&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="10-有返回值类型方法区别"><a href="#10-有返回值类型方法区别" class="headerlink" title="10.  有返回值类型方法区别"></a>10.  有返回值类型方法区别</h2><ul>
+<li><p>Java  方法修改 void  需要返回 类型</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">int getScore() &#123;</div><div class="line">   // logic here</div><div class="line">   return score;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>Kotlin  不需要修改 方法结构 使用 “:” 需要返回类型</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">fun getScore(): Int &#123;</div><div class="line">   // logic here</div><div class="line">   return score</div><div class="line">&#125;</div><div class="line"></div><div class="line">// as a single-expression function</div><div class="line"></div><div class="line">fun getScore(): Int = score</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="11-实体类区别"><a href="#11-实体类区别" class="headerlink" title="11. 实体类区别"></a>11. 实体类区别</h2><ul>
+<li><p>Java   跟常规类没有差别，实体类代码量很多</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div></pre></td><td class="code"><pre><div class="line">public class Developer &#123;</div><div class="line"></div><div class="line">    private String name;</div><div class="line">    private int age;</div><div class="line"></div><div class="line">    public Developer(String name, int age) &#123;</div><div class="line">        this.name = name;</div><div class="line">        this.age = age;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public String getName() &#123;</div><div class="line">        return name;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public void setName(String name) &#123;</div><div class="line">        this.name = name;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public int getAge() &#123;</div><div class="line">        return age;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public void setAge(int age) &#123;</div><div class="line">        this.age = age;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    public boolean equals(Object o) &#123;</div><div class="line">        if (this == o) return true;</div><div class="line">        if (o == null || getClass() != o.getClass()) return false;</div><div class="line"></div><div class="line">        Developer developer = (Developer) o;</div><div class="line"></div><div class="line">        if (age != developer.age) return false;</div><div class="line">        return name != null ? name.equals(developer.name) : developer.name == null;</div><div class="line"></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    public int hashCode() &#123;</div><div class="line">        int result = name != null ? name.hashCode() : 0;</div><div class="line">        result = 31 * result + age;</div><div class="line">        return result;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    public String toString() &#123;</div><div class="line">        return &quot;Developer&#123;&quot; +</div><div class="line">                &quot;name=&apos;&quot; + name + &apos;\&apos;&apos; +</div><div class="line">                &quot;, age=&quot; + age +</div><div class="line">                &apos;&#125;&apos;;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>Kotlin  提供了 “data”关键字 数据实体类 大大降低代码量</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">data class Developer(var name: String, var age: Int)</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="12-如何使使用单例模式"><a href="#12-如何使使用单例模式" class="headerlink" title="12. 如何使使用单例模式"></a>12. 如何使使用单例模式</h2><ul>
+<li><p>Java 当中： （建议使用）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">/**</div><div class="line"> * Created by yangc on 2017/6/9.</div><div class="line"> * E-Mail:yangchaojiang@outlook.com</div><div class="line"> * Deprecated: 定义一个私有的内部类，在第一次用这个嵌套类时，会创建一个实例。</div><div class="line"> * 而类型为SingletonHolder的类，只有在Singleton.getInstance()中调用，</div><div class="line"> * 由于私有的属性，他人无法使用SingleHolder，不</div><div class="line"> * 调用Singleton.getInstance()就不会创建实例。</div><div class="line"> * 优点：达到了lazy loading的效果，即按需创建实例</div><div class="line"> */</div><div class="line"></div><div class="line">public class UserSingle &#123;</div><div class="line"></div><div class="line">    static UserSingle getInstance() &#123;</div><div class="line">        return Holder.userSingle;</div><div class="line">    &#125;</div><div class="line">    // 定义一个私有的构造方法</div><div class="line">    private UserSingle() &#123;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    private static class Holder &#123;</div><div class="line">        static final UserSingle userSingle = new UserSingle();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>Kotlin 中： 关键字 object 这个类属于单例</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"> </div><div class="line"></div><div class="line">class UserSingle private constructor() &#123;</div><div class="line"></div><div class="line">    companion object &#123;</div><div class="line">        @JvmStatic //java 访问</div><div class="line">        fun getInstance(): UserSingle &#123;</div><div class="line">            return Holder.instance</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    private object Holder &#123;</div><div class="line">        val instance = UserSingle()</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p> 单例模式 生对象更多的用途是用来创建一个单例类。</p>
+<ul>
+<li>如果只是简单的写，直接用伴生对象返回一个 val 修饰的外部类对象就可以了，</li>
+<li>但是更多的时候我们希望在类被调用的时候才去初始化他的对象。</li>
+<li>以下代码将线程安全问题交给虚拟机在静态内部类加载时处理，是一种推荐的写</li>
+</ul>
+<h2 id="13-如何使使用回调函数"><a href="#13-如何使使用回调函数" class="headerlink" title="13. 如何使使用回调函数"></a>13. 如何使使用回调函数</h2><ul>
+<li><p>Java 当中：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">textView.setOnClickListener(new View.OnClickListener() &#123;</div><div class="line">          @Override</div><div class="line">          public void onClick(View v) &#123;</div><div class="line">              </div><div class="line">          &#125;</div><div class="line">      &#125;);</div><div class="line">      textView.setOnLongClickListener(new View.OnLongClickListener() &#123;</div><div class="line">          @Override</div><div class="line">          public boolean onLongClick(View v) &#123;</div><div class="line">              return false;</div><div class="line">          &#125;</div><div class="line">      &#125;);</div></pre></td></tr></table></figure>
+</li>
+<li><p>Kotlin 中：</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"> //不使用参数 返回void</div><div class="line"> btnWrite.setOnClickListener &#123; fileWrite() &#125;</div><div class="line">  //使用参数 返回void</div><div class="line">  btnWrite.setOnClickListener &#123; </div><div class="line">    view-&gt;</div><div class="line">   fileWrite(c.getid()</div><div class="line">    &#125;</div><div class="line"> //使用参数 返回void</div><div class="line">  btnWrite.setOnClickListener &#123; </div><div class="line">    view-&gt;</div><div class="line">   fileWrite(c.getid()</div><div class="line">  true</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>在  kotlin 使用lambda 表达式，不用new 匿名内部类进行回调 {}括号中，直接添加代码</p>
+<h2 id="14-如何使用-findViewById"><a href="#14-如何使用-findViewById" class="headerlink" title="14. 如何使用 findViewById"></a>14. 如何使用 findViewById</h2><ul>
+<li><p>在java中 或者使用著名butterknife 注解控件</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">  TextView textView;</div><div class="line">   ....</div><div class="line">   textView = (TextView) findViewById(R.id.textView);</div><div class="line">   ..... </div><div class="line"></div><div class="line"><span class="comment">//或者</span></div><div class="line">  <span class="meta">@BindView</span>(R.id.textView)</div><div class="line">    TextView textView;</div><div class="line">  <span class="meta">@BindView</span>(R.id.textView)</div><div class="line">    TextView textView;</div><div class="line">      <span class="meta">@BindView</span>(R.id.textView)</div><div class="line">    TextView textView;</div><div class="line">   ....</div></pre></td></tr></table></figure>
+</li>
+<li><p>java在复杂布局占用代码行数通常是。。。这个说出来</p>
+</li>
+<li><p>在kotlin 中 </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">lateinit var textView :TextView</div><div class="line">lateinit var textView2 :TextView</div><div class="line">...</div><div class="line"></div><div class="line">//实例化时</div><div class="line">  textView=findViewById(R.id.textView) as TextView</div><div class="line">  textView2=findViewById(R.id.textView2) as TextView</div></pre></td></tr></table></figure>
+<p>好像没什么，只是转换形式的变了，实现还是一样。<br>别急kotlin 提供不用findViewVById 就可以得到控件实例，进行赋值等操作<br>共两步骤</p>
+<ul>
+<li>1。你的app 的build.gradle 文件里加入 代码如下：</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">apply plugin: &apos;kotlin-android-extensions&apos;</div></pre></td></tr></table></figure>
+<ul>
+<li>2 在你使用acitvity 或者fragment 等类 添加引用 import;<br>代码如下：<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">import kotlinx.android.synthetic.main.activity_main.*</div><div class="line"></div><div class="line">class MainActivity: AppCompatActivity() &#123;</div><div class="line"></div><div class="line"> override fun onCreate(savedInstanceState: Bundle?) &#123;</div><div class="line"> </div><div class="line">       super.onCreate(savedInstanceState)</div><div class="line">        setContentView(R.layout.activity_main)</div><div class="line">        textView.setText(&quot;赋值&quot;)</div><div class="line">        textView.text=&quot;赋值&quot;</div><div class="line"></div><div class="line">]</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>直接控件id名称实例的操作 不需要在 findViewBYid 实例化和声明<br>“kotlinx.android.synthetic.main”固定 的<br> 后面是就是activity语对应布局名称<br> 在复杂布局的也不用写一堆声明控件和findViewById 等无脑代码</p>
+
+            <div class="post-copyright">
+    <div class="content">
+        <p>最后更新： 2017年07月14日 12:56</p>
+        <p>原始链接： <a class="post-url" href="/2017/07/14/kotlin-blog-2/" title="快速上手Kotlin14招 第二期">http://yangchaojiang.cn/2017/07/14/kotlin-blog-2/</a></p>
+        <footer>
+            <a href="http://yangchaojiang.cn">
+                <img src="/images/logo.png" alt="杨 江">
+                杨 江
+            </a>
+        </footer>
+    </div>
+</div>
+
+      
+    </div>
+    <footer class="article-footer">
+        <ul class="article-footer-menu">
+            
+            
+  <li class="article-footer-tags">
+    <i class="fa fa-tags"></i>
+      
+    <a href="/tags/Android/" class="color3">Android</a>
+      
+    <a href="/tags/Kotlin/" class="color2">Kotlin</a>
+      
+  </li>
+
+        </ul>
+        
+    </footer>
+  </div>
+</article>
+
+
+    <aside class="post-toc-pos">
+        <nav class="post-toc-wrap">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#1-如何println-输出"><span class="post-toc-text">1. 如何println 输出</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#2-如何取到字符长度"><span class="post-toc-text">2. 如何取到字符长度</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#3-如何拼接字符串"><span class="post-toc-text">3. 如何拼接字符串</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#4-如何类之间转换"><span class="post-toc-text">4. 如何类之间转换</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#5-如何数字判断在范围内"><span class="post-toc-text">5. 如何数字判断在范围内</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#6-如何使用分支条件"><span class="post-toc-text">6. 如何使用分支条件</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#7-for-循环差别"><span class="post-toc-text">7. for 循环差别</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#8-集合操作差别"><span class="post-toc-text">8.  集合操作差别</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#9-forEach-循环变化"><span class="post-toc-text">9.  forEach 循环变化</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#10-有返回值类型方法区别"><span class="post-toc-text">10.  有返回值类型方法区别</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#11-实体类区别"><span class="post-toc-text">11. 实体类区别</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#12-如何使使用单例模式"><span class="post-toc-text">12. 如何使使用单例模式</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#13-如何使使用回调函数"><span class="post-toc-text">13. 如何使使用回调函数</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#14-如何使用-findViewById"><span class="post-toc-text">14. 如何使用 findViewById</span></a></li></ol>
+        </nav>
+    </aside>
+    
+
+<nav id="article-nav">
+  
+    <a href="/2017/08/26/bintray-release-blog/" id="article-nav-newer" class="article-nav-link-wrap">
+
+      <span class="article-nav-title">
+        <i class="fa fa-hand-o-left" aria-hidden="true"></i>
+        
+          新版Bintray-极简上传Library到JCenter，可上传自定义maven仓库
+        
+      </span>
+    </a>
+  
+  
+    <a href="/2017/06/23/android-imageview-blog/" id="article-nav-older" class="article-nav-link-wrap">
+      <span class="article-nav-title">Android ImageView 正确使用姿势</span>
+      <i class="fa fa-hand-o-right" aria-hidden="true"></i>
+    </a>
+  
+</nav>
+
+
+
+    
+        <div id="SOHUCS" sid="kotlin-blog-2" ></div>
+<script type="text/javascript">
+    (function(){
+        var appid = 'cyt36tWXs';
+        var conf = '42b79e0329709ef48318d7d6739122c2';
+        var width = window.innerWidth || document.documentElement.clientWidth;
+        if (width < 960) {
+            window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("https://changyan.sohu.com/upload/changyan.js",function(){window.changyan.api.config({appid:appid,conf:conf})}); } })(); </script>
+    
+</section>
+        
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+      <p>
+        Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+        Theme <a href="//github.com/wongminho/hexo-theme-miho" target="_blank">MiHo</a>
+      &copy; 2017 杨 江<br>
+      </p>
+    </div>
+  </div>
+</footer>
+    <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script>
+  var mihoConfig = {
+      root: "http://yangchaojiang.cn",
+      animate: true,
+      isHome: false
+  }
+</script>
+<div class="sidebar">
+    <div id="sidebar-search">
+        <i class="fa fa-search"></i>
+    </div>
+    <div class="sidebar-menu">
+        <i class="fa fa-bars"></i>
+    </div>
+    <div id="sidebar-top">
+        <span class="sidebar-top-icon"><i class="fa fa-angle-up"></i></span>
+    </div>
+</div>
+<div class="sidebar-menu-box">
+    <div class="sidebar-menu-box-container">
+        <div id="sidebar-menu-box-tags">
+            <a href="/tags/Android/" style="font-size: 20px;">Android</a> <a href="/tags/Architecture-Components/" style="font-size: 10px;">Architecture Components</a> <a href="/tags/Architecture-Components/" style="font-size: 13.33px;">Architecture_Components</a> <a href="/tags/Gradle/" style="font-size: 10px;">Gradle</a> <a href="/tags/Kotlin/" style="font-size: 16.67px;">Kotlin</a> <a href="/tags/LiveData/" style="font-size: 10px;">LiveData</a> <a href="/tags/Room-Persistence/" style="font-size: 10px;">Room Persistence</a> <a href="/tags/leficycle/" style="font-size: 10px;">leficycle</a>
+        </div>
+    </div>
+    <a href="javascript:;" class="sidebar-menu-box-close">&times;</a>
+</div>
+<div class="search-wrap">
+    <span class="search-close">&times;</span>
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+            <i class="icon icon-lg icon-chevron-left"></i>
+        </a>
+        <input class="search-field" placeholder="Search..." id="keywords">
+        <a id="search-submit" href="javascript:;">
+            <i class="fa fa-search"></i>
+        </a>
+</div>
+
+<div class="search-container" id="search-container">
+    <ul class="search-result" id="search-result">
+    </ul>
+</div>
+<div id="search-tpl">
+    <li class="search-result-item">
+        <a href="{url}" class="search-item-li">
+            <span class="search-item-li-title" title="{title}">{title}</span>
+        </a>
+    </li>
+</div>
+<script src="/js/search.js"></script>
+<script src="/js/sidebar-menu-box.js"></script>
+
+
+  <script src="//cdn.bootcss.com/particles.js/2.0.0/particles.min.js"></script>
+  <div id="particles"></div>
+  <script src="/js/particles.js"></script>
+
+
+
+
+
+
+
+  <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+  <script src="//cdn.bootcss.com/scrollReveal.js/3.0.5/scrollreveal.js"></script>
+  <script src="/js/animate.js"></script>
+
+  </div>
+</body>
+</html>

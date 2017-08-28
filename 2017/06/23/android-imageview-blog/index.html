@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Android ImageView 正确使用姿势 | yangjiang</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="yangjiang Blog" />
+  
+  <meta name="description" content="Android ImageView 正确使用姿势本文主要介绍了ImageView的相关重要方法，从源码角度剖析了一些容易令人混淆或百思不得其解的问题。">
+<meta name="keywords" content="Android">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android ImageView 正确使用姿势">
+<meta property="og:url" content="http://yangchaojiang.cn/2017/06/23/android-imageview-blog/index.html">
+<meta property="og:site_name" content="yangjiang">
+<meta property="og:description" content="Android ImageView 正确使用姿势本文主要介绍了ImageView的相关重要方法，从源码角度剖析了一些容易令人混淆或百思不得其解的问题。">
+<meta property="og:image" content="http://yangchaojiang.cn/img/tu1_1.png">
+<meta property="og:image" content="http://yangchaojiang.cn/img/tu1_2.png">
+<meta property="og:image" content="http://yangchaojiang.cn/img/tu1_3.png">
+<meta property="og:image" content="http://yangchaojiang.cn/img/tu1_4.png">
+<meta property="og:image" content="http://yangchaojiang.cn/img/tu1_5.png">
+<meta property="og:image" content="http://yangchaojiang.cn/img/tu1_6.png">
+<meta property="og:image" content="http://yangchaojiang.cn/img/tu5_1.jpg">
+<meta property="og:image" content="http://yangchaojiang.cn/img/tu5_2.jpg">
+<meta property="og:image" content="http://yangchaojiang.cn/img/tu5_3.jpg">
+<meta property="og:image" content="http://yangchaojiang.cn/img/tu5_4.jpg">
+<meta property="og:image" content="http://yangchaojiang.cn/img/tu5_5.jpg">
+<meta property="og:image" content="http://yangchaojiang.cn/img/tu5_5_0.jpg">
+<meta property="og:image" content="http://yangchaojiang.cn/img/tu5_5_1.jpg">
+<meta property="og:image" content="http://yangchaojiang.cn/img/tu5_5_2.jpg">
+<meta property="og:image" content="http://yangchaojiang.cn/img/tu5_5_3.jpg">
+<meta property="og:updated_time" content="2017-06-23T07:50:22.431Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Android ImageView 正确使用姿势">
+<meta name="twitter:description" content="Android ImageView 正确使用姿势本文主要介绍了ImageView的相关重要方法，从源码角度剖析了一些容易令人混淆或百思不得其解的问题。">
+<meta name="twitter:image" content="http://yangchaojiang.cn/img/tu1_1.png">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="/js/pace.min.js"></script>
+  
+
+  
+  
+
+</head>
+
+<body>
+  <div id="container">
+      <header id="header">
+    <div id="banner"></div>
+    <div id="header-outer">
+        <div id="header-row">
+            <div id="logo">
+                <a href="/">
+                    <img src="/images/logo.png" alt="logo">
+                </a>
+            </div>
+            <div class="header-info">
+                <div id="header-title">
+                    
+                    <h2>
+                        杨 江
+                    </h2>
+                    
+                </div>
+                <div id="header-description">
+                    
+                    <h3>
+                        海迷、爱运动、爱交友、爱旅行、喜欢接触新鲜事物、迎接新的挑战，更爱游离于错综复杂的编码与逻辑中
+                    </h3>
+                    
+                </div>
+            </div>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a title="Home" target="_blank" href="//yanganan.cn">
+                            <i class="fa fa-home fa-2x"></i></a>
+                    
+                        <a title="Github" target="_blank" href="//github.com/yangchaojiang">
+                            <i class="fa fa-github fa-2x"></i></a>
+                    
+                        <a title="Weibo" target="_blank" href="//weibo.com/u/5114674051?topnav=1&wvr=6&topsug=1&is_all=1">
+                            <i class="fa fa-weibo fa-2x"></i></a>
+                    
+                        <a title="Mail" target="_blank" href="//mailto:yangchaojiang@outlook.com">
+                            <i class="fa fa-mail fa-2x"></i></a>
+                    
+                        <a title="qq" target="_blank" href="//wpa.qq.com/msgrd?v=3&uin=1007181167&site=qq&menu=yes">
+                            <i class="fa fa-qq fa-2x"></i></a>
+                    
+                </div>
+            </nav>
+        </div>
+    </div>
+</header>
+      <div class="outer">
+        <section id="main" class="body-wrap"><article id="post-android-imageview-blog" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="post-title" itemprop="name">
+      Android ImageView 正确使用姿势
+    </h1>
+    <div class="post-title-bar">
+      <ul>
+          
+        <li>
+          <i class="fa fa-calendar"></i>  2017-06-23
+        </li>
+        <li>
+          <i class="fa fa-eye"></i>
+          <span id="busuanzi_value_page_pv"></span>
+        </li>
+      </ul>
+    </div>
+  
+
+          
+      </header>
+    
+    <div class="article-entry post-content" itemprop="articleBody">
+      
+            
+            <h2 id="Android-ImageView-正确使用姿势"><a href="#Android-ImageView-正确使用姿势" class="headerlink" title="Android ImageView 正确使用姿势"></a>Android ImageView 正确使用姿势</h2><p>本文主要介绍了ImageView的相关重要方法，从源码角度剖析了一些容易令人混淆或百思不得其解的问题。<br><a id="more"></a></p>
+<h3 id="一、正确合理使用ImageView-的src-和background"><a href="#一、正确合理使用ImageView-的src-和background" class="headerlink" title="一、正确合理使用ImageView 的src 和background"></a>一、正确合理使用ImageView 的src 和background</h3><blockquote>
+<p><strong>src</strong> ：为ImageView 原图内容，存放原图大小，不会被拉伸；</p>
+<p><strong>background</strong>：为Imageview的背景，会根据ImageView给定的长宽进行拉伸；</p>
+</blockquote>
+<p>在ImageView中，可以同时设置src和background属性（为了减少绘制，可以根据使用场景来设置相应属性）； 由于src中存放的是原图大小，如果需要对其缩放，就需要使用android:scaleTyle这个属性（scaleType 只对src属性有效），另外还可以对background设置透明度。</p>
+<h3 id="二、正确设置Imageview的透明度"><a href="#二、正确设置Imageview的透明度" class="headerlink" title="二、正确设置Imageview的透明度"></a>二、正确设置Imageview的透明度</h3><p>设置ImageView的透明度有啥正确不正确的，如直接就mImageView.setAlpha(100)，不就行了吗？（<strong>答案是不确定，后续分析</strong>）</p>
+<p><strong>ImageView 设置透明度主要有以下三种方法：</strong></p>
+<ol>
+<li><p>setAlpha(@FloatRange(from=0.0, to=1.0) float alpha) （<strong>View提供</strong>）</p>
+</li>
+<li><p>setAlpha(int alpha)  （<strong>已经标记为@Deprecated</strong>）</p>
+</li>
+<li><p>setImageAlpha(int alpha) （<strong>API&gt;=16</strong>）</p>
+</li>
+</ol>
+<p>其中，setImageAlpha内部调用setAlpha(int alpha)方法，查看API可知，<strong>setAlpha 主要是针对image而言</strong>，使用setImageView，一方面在命名上更为贴切与View中的setAlpha方法区分，同时做好兼容性，目前只能使用在API&gt;=16的场景。</p>
+<p>另外， <strong>像Drawable 和Paint中的都是调用setAlpha(int alpha)</strong></p>
+<p>在本节前就提了一个问题：直接使用mImageView.setAlpha(100)，来设置ImageView的透明度是否正确？</p>
+<blockquote>
+<p><strong>正确答案是</strong>：</p>
+<ul>
+<li>android:src在设置ImageView的setAlpha(int alpha)时，起作用；</li>
+</ul>
+<ul>
+<li>android:background在设置ImageView的setAlpha(int alpha)时，不起作用。</li>
+</ul>
+</blockquote>
+<p><strong>为什么呢？</strong></p>
+<p>在前面介绍中，已经指出ImageView中的setAlpha(int alpha)方法是针对image有效的，想弄清就直接看源码：</p>
+<h5 id="（1）setAlpha-int-alpha-方法"><a href="#（1）setAlpha-int-alpha-方法" class="headerlink" title="（1）setAlpha(int alpha)方法"></a>（1）setAlpha(int alpha)方法</h5><p>  <em>图1 ImageView 的setAlpha()</em><br><img src="/img/tu1_1.png" alt="enter description here" title="tu1_1"></p>
+<h5 id="（2）通过applyColorMod方法可知，ImageView-setAlpha-int-alpha-方法，是通过Drawable-setAlpha-int-alpha-实现的"><a href="#（2）通过applyColorMod方法可知，ImageView-setAlpha-int-alpha-方法，是通过Drawable-setAlpha-int-alpha-实现的" class="headerlink" title="（2）通过applyColorMod方法可知，ImageView.setAlpha(int alpha)方法，是通过Drawable.setAlpha(int alpha)实现的"></a>（2）通过applyColorMod方法可知，ImageView.setAlpha(int alpha)方法，是通过Drawable.setAlpha(int alpha)实现的</h5><p> <em>图2 ImageView的applyColorMod()</em><br><img src="/img/tu1_2.png" alt="enter description here" title="tu1_2"></p>
+<p>那么mDrawable 是怎样得到的了：<br><img src="/img/tu1_3.png" alt="enter description here" title="tu1_3"></p>
+<p>setImageDrawable(Drawable d) 中调用 updateDrawable(Drawable d)，而mDrawable 正是在updateDrawable(Drawable d)中赋值的：</p>
+<p><em>图4 ImageView的updateDrawable()方法</em></p>
+<p><img src="/img/tu1_4.png" alt="enter description here" title="tu1_4"><br><strong>现在知道为什么有时候ImageView.setAlpha(int alpha)没起作用了吧。</strong></p>
+<h5 id="（3）在applyColorMod-中为什么使用Drawable-mutate-方法"><a href="#（3）在applyColorMod-中为什么使用Drawable-mutate-方法" class="headerlink" title="（3）在applyColorMod()中为什么使用Drawable.mutate()方法"></a>（3）在applyColorMod()中为什么使用Drawable.mutate()方法</h5><blockquote>
+<p>直接引用Drawable.mutate()的JavaDoc：</p>
+<p>Make this drawable mutable. This operation cannot be reversed. <strong>A mutable drawable is guaranteed to not share its state with any other drawable</strong>. This is especially useful when you need to modify properties of drawables loaded from resources. By default, all drawables instances loaded from the same resource share a common state; if you modify the state of one instance, all the other instances will receive the same modification.<strong>Calling this method on a mutable Drawable will have no effect.</strong></p>
+</blockquote>
+<p>上述解释的很清楚，一个drawable如果使用了mutate()方法，那么对这个drawable属性（<strong>包括设置drawable的透明度</strong>）修改将不会共享。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">mImageView.setBackgroundDrawable(mDrawable);</div><div class="line">mImageView.getBackground().setAlpha(100);</div></pre></td></tr></table></figure>
+<p><strong>上述代码有问题吗？</strong></p>
+<p>“肯定没有额，通过这种方式透明度没有问题额，亲试可用”。如果你所使用的mDrawable是图片资源（ColorDrawable 中使用了mutate方法），而且多处使用，你就会发现，其他地方透明度也变了。</p>
+<p><strong>上述代码正确写法：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">mImageView.setBackgroundDrawable(mDrawable.mutate());</div><div class="line">mImageView.getBackground().setAlpha(100);</div></pre></td></tr></table></figure>
+<h5 id="（4）总结"><a href="#（4）总结" class="headerlink" title="（4）总结"></a>（4）总结</h5><p><strong>通过上面的分析可知，设置ImageView的透明度，坑还是相当多的，目前来看使用View提供的setAlpha(float alpha)更好。</strong></p>
+<h2 id="三、正确设置ImageView的前景（foreground）"><a href="#三、正确设置ImageView的前景（foreground）" class="headerlink" title="三、正确设置ImageView的前景（foreground）"></a>三、正确设置ImageView的前景（foreground）</h2><p>有时候设计需要在ImageView 上面覆盖一层（如灰色），面对这样的需求时，要区分是静态的ImageView还是异步的ImageView （使用后台回包数据）。</p>
+<h5 id="（1）静态ImageView-（此场景基本很少，设计切图即可）"><a href="#（1）静态ImageView-（此场景基本很少，设计切图即可）" class="headerlink" title="（1）静态ImageView （此场景基本很少，设计切图即可）"></a>（1）静态ImageView （此场景基本很少，设计切图即可）</h5><p>合理使用src （前景）和background（背景）就可以实现</p>
+<h5 id="（2）异步ImageView"><a href="#（2）异步ImageView" class="headerlink" title="（2）异步ImageView"></a>（2）异步ImageView</h5><p>此就需要使用ImageView的前景（View 提供了一个setForeground(Drawable foreground)）</p>
+<p><em>图5 View的setForeground()方法</em><br><img src="/img/tu1_5.png" alt="enter description here" title="tu1_5"><br><em>图 6 view的构造函数中mForegroundInfo对象创建</em><br> <img src="/img/tu1_6.png" alt="enter description here" title="tu1_6"><br>根据上述源码可知，如果ImageView要使用setForeground()方法，必须保证targetSdkVersion&gt;=23。</p>
+<p>如果此时要在targetSdkVersion&lt;23情况使用，就必须自己去实现，好在afc框架中ExtendImageView已经考虑到这种情况，已经实现了setForeFround()方法。</p>
+<h2 id="四、正确使用ImageView的“android-adjustViewBounds”"><a href="#四、正确使用ImageView的“android-adjustViewBounds”" class="headerlink" title="四、正确使用ImageView的“android:adjustViewBounds”"></a>四、正确使用ImageView的“android:adjustViewBounds”</h2><p><strong>adjustViewBounds的介绍如下：</strong></p>
+<blockquote>
+<p>Set this to true if you want the ImageView to adjust its bounds to preserve the aspect ratio of its drawable.</p>
+<p>Note:<strong>If the application targets API level 17 or lower</strong>, adjustViewBounds will allow the drawable to shrink the view bounds, but not grow to fill available measured space in all cases.<strong>This is for compatibility with legacy MeasureSpec and RelativeLayout behavior.</strong></p>
+</blockquote>
+<p><strong>设置View的最大高度，单独使用无效，需要与setAdjustViewBounds一起使用；如果想设置图片固定大小，又想保持图片宽高比，需要如下设置：</strong></p>
+<ol>
+<li><p>设置setAdjustViewBounds为true；</p>
+</li>
+<li><p>设置maxWidth、MaxHeight；</p>
+</li>
+<li><p>设置设置layout_width和layout_height为wrap_content</p>
+</li>
+</ol>
+<h2 id="五、正确使用ImageView的“android-scaleType”"><a href="#五、正确使用ImageView的“android-scaleType”" class="headerlink" title="五、正确使用ImageView的“android:scaleType”"></a>五、正确使用ImageView的“android:scaleType”</h2><p>如前所说，ImageView的“android:scaleType”属性是对src才有效的，如下图所示，需要对下面原图进行缩放控制，效果如下：</p>
+<h5 id="（1）原图"><a href="#（1）原图" class="headerlink" title="（1）原图"></a>（1）原图</h5><p> <img src="/img/tu5_1.jpg" alt="enter description here" title="tu5_1"></p>
+<h5 id="（2）使用ScaleType-CENTER-CORP"><a href="#（2）使用ScaleType-CENTER-CORP" class="headerlink" title="（2）使用ScaleType.CENTER_CORP"></a>（2）使用ScaleType.CENTER_CORP</h5><p> <img src="/img/tu5_2.jpg" alt="enter description here" title="tu5_2"><br>设计大大觉得不合理，要是图片整体能下来一点点就好了，查看一遍ScaleType，能到达这样效果的只有FIT_XY，那就试试看</p>
+<h5 id="（3）使用ScaleType-FIT-XY"><a href="#（3）使用ScaleType-FIT-XY" class="headerlink" title="（3）使用ScaleType.FIT_XY"></a>（3）使用ScaleType.FIT_XY</h5><p> <img src="/img/tu5_3.jpg" alt="enter description here" title="tu5_3"><br>图片确实下移了，但是图却明显的被拉长了</p>
+<h5 id="（4）使用ScaleDrawable-CROP-START"><a href="#（4）使用ScaleDrawable-CROP-START" class="headerlink" title="（4）使用ScaleDrawable.CROP_START"></a>（4）使用ScaleDrawable.CROP_START</h5><p> <img src="/img/tu5_4.jpg" alt="enter description here" title="tu5_4"><br>ScaleDrawable类是afc框架中提供了一个专门处理Drawable scale的类，在ImageView的ScaleType的基础上额外提供了11中裁剪方式：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">（1）CROP_CENTER</div><div class="line">（2）CROP_START</div><div class="line">（3）CROP_END</div><div class="line">（4）FIT_CENTER</div><div class="line">（5）FIT_START</div><div class="line">（6）FIT_END</div><div class="line">（7）MATCH_WIDTH_TOP</div><div class="line">（8）MATCH_WIDTH_BOTTOM</div><div class="line">（9）MATCH_WIDTH_CENTER</div><div class="line">（10）CENTER</div><div class="line">（11）CROP_BY_PIVOT</div></pre></td></tr></table></figure>
+<h5 id="（5）XML设置android-scaleType-”fitXY”属性"><a href="#（5）XML设置android-scaleType-”fitXY”属性" class="headerlink" title="（5）XML设置android:scaleType=”fitXY”属性"></a>（5）XML设置android:scaleType=”fitXY”属性</h5><p><em>xml中设置scaleType属性</em><br> <img src="/img/tu5_5.jpg" alt="enter description here" title="tu5_5"><br>_java代码中设置ScaleDrawable.CROP<em>START属性</em><br> <img src="/img/tu5_5_0.jpg" alt="enter description here" title="tu5_5_0"><br>看到上述代码，有人可能觉得很疑惑，既然在java代码中设置了ScaleDrawable.CROP_START属性，为什么XML中还要设置“android:scaleType=”fitXY”，能否不设置或者设置其他属性。</p>
+<p>答案是否定的，如果要保证ScaleDrawable.CROP_START属性设置成功，在xml中一定要设置“android:scaleType=”fitXY”，原因如下：</p>
+<h5 id="1）通过ScaleDrawable设置scaleType"><a href="#1）通过ScaleDrawable设置scaleType" class="headerlink" title="1）通过ScaleDrawable设置scaleType"></a>1）通过ScaleDrawable设置scaleType</h5><p><em>setScaleType()方法</em><br>  <img src="/img/tu5_5_1.jpg" alt="enter description here" title="tu5_5_1"></p>
+<h5 id="2）在updateDrawMatrix-中更新目的宽高-（dstWidth和dstHeight）"><a href="#2）在updateDrawMatrix-中更新目的宽高-（dstWidth和dstHeight）" class="headerlink" title="2）在updateDrawMatrix()中更新目的宽高 （dstWidth和dstHeight）"></a>2）在updateDrawMatrix()中更新目的宽高 （dstWidth和dstHeight）</h5><p><em>updateDrawMatrix()方法</em><br>  <img src="/img/tu5_5_2.jpg" alt="enter description here" title="tu5_5_2"><br>可以看到，如果要ScaleDrawable.CROP_START属性设置起作用，那个getBounds()方法获取一定要准确。</p>
+<h5 id="3）通过查看ImageView中的configBounds-方法可知，在dwith和dheight（原图Drawable的宽高）都不为0的情况下，如果要使用vwidth和vheight，则ImageView的ScaleType必须设置为ScaleType-FIT-XY"><a href="#3）通过查看ImageView中的configBounds-方法可知，在dwith和dheight（原图Drawable的宽高）都不为0的情况下，如果要使用vwidth和vheight，则ImageView的ScaleType必须设置为ScaleType-FIT-XY" class="headerlink" title="3）通过查看ImageView中的configBounds()方法可知，在dwith和dheight（原图Drawable的宽高）都不为0的情况下，如果要使用vwidth和vheight，则ImageView的ScaleType必须设置为ScaleType.FIT_XY"></a>3）通过查看ImageView中的configBounds()方法可知，在dwith和dheight（原图Drawable的宽高）都不为0的情况下，如果要使用vwidth和vheight，则ImageView的ScaleType必须设置为ScaleType.FIT_XY</h5><p><em>configBounds()方法</em><br> <img src="/img/tu5_5_3.jpg" alt="enter description here" title="tu5_5_3"></p>
+<h2 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h2><p>本人能力有限，分析可能不到位或错误的地方，如果发现，请告知谢谢！</p>
+
+            <div class="post-copyright">
+    <div class="content">
+        <p>最后更新： 2017年06月23日 15:50</p>
+        <p>原始链接： <a class="post-url" href="/2017/06/23/android-imageview-blog/" title="Android ImageView 正确使用姿势">http://yangchaojiang.cn/2017/06/23/android-imageview-blog/</a></p>
+        <footer>
+            <a href="http://yangchaojiang.cn">
+                <img src="/images/logo.png" alt="杨 江">
+                杨 江
+            </a>
+        </footer>
+    </div>
+</div>
+
+      
+    </div>
+    <footer class="article-footer">
+        <ul class="article-footer-menu">
+            
+            
+  <li class="article-footer-tags">
+    <i class="fa fa-tags"></i>
+      
+    <a href="/tags/Android/" class="color3">Android</a>
+      
+  </li>
+
+        </ul>
+        
+    </footer>
+  </div>
+</article>
+
+
+    <aside class="post-toc-pos">
+        <nav class="post-toc-wrap">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Android-ImageView-正确使用姿势"><span class="post-toc-text">Android ImageView 正确使用姿势</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#一、正确合理使用ImageView-的src-和background"><span class="post-toc-text">一、正确合理使用ImageView 的src 和background</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#二、正确设置Imageview的透明度"><span class="post-toc-text">二、正确设置Imageview的透明度</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#（1）setAlpha-int-alpha-方法"><span class="post-toc-text">（1）setAlpha(int alpha)方法</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#（2）通过applyColorMod方法可知，ImageView-setAlpha-int-alpha-方法，是通过Drawable-setAlpha-int-alpha-实现的"><span class="post-toc-text">（2）通过applyColorMod方法可知，ImageView.setAlpha(int alpha)方法，是通过Drawable.setAlpha(int alpha)实现的</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#（3）在applyColorMod-中为什么使用Drawable-mutate-方法"><span class="post-toc-text">（3）在applyColorMod()中为什么使用Drawable.mutate()方法</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#（4）总结"><span class="post-toc-text">（4）总结</span></a></li></ol></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#三、正确设置ImageView的前景（foreground）"><span class="post-toc-text">三、正确设置ImageView的前景（foreground）</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#（1）静态ImageView-（此场景基本很少，设计切图即可）"><span class="post-toc-text">（1）静态ImageView （此场景基本很少，设计切图即可）</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#（2）异步ImageView"><span class="post-toc-text">（2）异步ImageView</span></a></li></ol></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#四、正确使用ImageView的“android-adjustViewBounds”"><span class="post-toc-text">四、正确使用ImageView的“android:adjustViewBounds”</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#五、正确使用ImageView的“android-scaleType”"><span class="post-toc-text">五、正确使用ImageView的“android:scaleType”</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#（1）原图"><span class="post-toc-text">（1）原图</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#（2）使用ScaleType-CENTER-CORP"><span class="post-toc-text">（2）使用ScaleType.CENTER_CORP</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#（3）使用ScaleType-FIT-XY"><span class="post-toc-text">（3）使用ScaleType.FIT_XY</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#（4）使用ScaleDrawable-CROP-START"><span class="post-toc-text">（4）使用ScaleDrawable.CROP_START</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#（5）XML设置android-scaleType-”fitXY”属性"><span class="post-toc-text">（5）XML设置android:scaleType=”fitXY”属性</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#1）通过ScaleDrawable设置scaleType"><span class="post-toc-text">1）通过ScaleDrawable设置scaleType</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#2）在updateDrawMatrix-中更新目的宽高-（dstWidth和dstHeight）"><span class="post-toc-text">2）在updateDrawMatrix()中更新目的宽高 （dstWidth和dstHeight）</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#3）通过查看ImageView中的configBounds-方法可知，在dwith和dheight（原图Drawable的宽高）都不为0的情况下，如果要使用vwidth和vheight，则ImageView的ScaleType必须设置为ScaleType-FIT-XY"><span class="post-toc-text">3）通过查看ImageView中的configBounds()方法可知，在dwith和dheight（原图Drawable的宽高）都不为0的情况下，如果要使用vwidth和vheight，则ImageView的ScaleType必须设置为ScaleType.FIT_XY</span></a></li></ol></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#最后"><span class="post-toc-text">最后</span></a></li></ol>
+        </nav>
+    </aside>
+    
+
+<nav id="article-nav">
+  
+    <a href="/2017/07/14/kotlin-blog-2/" id="article-nav-newer" class="article-nav-link-wrap">
+
+      <span class="article-nav-title">
+        <i class="fa fa-hand-o-left" aria-hidden="true"></i>
+        
+          快速上手Kotlin14招 第二期
+        
+      </span>
+    </a>
+  
+  
+    <a href="/2017/06/08/kotlin-blog/" id="article-nav-older" class="article-nav-link-wrap">
+      <span class="article-nav-title">快速上手Kotlin11招</span>
+      <i class="fa fa-hand-o-right" aria-hidden="true"></i>
+    </a>
+  
+</nav>
+
+
+
+    
+        <div id="SOHUCS" sid="android-imageview-blog" ></div>
+<script type="text/javascript">
+    (function(){
+        var appid = 'cyt36tWXs';
+        var conf = '42b79e0329709ef48318d7d6739122c2';
+        var width = window.innerWidth || document.documentElement.clientWidth;
+        if (width < 960) {
+            window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("https://changyan.sohu.com/upload/changyan.js",function(){window.changyan.api.config({appid:appid,conf:conf})}); } })(); </script>
+    
+</section>
+        
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+      <p>
+        Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+        Theme <a href="//github.com/wongminho/hexo-theme-miho" target="_blank">MiHo</a>
+      &copy; 2017 杨 江<br>
+      </p>
+    </div>
+  </div>
+</footer>
+    <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script>
+  var mihoConfig = {
+      root: "http://yangchaojiang.cn",
+      animate: true,
+      isHome: false
+  }
+</script>
+<div class="sidebar">
+    <div id="sidebar-search">
+        <i class="fa fa-search"></i>
+    </div>
+    <div class="sidebar-menu">
+        <i class="fa fa-bars"></i>
+    </div>
+    <div id="sidebar-top">
+        <span class="sidebar-top-icon"><i class="fa fa-angle-up"></i></span>
+    </div>
+</div>
+<div class="sidebar-menu-box">
+    <div class="sidebar-menu-box-container">
+        <div id="sidebar-menu-box-tags">
+            <a href="/tags/Android/" style="font-size: 20px;">Android</a> <a href="/tags/Architecture-Components/" style="font-size: 10px;">Architecture Components</a> <a href="/tags/Architecture-Components/" style="font-size: 13.33px;">Architecture_Components</a> <a href="/tags/Gradle/" style="font-size: 10px;">Gradle</a> <a href="/tags/Kotlin/" style="font-size: 16.67px;">Kotlin</a> <a href="/tags/LiveData/" style="font-size: 10px;">LiveData</a> <a href="/tags/Room-Persistence/" style="font-size: 10px;">Room Persistence</a> <a href="/tags/leficycle/" style="font-size: 10px;">leficycle</a>
+        </div>
+    </div>
+    <a href="javascript:;" class="sidebar-menu-box-close">&times;</a>
+</div>
+<div class="search-wrap">
+    <span class="search-close">&times;</span>
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+            <i class="icon icon-lg icon-chevron-left"></i>
+        </a>
+        <input class="search-field" placeholder="Search..." id="keywords">
+        <a id="search-submit" href="javascript:;">
+            <i class="fa fa-search"></i>
+        </a>
+</div>
+
+<div class="search-container" id="search-container">
+    <ul class="search-result" id="search-result">
+    </ul>
+</div>
+<div id="search-tpl">
+    <li class="search-result-item">
+        <a href="{url}" class="search-item-li">
+            <span class="search-item-li-title" title="{title}">{title}</span>
+        </a>
+    </li>
+</div>
+<script src="/js/search.js"></script>
+<script src="/js/sidebar-menu-box.js"></script>
+
+
+  <script src="//cdn.bootcss.com/particles.js/2.0.0/particles.min.js"></script>
+  <div id="particles"></div>
+  <script src="/js/particles.js"></script>
+
+
+
+
+
+
+
+  <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+  <script src="//cdn.bootcss.com/scrollReveal.js/3.0.5/scrollreveal.js"></script>
+  <script src="/js/animate.js"></script>
+
+  </div>
+</body>
+</html>

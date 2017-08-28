@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>新版Bintray-极简上传Library到JCenter，可上传自定义maven仓库 | yangjiang</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="yangjiang Blog" />
+  
+  <meta name="description" content="背景最近得闲 将封装的开源项目上传到JCenter上，方便供大家使用，但是突然发现Bintray网站更新变化很大，以前老方法上传，过于复杂，代码量也很多，每次编写新库上传，复制代码心累，大家都懂。于是百度，有没有更简便上传方式我在网上网上很多博客讲解的 Bintray-极简上传Library到JCenter  发现对自定义maven仓库名配置， 很多博客文章里没有说明，这一篇文章是讲解如何上传自定">
+<meta name="keywords" content="Android,Kotlin,Gradle">
+<meta property="og:type" content="article">
+<meta property="og:title" content="新版Bintray-极简上传Library到JCenter，可上传自定义maven仓库">
+<meta property="og:url" content="http://yangchaojiang.cn/2017/08/26/bintray-release-blog/index.html">
+<meta property="og:site_name" content="yangjiang">
+<meta property="og:description" content="背景最近得闲 将封装的开源项目上传到JCenter上，方便供大家使用，但是突然发现Bintray网站更新变化很大，以前老方法上传，过于复杂，代码量也很多，每次编写新库上传，复制代码心累，大家都懂。于是百度，有没有更简便上传方式我在网上网上很多博客讲解的 Bintray-极简上传Library到JCenter  发现对自定义maven仓库名配置， 很多博客文章里没有说明，这一篇文章是讲解如何上传自定">
+<meta property="og:image" content="http://yangchaojiang.cn/img/bintray/20161217134804632.png">
+<meta property="og:image" content="http://yangchaojiang.cn/img/bintray/20170823112843.png">
+<meta property="og:image" content="http://yangchaojiang.cn/img/bintray/20170823113242.png">
+<meta property="og:image" content="http://yangchaojiang.cn/img/bintray/20170823114936.png">
+<meta property="og:image" content="http://yangchaojiang.cn/img/bintray/20161217141455168.png">
+<meta property="og:image" content="http://yangchaojiang.cn/img/bintray/20170826184107.png">
+<meta property="og:image" content="http://yangchaojiang.cn/img/bintray/20170826184635.png">
+<meta property="og:image" content="http://yangchaojiang.cn/img/bintray/20161217141057428.png">
+<meta property="og:image" content="http://yangchaojiang.cn/img/bintray/20170826191257.png">
+<meta property="og:image" content="http://yangchaojiang.cn/img/bintray/20170823124104.png">
+<meta property="og:image" content="http://yangchaojiang.cn/img/bintray/20170826192820.png">
+<meta property="og:updated_time" content="2017-08-28T07:19:56.111Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="新版Bintray-极简上传Library到JCenter，可上传自定义maven仓库">
+<meta name="twitter:description" content="背景最近得闲 将封装的开源项目上传到JCenter上，方便供大家使用，但是突然发现Bintray网站更新变化很大，以前老方法上传，过于复杂，代码量也很多，每次编写新库上传，复制代码心累，大家都懂。于是百度，有没有更简便上传方式我在网上网上很多博客讲解的 Bintray-极简上传Library到JCenter  发现对自定义maven仓库名配置， 很多博客文章里没有说明，这一篇文章是讲解如何上传自定">
+<meta name="twitter:image" content="http://yangchaojiang.cn/img/bintray/20161217134804632.png">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="/js/pace.min.js"></script>
+  
+
+  
+  
+
+</head>
+
+<body>
+  <div id="container">
+      <header id="header">
+    <div id="banner"></div>
+    <div id="header-outer">
+        <div id="header-row">
+            <div id="logo">
+                <a href="/">
+                    <img src="/images/logo.png" alt="logo">
+                </a>
+            </div>
+            <div class="header-info">
+                <div id="header-title">
+                    
+                    <h2>
+                        杨 江
+                    </h2>
+                    
+                </div>
+                <div id="header-description">
+                    
+                    <h3>
+                        海迷、爱运动、爱交友、爱旅行、喜欢接触新鲜事物、迎接新的挑战，更爱游离于错综复杂的编码与逻辑中
+                    </h3>
+                    
+                </div>
+            </div>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a title="Home" target="_blank" href="//yanganan.cn">
+                            <i class="fa fa-home fa-2x"></i></a>
+                    
+                        <a title="Github" target="_blank" href="//github.com/yangchaojiang">
+                            <i class="fa fa-github fa-2x"></i></a>
+                    
+                        <a title="Weibo" target="_blank" href="//weibo.com/u/5114674051?topnav=1&wvr=6&topsug=1&is_all=1">
+                            <i class="fa fa-weibo fa-2x"></i></a>
+                    
+                        <a title="Mail" target="_blank" href="//mailto:yangchaojiang@outlook.com">
+                            <i class="fa fa-mail fa-2x"></i></a>
+                    
+                        <a title="qq" target="_blank" href="//wpa.qq.com/msgrd?v=3&uin=1007181167&site=qq&menu=yes">
+                            <i class="fa fa-qq fa-2x"></i></a>
+                    
+                </div>
+            </nav>
+        </div>
+    </div>
+</header>
+      <div class="outer">
+        <section id="main" class="body-wrap"><article id="post-bintray-release-blog" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="post-title" itemprop="name">
+      新版Bintray-极简上传Library到JCenter，可上传自定义maven仓库
+    </h1>
+    <div class="post-title-bar">
+      <ul>
+          
+        <li>
+          <i class="fa fa-calendar"></i>  2017-08-26
+        </li>
+        <li>
+          <i class="fa fa-eye"></i>
+          <span id="busuanzi_value_page_pv"></span>
+        </li>
+      </ul>
+    </div>
+  
+
+          
+      </header>
+    
+    <div class="article-entry post-content" itemprop="articleBody">
+      
+            
+            <h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>最近得闲 将封装的开源项目上传到<code>JCenter</code>上，方便供大家使用，但是突然发现<code>Bintray</code>网站更新变化很大，<br>以前老方法上传，过于复杂，代码量也很多，每次编写新库上传，复制代码心累，大家都懂。于是百度，有没有更简便上传方式<br>我在网上网上很多博客讲解的 Bintray-极简上传Library到JCenter  发现对自定义maven仓库名配置，<br> 很多博客文章里没有说明，这一篇文章是讲解如何上传自定义maven仓库下。<br><a id="more"></a></p>
+<p>开始我们的上传之路！</p>
+<hr>
+<h3 id="注册"><a href="#注册" class="headerlink" title="注册"></a>注册</h3><p>注册是踩坑的第一步，很多博客或者网站都是直接推荐去官网<a href="https://bintray.com/" target="_blank" rel="external">首页</a>注册：</p>
+<p><strong>绝对不要去这里注册</strong><br><img src="/img/bintray/20161217134804632.png" alt="这里写图片描述"></p>
+<p><strong>注意：千万别点这里注册，这里现在默认注册的是组织，并不是个人</strong></p>
+<p>我就是这一步走错了被这一步坑了，导致一天都没将开源项目提上去</p>
+<p><strong>重要的事情说三遍：</strong></p>
+<blockquote>
+<p>个人正确的注册地址:<a href="https://bintray.com/signup/oss" target="_blank" rel="external">https://bintray.com/signup/oss</a></p>
+<p>个人正确的注册地址:<a href="https://bintray.com/signup/oss" target="_blank" rel="external">https://bintray.com/signup/oss</a></p>
+<p>个人正确的注册地址:<a href="https://bintray.com/signup/oss" target="_blank" rel="external">https://bintray.com/signup/oss</a></p>
+</blockquote>
+<p>后边注册的步骤就很简单了，有<code>github</code>或者<code>google</code>账户的同学直接登录就行了，如果要注册需要注意邮箱不能是国内的邮箱</p>
+<hr>
+<h3 id="获取key和user"><a href="#获取key和user" class="headerlink" title="获取key和user"></a>获取<code>key</code>和<code>user</code></h3><p><img src="/img/bintray/20170823112843.png" alt="这里写图片描述"></p>
+<p><img src="/img/bintray/20170823113242.png" alt="这里写图片描述"></p>
+<hr>
+<h3 id="创建maven仓库"><a href="#创建maven仓库" class="headerlink" title="创建maven仓库"></a>创建<code>maven</code>仓库</h3><p><img src="/img/bintray/20170823114936.png" alt="这里写图片描述"></p>
+<p><strong>注意：创建的maven仓库类型都写成maven,仓库名称 任意名字，后面配置信息会用到仓库名称</strong></p>
+<p><img src="/img/bintray/20161217141455168.png" alt="这里写图片描述"></p>
+<hr>
+<h3 id="极简上传"><a href="#极简上传" class="headerlink" title="极简上传"></a>极简上传</h3><p>查看了网上的很多上传方法都很复杂，也都亲自实践过，给大家介绍最简单的一种，其他复杂的直接忽略了，因为也不是什么很高深的东西，只要能到达目的就行了！</p>
+<blockquote>
+<p><a href="https://github.com/novoda/bintray-release" target="_blank" rel="external">jecenter-Jecenter上传开源库</a>有兴趣的同学可以去看看源码</p>
+<p>前提是你已经将需要开源的项目独立成<code>moudel</code>，并且已经是<code>com.android.library</code></p>
+</blockquote>
+<h4 id="1-根目录下的build-gradle中加入上传开源库的依赖："><a href="#1-根目录下的build-gradle中加入上传开源库的依赖：" class="headerlink" title="1.根目录下的build.gradle中加入上传开源库的依赖："></a>1.根目录下的<code>build.gradle</code>中加入上传开源库的依赖：</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">classpath &apos;com.novoda:bintray-release:0.5.0&apos;</div></pre></td></tr></table></figure>
+<h4 id="2-library的moudel中加入-apply"><a href="#2-library的moudel中加入-apply" class="headerlink" title="2.library的moudel中加入 apply"></a>2.<code>library</code>的<code>moudel</code>中加入 <code>apply</code></h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">apply plugin: &apos;com.novoda.bintray-release&apos;</div></pre></td></tr></table></figure>
+<ul>
+<li><p><strong><font color="red" size="4">注意：bintray-releas的版本 依赖，对应你项目使用  Gradle 版本</font></strong></p>
+<p>1.bintray-releas version   0.5.0  对应 Gradle  是 version  3.4+ (包括3.4)</p>
+<p>2.bintray-releas version   0.4.0  对应 Gradle  是 version  3.3+ (包括3.3)</p>
+<p>3.bintray-releas version   0.3.4  对应 Gradle  是 version  1.3.0+(包括1.3)</p>
+<p>如果版本不对应 就有可能项目库上传失败 红线内没有版本号信息</p>
+<p><img src="/img/bintray/20170826184107.png" alt="这里写图片描述"></p>
+<p><img src="/img/bintray/20170826184635.png" alt="这里写图片描述"></p>
+</li>
+</ul>
+<h4 id="3-如果你开源库中有中文注释在moudel的build-gradle加入格式"><a href="#3-如果你开源库中有中文注释在moudel的build-gradle加入格式" class="headerlink" title="3.如果你开源库中有中文注释在moudel的build.gradle加入格式"></a>3.如果你开源库中有中文注释在<code>moudel</code>的<code>build.gradle</code>加入格式</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">allprojects &#123;</div><div class="line">    repositories &#123;</div><div class="line">        jcenter()</div><div class="line">    &#125;</div><div class="line">    //加上这些</div><div class="line">    tasks.withType(Javadoc) &#123;</div><div class="line">        options&#123; encoding &quot;UTF-8&quot;</div><div class="line">            charSet &apos;UTF-8&apos;</div><div class="line">            links &quot;http://docs.oracle.com/javase/7/docs/api&quot;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="4-忽略错误信息：moudel的build-gradle"><a href="#4-忽略错误信息：moudel的build-gradle" class="headerlink" title="4.忽略错误信息：moudel的build.gradle"></a>4.忽略错误信息：<code>moudel</code>的<code>build.gradle</code></h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">android &#123;</div><div class="line">******</div><div class="line">******</div><div class="line"> lintOptions &#123;</div><div class="line">        abortOnError false</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="5-配置基本信息"><a href="#5-配置基本信息" class="headerlink" title="5.配置基本信息"></a>5.配置基本信息</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">publish &#123;</div><div class="line">    repoName=&quot;ycjiang&quot;//仓库名</div><div class="line">    userOrg = &apos;ycjiang&apos;      //bintray注册的用户名</div><div class="line">    groupId = &apos;com.ycjiang&apos;         //compile引用时的第1部分groupId</div><div class="line">    artifactId = &apos;QiniuModule&apos;     //compile引用时的第2部分项目名</div><div class="line">    publishVersion = &apos;1.0.1&apos;    //compile引用时的第3部分版本号</div><div class="line">    desc = &apos;This is a rxbus same of eventbus extend library &apos;//d项目描述</div><div class="line">    repoName=&quot;ycjiang&quot; //你的仓库名称，没有填写默认仓库是maven//这也是很多人上传仓库不对名问题最多情况，</div><div class="line">    website = &apos;&apos; //github 托管地址</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="6-仓库名重要性"><a href="#6-仓库名重要性" class="headerlink" title="6.仓库名重要性"></a><font color="red" size="4"><strong>6.仓库名重要性</strong></font></h4><ul>
+<li><p>repoName 如果没有填写，上传的库默认仓库是maven，这个:bintray-release上传也是最多原因.</p>
+</li>
+<li><p>很多用户的压根没有这个仓库, 然后百度，发现,Bintray需要手动创建仓库是maven。 </p>
+</li>
+<li><p>既然手动创建仓库，为什么仓库名为何自己用定义仓库名， Bintray是可以新建仓库.<br>repoName 这个属性就可以自己项目上传到自己定义仓库下。</p>
+</li>
+</ul>
+<p>通过配置我们最后的依赖地址=第一部分+第二部分+第三部分；</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">compile  &apos;com.ycjiang:QiniuModule:1.0.1&apos;</div></pre></td></tr></table></figure>
+<p>版本更新只需要修改publishVersion 即可；</p>
+<h4 id="7-切换到AndroidStudio-temrinal或者cmd后台中运行："><a href="#7-切换到AndroidStudio-temrinal或者cmd后台中运行：" class="headerlink" title="7.切换到AndroidStudio temrinal或者cmd后台中运行："></a>7.切换到<code>AndroidStudio temrinal</code>或者<code>cmd</code>后台中运行：</h4><ul>
+<li>配置基本信息没有填写 bintrayUser和bintrayKey 使用下面</li>
+</ul>
+<h5 id="windows-系统："><a href="#windows-系统：" class="headerlink" title="windows 系统："></a><code>windows</code> 系统：</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">gradlew clean build bintrayUpload -PbintrayUser=BINTRAY_USERNAME -PbintrayKey=BINTRAY_KEY -PdryRun=false</div></pre></td></tr></table></figure>
+<h5 id="os-x系统中"><a href="#os-x系统中" class="headerlink" title="os x系统中"></a><code>os x</code>系统中</h5><p>如果出现拒绝该命令<code>./gradlew: Permission denied</code>，可以先运行 <code>chmod +x gradlew</code>再运行该命令；第一次运行需要下载文件需要稍微等待。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">./gradlew clean build bintrayUpload -PbintrayUser=BINTRAY_USERNAME -PbintrayKey=BINTRAY_KEY -PdryRun=false</div></pre></td></tr></table></figure>
+<p>其中BINTRAY_USERNAME换成bintray注册的用户名，BINTRAY_KEY换成自己的APIKEY</p>
+<h4 id="8-观察后台输出："><a href="#8-观察后台输出：" class="headerlink" title="8.观察后台输出："></a>8.观察后台输出：</h4><p><img src="/img/bintray/20161217141057428.png" alt="这里写图片描述"></p>
+<p>回车执行命令，看到BUILD SUCCESS即上传成功</p>
+<h4 id="9-发布项目到公用Jecenter中"><a href="#9-发布项目到公用Jecenter中" class="headerlink" title="9.发布项目到公用Jecenter中"></a>9.发布项目到公用<code>Jecenter</code>中</h4><p>回到主页的你上传仓库中，点击进入，如果你上次成功即可看见你刚刚上次的开源项目</p>
+<p><img src="/img/bintray/20170826191257.png" alt="这里写图片描述"></p>
+<p>点击进入项目中，然后点击<code>add</code>加入<code>commit</code>就行了，一般需要等待审核通过，一般5-6小时 commit内容推荐是同英文，不要中文</p>
+<p><img src="/img/bintray/20170823124104.png" alt="这里写图片描述"></p>
+<h4 id="10-依赖使用"><a href="#10-依赖使用" class="headerlink" title="10.依赖使用"></a>10.依赖使用</h4><p>在审核通过前可以通过配置自己私有仓地址使用</p>
+<p> <img src="/img/bintray/20170826192820.png" alt="这里写图片描述"></p>
+<p>在更目录下build.gradle配置地址</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">allprojects &#123;</div><div class="line">    repositories &#123;</div><div class="line">        jcenter()</div><div class="line">         maven &#123; url &quot;https://jitpack.io&quot; &#125; //审核后可使用</div><div class="line">         maven &#123; url &quot;https://dl.bintray.com/ycjiang/maven&quot; &#125;//审核前可使用</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+<p>项目中加入依赖：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">compile  &apos;com.ycjiang:QiniuModule:1.0.1&apos;</div></pre></td></tr></table></figure>
+<p>好了，现在你就可以在你项目中依赖你的开源库了，就是这么简单！</p>
+<hr>
+<h3 id="项目"><a href="#项目" class="headerlink" title="项目"></a>项目</h3><p>在第一次上传的过程中可以参考我的工程仿照配置</p>
+<blockquote>
+<p><a href="https://github.com/yangchaojiang/AaComponents" target="_blank" rel="external">传送门-开源项目-AaComponents-戳我</a></p>
+</blockquote>
+<hr>
+
+            <div class="post-copyright">
+    <div class="content">
+        <p>最后更新： 2017年08月28日 15:19</p>
+        <p>原始链接： <a class="post-url" href="/2017/08/26/bintray-release-blog/" title="新版Bintray-极简上传Library到JCenter，可上传自定义maven仓库">http://yangchaojiang.cn/2017/08/26/bintray-release-blog/</a></p>
+        <footer>
+            <a href="http://yangchaojiang.cn">
+                <img src="/images/logo.png" alt="杨 江">
+                杨 江
+            </a>
+        </footer>
+    </div>
+</div>
+
+      
+    </div>
+    <footer class="article-footer">
+        <ul class="article-footer-menu">
+            
+            
+  <li class="article-footer-tags">
+    <i class="fa fa-tags"></i>
+      
+    <a href="/tags/Android/" class="color3">Android</a>
+      
+    <a href="/tags/Kotlin/" class="color2">Kotlin</a>
+      
+    <a href="/tags/Gradle/" class="color2">Gradle</a>
+      
+  </li>
+
+        </ul>
+        
+    </footer>
+  </div>
+</article>
+
+
+    <aside class="post-toc-pos">
+        <nav class="post-toc-wrap">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#背景"><span class="post-toc-text">背景</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#注册"><span class="post-toc-text">注册</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#获取key和user"><span class="post-toc-text">获取key和user</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#创建maven仓库"><span class="post-toc-text">创建maven仓库</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#极简上传"><span class="post-toc-text">极简上传</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#1-根目录下的build-gradle中加入上传开源库的依赖："><span class="post-toc-text">1.根目录下的build.gradle中加入上传开源库的依赖：</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#2-library的moudel中加入-apply"><span class="post-toc-text">2.library的moudel中加入 apply</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#3-如果你开源库中有中文注释在moudel的build-gradle加入格式"><span class="post-toc-text">3.如果你开源库中有中文注释在moudel的build.gradle加入格式</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#4-忽略错误信息：moudel的build-gradle"><span class="post-toc-text">4.忽略错误信息：moudel的build.gradle</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#5-配置基本信息"><span class="post-toc-text">5.配置基本信息</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#6-仓库名重要性"><span class="post-toc-text">6.仓库名重要性</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#7-切换到AndroidStudio-temrinal或者cmd后台中运行："><span class="post-toc-text">7.切换到AndroidStudio temrinal或者cmd后台中运行：</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#windows-系统："><span class="post-toc-text">windows 系统：</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#os-x系统中"><span class="post-toc-text">os x系统中</span></a></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#8-观察后台输出："><span class="post-toc-text">8.观察后台输出：</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#9-发布项目到公用Jecenter中"><span class="post-toc-text">9.发布项目到公用Jecenter中</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#10-依赖使用"><span class="post-toc-text">10.依赖使用</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#项目"><span class="post-toc-text">项目</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+    
+
+<nav id="article-nav">
+  
+  
+    <a href="/2017/07/14/kotlin-blog-2/" id="article-nav-older" class="article-nav-link-wrap">
+      <span class="article-nav-title">快速上手Kotlin14招 第二期</span>
+      <i class="fa fa-hand-o-right" aria-hidden="true"></i>
+    </a>
+  
+</nav>
+
+
+
+    
+        <div id="SOHUCS" sid="bintray-release-blog" ></div>
+<script type="text/javascript">
+    (function(){
+        var appid = 'cyt36tWXs';
+        var conf = '42b79e0329709ef48318d7d6739122c2';
+        var width = window.innerWidth || document.documentElement.clientWidth;
+        if (width < 960) {
+            window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("https://changyan.sohu.com/upload/changyan.js",function(){window.changyan.api.config({appid:appid,conf:conf})}); } })(); </script>
+    
+</section>
+        
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+      <p>
+        Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+        Theme <a href="//github.com/wongminho/hexo-theme-miho" target="_blank">MiHo</a>
+      &copy; 2017 杨 江<br>
+      </p>
+    </div>
+  </div>
+</footer>
+    <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script>
+  var mihoConfig = {
+      root: "http://yangchaojiang.cn",
+      animate: true,
+      isHome: false
+  }
+</script>
+<div class="sidebar">
+    <div id="sidebar-search">
+        <i class="fa fa-search"></i>
+    </div>
+    <div class="sidebar-menu">
+        <i class="fa fa-bars"></i>
+    </div>
+    <div id="sidebar-top">
+        <span class="sidebar-top-icon"><i class="fa fa-angle-up"></i></span>
+    </div>
+</div>
+<div class="sidebar-menu-box">
+    <div class="sidebar-menu-box-container">
+        <div id="sidebar-menu-box-tags">
+            <a href="/tags/Android/" style="font-size: 20px;">Android</a> <a href="/tags/Architecture-Components/" style="font-size: 10px;">Architecture Components</a> <a href="/tags/Architecture-Components/" style="font-size: 13.33px;">Architecture_Components</a> <a href="/tags/Gradle/" style="font-size: 10px;">Gradle</a> <a href="/tags/Kotlin/" style="font-size: 16.67px;">Kotlin</a> <a href="/tags/LiveData/" style="font-size: 10px;">LiveData</a> <a href="/tags/Room-Persistence/" style="font-size: 10px;">Room Persistence</a> <a href="/tags/leficycle/" style="font-size: 10px;">leficycle</a>
+        </div>
+    </div>
+    <a href="javascript:;" class="sidebar-menu-box-close">&times;</a>
+</div>
+<div class="search-wrap">
+    <span class="search-close">&times;</span>
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+            <i class="icon icon-lg icon-chevron-left"></i>
+        </a>
+        <input class="search-field" placeholder="Search..." id="keywords">
+        <a id="search-submit" href="javascript:;">
+            <i class="fa fa-search"></i>
+        </a>
+</div>
+
+<div class="search-container" id="search-container">
+    <ul class="search-result" id="search-result">
+    </ul>
+</div>
+<div id="search-tpl">
+    <li class="search-result-item">
+        <a href="{url}" class="search-item-li">
+            <span class="search-item-li-title" title="{title}">{title}</span>
+        </a>
+    </li>
+</div>
+<script src="/js/search.js"></script>
+<script src="/js/sidebar-menu-box.js"></script>
+
+
+  <script src="//cdn.bootcss.com/particles.js/2.0.0/particles.min.js"></script>
+  <div id="particles"></div>
+  <script src="/js/particles.js"></script>
+
+
+
+
+
+
+
+  <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+  <script src="//cdn.bootcss.com/scrollReveal.js/3.0.5/scrollreveal.js"></script>
+  <script src="/js/animate.js"></script>
+
+  </div>
+</body>
+</html>

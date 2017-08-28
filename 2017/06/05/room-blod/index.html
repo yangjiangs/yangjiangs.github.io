@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Architecture_Components Room Persistence | yangjiang</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="yangjiang Blog" />
+  
+  <meta name="description" content="Room持久性库(Room Persistence Library)Room在SQLite的提供了一个抽象层，允许流利的数据库访问，同时利用的SQLite的全部力量。  注意要导入室到你的Android项目，请参阅将组件添加到您的项目。">
+<meta name="keywords" content="Room Persistence">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Architecture_Components Room Persistence">
+<meta property="og:url" content="http://yangchaojiang.cn/2017/06/05/room-blod/index.html">
+<meta property="og:site_name" content="yangjiang">
+<meta property="og:description" content="Room持久性库(Room Persistence Library)Room在SQLite的提供了一个抽象层，允许流利的数据库访问，同时利用的SQLite的全部力量。  注意要导入室到你的Android项目，请参阅将组件添加到您的项目。">
+<meta property="og:image" content="http://yangchaojiang.cn/img/room_architecture.png">
+<meta property="og:updated_time" content="2017-06-06T10:58:54.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Architecture_Components Room Persistence">
+<meta name="twitter:description" content="Room持久性库(Room Persistence Library)Room在SQLite的提供了一个抽象层，允许流利的数据库访问，同时利用的SQLite的全部力量。  注意要导入室到你的Android项目，请参阅将组件添加到您的项目。">
+<meta name="twitter:image" content="http://yangchaojiang.cn/img/room_architecture.png">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="/js/pace.min.js"></script>
+  
+
+  
+  
+
+</head>
+
+<body>
+  <div id="container">
+      <header id="header">
+    <div id="banner"></div>
+    <div id="header-outer">
+        <div id="header-row">
+            <div id="logo">
+                <a href="/">
+                    <img src="/images/logo.png" alt="logo">
+                </a>
+            </div>
+            <div class="header-info">
+                <div id="header-title">
+                    
+                    <h2>
+                        杨 江
+                    </h2>
+                    
+                </div>
+                <div id="header-description">
+                    
+                    <h3>
+                        海迷、爱运动、爱交友、爱旅行、喜欢接触新鲜事物、迎接新的挑战，更爱游离于错综复杂的编码与逻辑中
+                    </h3>
+                    
+                </div>
+            </div>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a title="Home" target="_blank" href="//yanganan.cn">
+                            <i class="fa fa-home fa-2x"></i></a>
+                    
+                        <a title="Github" target="_blank" href="//github.com/yangchaojiang">
+                            <i class="fa fa-github fa-2x"></i></a>
+                    
+                        <a title="Weibo" target="_blank" href="//weibo.com/u/5114674051?topnav=1&wvr=6&topsug=1&is_all=1">
+                            <i class="fa fa-weibo fa-2x"></i></a>
+                    
+                        <a title="Mail" target="_blank" href="//mailto:yangchaojiang@outlook.com">
+                            <i class="fa fa-mail fa-2x"></i></a>
+                    
+                        <a title="qq" target="_blank" href="//wpa.qq.com/msgrd?v=3&uin=1007181167&site=qq&menu=yes">
+                            <i class="fa fa-qq fa-2x"></i></a>
+                    
+                </div>
+            </nav>
+        </div>
+    </div>
+</header>
+      <div class="outer">
+        <section id="main" class="body-wrap"><article id="post-room-blod" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="post-title" itemprop="name">
+      Architecture_Components Room Persistence
+    </h1>
+    <div class="post-title-bar">
+      <ul>
+          
+        <li>
+          <i class="fa fa-calendar"></i>  2017-06-05
+        </li>
+        <li>
+          <i class="fa fa-eye"></i>
+          <span id="busuanzi_value_page_pv"></span>
+        </li>
+      </ul>
+    </div>
+  
+
+          
+      </header>
+    
+    <div class="article-entry post-content" itemprop="articleBody">
+      
+            
+            <h2 id="Room持久性库-Room-Persistence-Library"><a href="#Room持久性库-Room-Persistence-Library" class="headerlink" title="Room持久性库(Room Persistence Library)"></a>Room持久性库(Room Persistence Library)</h2><p>Room在SQLite的提供了一个抽象层，允许流利的数据库访问，同时利用的SQLite的全部力量。</p>
+<blockquote>
+<p><b>注意</b>要导入室到你的Android项目，请参阅将<a href="https://developer.android.google.cn/topic/libraries/architecture/adding-components.html" target="_blank" rel="external">组件添加到您的项目</a>。<br><a id="more"></a></p>
+</blockquote>
+<p>该处理结构化数据的不平凡的数额应用程序可以从本地持久化数据大大受益。<br>最常见的情况是缓存数据的相关部分。这样，当设备无法访问网络，用户可以浏览仍然是内容，而他们处于脱机状态。<br>然后，任何用户发起的内容更改同步到服务器之后，设备重新联机。</p>
+<p>核心框架提供了内置的支持与原始SQL的内容合作。虽然这些API是强大的，他们是相当低的水平<br>，需要大量的时间和精力用大量工作：</p>
+<ul>
+<li><p>有原始的SQL查询中没有编译时验证。当你的数据图的变化，你需要手动更新受影响的SQL查询。<br>这个过程可能是耗时且容易出错。</p>
+</li>
+<li><p>您需要使用大量的样板代码到SQL查询和Java数据对象之间的转换。<br>房间照顾这些问题给你，同时提供了SQLite的一个抽象层。</p>
+</li>
+</ul>
+<p>有Room三个主要部分组成：</p>
+<ul>
+<li><p><b><a href="https://developer.android.google.cn/reference/android/arch/persistence/room/Database.html" target="_blank" rel="external">数据库:</a></b><br>你可以使用这个组件来创建数据库持有者。<br>注释定义实体的名单，以及类的内容定义数据库中的数据访问对象（DAO）的列表。这也是底层的连接的主要接入点。<br>被注解类必须继承抽象类 <a href="https://developer.android.google.cn/reference/android/arch/persistence/room/RoomDatabase.html" target="_blank" rel="external">RoomDatabase</a>。<br>在运行时，你可以通过调用获得它的一个实例<br><a href="https://developer.android.google.cn/reference/android/arch/persistence/room/Room.html#databaseBuilder(android.content.Context, java.lang.Class&lt;T&gt;, java.lang.String" target="_blank" rel="external">Room.databaseBuilder()</a>)<br>或 <a href="https://developer.android.google.cn/reference/android/arch/persistence/room/Room.html#inMemoryDatabaseBuilder(android.content.Context, java.lang.Class&lt;T" target="_blank" rel="external">Room.inMemoryDatabaseBuilder()</a>)。</p>
+</li>
+<li><p><b><a href="https://developer.android.google.cn/topic/libraries/architecture/room.html#entities" target="_blank" rel="external">实体:</a></b><br>该组件代表持有数据库行的类。对于每一个实体，创建一个数据库表来保存的项目。<br>你必须通过引用实体类 <a href="https://developer.android.google.cn/reference/android/arch/persistence/room/Database.html#entities(" target="_blank" rel="external">entities</a>)的数组<br><a href="https://developer.android.google.cn/reference/android/arch/persistence/room/Database.html" target="_blank" rel="external">Database</a>类。<br>实体的各个领域，除非你将其标注为忽略数据库持久化 @Ignore。</p>
+<blockquote>
+<p><b>注：</b>实体可以有一个空的构造（如果DAO类可以访问每一个持久化字段）或构造方法的参数包含匹配在实体领域的该类型和名称。<br>房间还可以使用全部或部分的构造，如仅接收一些领域的构造函数。</p>
+</blockquote>
+</li>
+<li><p><b><a href="https://developer.android.google.cn/topic/libraries/architecture/room.html#daos" target="_blank" rel="external">DAO:</a></b><br>此组件表示一个类或接口作为数据访问对象（DAO）。DAO的是房间的主要组成部分，是负责定义访问数据库的方法。<br>被注释与类<a href="https://developer.android.google.cn/reference/android/arch/persistence/room/Database.html" target="_blank" rel="external">@Database</a><br>必须包含具有0参数并返回被注释与类的抽象方法<br><a href="https://developer.android.google.cn/reference/android/arch/persistence/room/Dao.html" target="_blank" rel="external">@Dao</a>。<br>当生成在编译时的代码，房创建此类的实现。</p>
+<blockquote>
+<p><b>注：</b>通过使用DAO类，而不是查询生成器或直接查询访问数据库，也可以分开你的数据库架构的不同组件。<br>此外，DAO中让您轻松为您测试您的应用程序模拟数据库的访问。<br>这些组件，它们与应用程序的其他部分一起的关系，出现在图1：</p>
+</blockquote>
+<p> <img src="/img/room_architecture.png" alt="">  </p>
+<p> <b>图1</b>.室架构图<br>下面的代码段包含具有1个实体和1个DAO示例数据库配置：</p>
+<p>User.java</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Entity</span></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">User</span> </span>&#123;</div><div class="line">    <span class="meta">@PrimaryKey</span></div><div class="line">    <span class="keyword">private</span> <span class="keyword">int</span> uid;</div><div class="line"></div><div class="line">    <span class="meta">@ColumnInfo</span>(name = <span class="string">"first_name"</span>)</div><div class="line">    <span class="keyword">private</span> String firstName;</div><div class="line"></div><div class="line">    <span class="meta">@ColumnInfo</span>(name = <span class="string">"last_name"</span>)</div><div class="line">    <span class="keyword">private</span> String lastName;</div><div class="line"></div><div class="line">    <span class="comment">// Getters and setters are ignored for brevity,</span></div><div class="line">    <span class="comment">// but they're required for Room to work.</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p> UserDao.java</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Dao</span></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">UserDao</span> </span>&#123;</div><div class="line">    <span class="meta">@Query</span>(<span class="string">"SELECT * FROM user"</span>)</div><div class="line">    <span class="function">List&lt;User&gt; <span class="title">getAll</span><span class="params">()</span></span>;</div><div class="line"></div><div class="line">    <span class="function">List&lt;User&gt; <span class="title">loadAllByIds</span><span class="params">(<span class="keyword">int</span>[] userIds)</span></span>;</div><div class="line"></div><div class="line">    <span class="meta">@Query</span>(<span class="string">"SELECT * FROM user WHERE first_name LIKE :first AND "</span></div><div class="line">           + <span class="string">"last_name LIKE :last LIMIT 1"</span>)</div><div class="line">    <span class="function">User <span class="title">findByName</span><span class="params">(String first, String last)</span></span>;</div><div class="line"></div><div class="line">    <span class="meta">@Insert</span></div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">insertAll</span><span class="params">(User... users)</span></span>;</div><div class="line"></div><div class="line">    <span class="meta">@Delete</span></div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">delete</span><span class="params">(User user)</span></span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>AppDatabase.java<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Database</span>(entities = &#123;User.class&#125;, version = <span class="number">1</span>)</div><div class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">AppDatabase</span> <span class="keyword">extends</span> <span class="title">RoomDatabase</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> UserDao <span class="title">userDao</span><span class="params">()</span></span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>建立上述文件后，你会得到使用下面的代码创建数据库实例：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">AppDatabase db = Room.databaseBuilder(getApplicationContext(),</div><div class="line">        AppDatabase.class, <span class="string">"database-name"</span>).build();</div></pre></td></tr></table></figure></p>
+<blockquote>
+<p><b>注：</b>实例化时，应遵循Singleton设计模式 AppDatabase的对象，因为每个<a href="https://developer.android.google.cn/reference/android/arch/persistence/room/Database.html" target="_blank" rel="external">RoomDatabase</a><br>实例是相当昂贵的，<br>你很少需要访问多个实例。</p>
+</blockquote>
+<h3 id="实体-Entities"><a href="#实体-Entities" class="headerlink" title="实体(Entities)"></a><b>实体(Entities)</b></h3><p>当一个类都被注解<a href="https://developer.android.google.cn/reference/android/arch/persistence/room/Entity.html" target="_blank" rel="external">@Entity</a>，并在被引用<a href="https://developer.android.google.cn/reference/android/arch/persistence/room/Database.html#entities(" target="_blank" rel="external">entities</a>)<br>一个物业<a href="https://developer.android.google.cn/reference/android/arch/persistence/room/Database.html" target="_blank" rel="external">@Database</a>注释，房间在数据库实体创建一个数据库表。</p>
+<p>默认情况下，客房创造了该公司在实体定义的每个字段的列。如果一个实体，你不想坚持字段，可以标注其使用<br><a href="https://developer.android.google.cn/reference/android/arch/persistence/room/Ignore.html" target="_blank" rel="external">@Ignore</a>，<br>如下面的代码片段：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Entity</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">User</span> </span>&#123;</div><div class="line">    <span class="meta">@PrimaryKey</span></div><div class="line">    <span class="keyword">public</span> <span class="keyword">int</span> id;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> String firstName;</div><div class="line">    <span class="keyword">public</span> String lastName;</div><div class="line"></div><div class="line">    <span class="meta">@Ignore</span></div><div class="line">    Bitmap picture;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>要坚持一个领域，房间必须能够访问它。你可以做一个业界人士，或者你可以提供一个setter和getter它。<br>如果您使用的setter和getter方法，牢记根据房间Java组件约定，他们是。</p>
+<h4 id="主键-Primary-key"><a href="#主键-Primary-key" class="headerlink" title="主键(Primary key)"></a>主键(Primary key)</h4><p>每个实体必须定义至少1字段作为主键。即使只有1场，你仍然需要注释字段的<br><a href="https://developer.android.google.cn/reference/android/arch/persistence/room/PrimaryKey.html" target="_blank" rel="external">@PrimaryKey</a>注释。<br>另外，如果你想室自动分配ID的实体，您可以设置<a href="https://developer.android.google.cn/reference/android/arch/persistence/room/PrimaryKey.html" target="_blank" rel="external">@PrimaryKey</a>的<br><a href="https://developer.android.google.cn/reference/android/arch/persistence/room/PrimaryKey.html#autoGenerate(" target="_blank" rel="external">autoGenerate</a>)属性。<br>如果实体有一个复合主键，你可以使用<a href="https://developer.android.google.cn/reference/android/arch/persistence/room/Entity.html#primaryKeys(" target="_blank" rel="external">primaryKeys</a>)该财产<br><a href="https://developer.android.google.cn/reference/android/arch/persistence/room/Entity.html" target="_blank" rel="external">@Entity</a>的注释，如下面的代码片段：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Entity</span>(primaryKeys = &#123;<span class="string">"firstName"</span>, <span class="string">"lastName"</span>&#125;)</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">User</span> </span>&#123;</div><div class="line">    <span class="keyword">public</span> String firstName;</div><div class="line">    <span class="keyword">public</span> String lastName;</div><div class="line"></div><div class="line">    <span class="meta">@Ignore</span></div><div class="line">    Bitmap picture;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>默认情况下，房使用类名作为数据库表名。如果你想表有不同的名称，设置<a href="https://developer.android.google.cn/reference/android/arch/persistence/room/Entity.html#tableName(" target="_blank" rel="external">tableName</a>)的财产<a href="https://developer.android.google.cn/reference/android/arch/persistence/room/Entity.html" target="_blank" rel="external">@Entity</a>注释，如下面的代码片段：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Entity</span>(tableName = <span class="string">"users"</span>)</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">User</span> </span>&#123;</div><div class="line">    ...</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<pre><code>&lt;b&gt;注意：&lt;/b&gt;在SQLite表名不区分大小写。
+</code></pre><p>类似于<a href="https://developer.android.google.cn/reference/android/arch/persistence/room/Entity.html#tableName(" target="_blank" rel="external">tableName</a>)property，客房使用的字段名在数据库中的列名。如果你想要一个列有不同的名称，添加<br><a href="https://developer.android.google.cn/reference/android/arch/persistence/room/ColumnInfo.html" target="_blank" rel="external">@ColumnInfo</a>注释字段，<br>如下面的代码片段：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Entity</span>(tableName = <span class="string">"users"</span>)</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">User</span> </span>&#123;</div><div class="line">    <span class="meta">@PrimaryKey</span></div><div class="line">    <span class="keyword">public</span> <span class="keyword">int</span> id;</div><div class="line"></div><div class="line">    <span class="meta">@ColumnInfo</span>(name = <span class="string">"first_name"</span>)</div><div class="line">    <span class="keyword">public</span> String firstName;</div><div class="line"></div><div class="line">    <span class="meta">@ColumnInfo</span>(name = <span class="string">"last_name"</span>)</div><div class="line">    <span class="keyword">public</span> String lastName;</div><div class="line"></div><div class="line">    <span class="meta">@Ignore</span></div><div class="line">    Bitmap picture;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h4 id="指标和唯一性-Indices-and-uniqueness"><a href="#指标和唯一性-Indices-and-uniqueness" class="headerlink" title="指标和唯一性(Indices and uniqueness)"></a>指标和唯一性(Indices and uniqueness)</h4><p>根据您如何访问这些数据，你可能要索引某些领域在数据库中加快查询速度。<br>要指数添加到实体，包括<a href="https://developer.android.google.cn/reference/android/arch/persistence/room/Entity.html#indices(" target="_blank" rel="external">indices</a>) 在property的 <a href="https://developer.android.google.cn/reference/android/arch/persistence/room/Entity.html" target="_blank" rel="external">@Entity</a> 注解，列出要在索引或复合索引中的列的名称。<br>下面的代码片段演示了这种注释过程：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Entity</span>(indices = &#123;<span class="meta">@Index</span>(<span class="string">"name"</span>), <span class="meta">@Index</span>(<span class="string">"last_name"</span>, <span class="string">"address"</span>)&#125;)</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">User</span> </span>&#123;</div><div class="line">    <span class="meta">@PrimaryKey</span></div><div class="line">    <span class="keyword">public</span> <span class="keyword">int</span> id;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> String firstName;</div><div class="line">    <span class="keyword">public</span> String address;</div><div class="line"></div><div class="line">    <span class="meta">@ColumnInfo</span>(name = <span class="string">"last_name"</span>)</div><div class="line">    <span class="keyword">public</span> String lastName;</div><div class="line"></div><div class="line">    <span class="meta">@Ignore</span></div><div class="line">    Bitmap picture;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>有时候，某些字段或字段组在数据库中必须是唯一的。您可以通过设置执行这种独特属性<br><a href="https://developer.android.google.cn/reference/android/arch/persistence/room/Index.html#unique(" target="_blank" rel="external">unique</a>)<br> 的财产<a href="https://developer.android.google.cn/reference/android/arch/persistence/room/Entity.html" target="_blank" rel="external">@Index</a> 注解true。<br>下面的代码示例防止表从具有包含相同的组的值的两行<font color="#006666">firstName</font> 和 <font color="#006666">lastName</font>列：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div></pre></td><td class="code"><pre><div class="line">Entity(indices = &#123;@Index(value = &#123;"first_name", "last_name"&#125;,</div><div class="line">        unique = true)&#125;)</div><div class="line">class User &#123;</div><div class="line">    @PrimaryKey</div><div class="line">    public int id;</div><div class="line"></div><div class="line">    @ColumnInfo(name = "first_name")</div><div class="line">    public String firstName;</div><div class="line"></div><div class="line">    @ColumnInfo(name = "last_name")</div><div class="line">    public String lastName;</div><div class="line"></div><div class="line">    @Ignore</div><div class="line">    Bitmap picture;</div><div class="line">&#125;</div><div class="line">```` </div><div class="line"> </div><div class="line">    </div><div class="line">#### &lt;b&gt;关系(Relationships)&lt;/b&gt;</div><div class="line"></div><div class="line">由于SQLite是一个关系型数据库，你可以指定对象之间的关系。</div><div class="line">尽管大多数ORM库允许实体对象之间互相引用，房间明确禁止这一点。有关详细信息，请参阅</div><div class="line">[附录：实体之间没有对象引用](#附录：实体之间没有对象引用-Addendum-No-object-references-between-entities)。</div><div class="line"></div><div class="line">即使你不能使用直接关系，房间仍然可以让你的实体之间定义外键约束。</div><div class="line"></div><div class="line">举例来说，如果有一个名为另一个实体Book，你可以定义它关系到User使用实体 [@ForeignKey](https://developer.android.google.cn/reference/android/arch/persistence/room/ForeignKey.html) 注释，如下面的代码片段：</div><div class="line">````Java</div><div class="line">@Entity(foreignKeys = @ForeignKey(entity = User.class,</div><div class="line">                                  parentColumns = "id",</div><div class="line">                                  childColumns = "user_id"))</div><div class="line">class Book &#123;</div><div class="line">    @PrimaryKey</div><div class="line">    public int bookId;</div><div class="line"></div><div class="line">    public String title;</div><div class="line"></div><div class="line">    @ColumnInfo(name = "user_id")</div><div class="line">    public int userId;</div><div class="line">&#125;</div><div class="line"> ```` </div><div class="line">   </div><div class="line">外键是非常强大的，因为它们允许你指定的时候引用的实体被更新时发生的情况。</div><div class="line">举例来说，你可以告诉SQLite的删除所有书籍的用户，</div><div class="line">如果对应的实例User是由包括已删除onDelete=CASCADE 的 @ForeignKey 注解。</div><div class="line"></div><div class="line">   &gt;&lt;b&gt;注：&lt;/b&gt;SQLite的处理 @Insert(OnConflict=REPLACE) 为一组REMOVE和REPLACE操作，而不是一个单一的UPDATE 操作。替换冲突的价值观的这种方法可能会影响你的外键约束。有关详细信息，请参阅SQLite的文档的 ON_CONFLICT条款。</div><div class="line"></div><div class="line">#### 嵌套对象(Nested objects)</div><div class="line"></div><div class="line">有时候，你想表达作为一个整体的实体或普通的旧式Java对象（POJO）中在你的数据库逻辑，即使对象包含多个字段。</div><div class="line">在这些情况下，您可以使用 @Embedded 注解来表示一个对象，你想分解成一个表内的子域。</div><div class="line">然后，您可以查询嵌入式领域就像你对其他各列。</div><div class="line"></div><div class="line">例如，我们的User类可以包括类型的字段Address，它代表的命名字段组成street，city，state，和 postCode。</div><div class="line">单独地存储在表中的组成的列，包括一个 Address在该领域User被注释与类 @Embedded，如显示在下面的代码片断：</div><div class="line"></div><div class="line">````Java</div><div class="line">class Address &#123;</div><div class="line">    public String street;</div><div class="line">    public String state;</div><div class="line">    public String city;</div><div class="line"></div><div class="line">    @ColumnInfo(name = "post_code")</div><div class="line">    public int postCode;</div><div class="line">&#125;</div><div class="line"></div><div class="line">@Entity</div><div class="line">class User &#123;</div><div class="line">    @PrimaryKey</div><div class="line">    public int id;</div><div class="line"></div><div class="line">    public String firstName;</div><div class="line"></div><div class="line">    @Embedded</div><div class="line">    public Address address;</div><div class="line">&#125;</div><div class="line">```` </div><div class="line">     </div><div class="line">表示该表User对象则包含以下名称的列：id，firstName，street，state，city，和post_code。</div><div class="line"></div><div class="line">   &gt;&lt;b&gt;注：&lt;/b&gt;嵌入式领域也可以包括其他嵌入式领域。</div><div class="line">    </div><div class="line">如果实体具有相同类型的多个嵌入式领域，你可以保持每列设置的独特 prefix 属性。房间然后将所提供的价值，在嵌入式对象中的每个列名的开头。</div><div class="line"></div><div class="line">### &lt;b&gt;数据访问对象（Data Access Objects (DAOs）&lt;/b&gt;</div><div class="line"></div><div class="line"></div><div class="line">在房间的主要成分是Dao类。DAO的抽象访问数据库的清洁方式。</div><div class="line"></div><div class="line">  &gt;&lt;b&gt;注意：&lt;/b&gt;房间不允许在主线程访问数据库，除非你叫 allowMainThreadQueries() 的建设者，因为它可能会锁定该UI的时间过长。</div><div class="line">    异步查询（返回的查询LiveData或RxJava Flowable）不受此规则豁免，因为他们需要异步时在后台线程运行查询。</div><div class="line"></div><div class="line">#### 为了方便方法(Methods for convenience)</div><div class="line"></div><div class="line">有多种方便的查询，你可以代表使用DAO类。这份文件包括几个常见的例子。</div><div class="line"></div><div class="line">&lt;font size=4.5&gt; &lt;b&gt;Insert&lt;/b&gt;&lt;/font&gt;</div><div class="line"></div><div class="line">当你创建一个DAO方法及标注它 @Insert，间产生插入所有参数到一个单一的交易数据库的实现。</div><div class="line"></div><div class="line">下面的代码片段显示了几个例子查询：</div><div class="line">````Java</div><div class="line">@Dao</div><div class="line">public interface MyDao &#123;</div><div class="line">    @Insert(onConflict = OnConflictStrategy.REPLACE)</div><div class="line">    public void insertUsers(User... users);</div><div class="line"></div><div class="line">    @Insert</div><div class="line">    public void insertBothUsers(User user1, User user2);</div><div class="line"></div><div class="line">    @Insert</div><div class="line">    public void insertUsersAndFriends(User user, List&lt;User&gt; friends);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>如果@Insert 方法仅接收1个参数，它可以返回long，这是新 rowId插入的项。<br>如果参数是一个数组或集合，它应该返回long[]或List<long>代替。</long></p>
+<p>有关详细信息，请参阅参考文档 @Insert注释，还有的ROWID表SQLite的文档。</p>
+<font size="4.5"> <b>&gt;Update</b></font>
+
+<p>Update是，更新作为参数给出一个实体的集合，在数据库中的便捷方法。<br>它采用的是针对每个实体的主键匹配的查询。下面的代码片段演示了如何定义这个方法：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Dao</span></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">MyDao</span> </span>&#123;</div><div class="line">    <span class="meta">@Update</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">updateUsers</span><span class="params">(User... users)</span></span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>虽然通常没有必要，你可以有这个方法返回一个int值，而不是，这表明在数据库中更新的行数。</p>
+<font size="4.5"> <b>Delete</b></font>
+
+<p>Delete是，删除作为参数给出一个实体的集合，从数据库中的便捷方法。<br>它使用主键查找实体进行删除。下面的代码片段演示了如何定义这个方法：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Dao</span></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">MyDao</span> </span>&#123;</div><div class="line">    <span class="meta">@Delete</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">deleteUsers</span><span class="params">(User... users)</span></span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>虽然通常没有必要，你可以有这个方法返回一个int值，而不是，说明从数据库中删除的行数。</p>
+<h4 id="使用方法-Query-Methods-using-Query"><a href="#使用方法-Query-Methods-using-Query" class="headerlink" title="使用方法@Query(Methods using @Query)"></a>使用方法@Query(Methods using @Query)</h4><p>@Query在DAO类中使用的主要的注释。它可以让你执行一个数据库上的读/写操作。每个 @Query方法在编译时进行验证，所以如果有与查询问题，发生的不是一个运行时故障编译错误。</p>
+<p>房间也验证查询，例如，如果在返回的对象中字段的名称并不在查询响应匹配相应的列名，房间提醒您通过以下两种方式之一的返回值：</p>
+<p>它给出了一个警告，如果只有一些字段名相匹配。<br>如果没有字段名匹配它给出了一个错误。</p>
+<font size="4.5"> <b>简单的查询(Simple queries)<b></b></b></font><br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Dao</span></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">MyDao</span> </span>&#123;</div><div class="line">    <span class="meta">@Query</span>(<span class="string">"SELECT * FROM user"</span>)</div><div class="line">    <span class="keyword">public</span> User[] loadAllUsers();</div><div class="line">&#125;</div></pre></td></tr></table></figure><br><br>这是加载所有用户一个非常简单的查询。在编译的时候，房间知道它查询在用户表中的所有列。<br>如果查询包含语法错误，或者如果用户表不存在于数据库中，室显示与为您的应用程序编译相应的消息的错误。<br><br><font size="4.5"><b>传递参数到查询(Passing parameters into the query)</b></font>
+
+<p>大多数时候，你需要的参数传递到查询进行过滤操作，比如只显示谁比了一定的年龄老用户。<br>为了完成这个任务，使用方法参数在你的房间注释，如下面的代码片段：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Dao</span></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">MyDao</span> </span>&#123;</div><div class="line">    <span class="meta">@Query</span>(<span class="string">"SELECT * FROM user WHERE age &gt; :minAge"</span>)</div><div class="line">    <span class="keyword">public</span> User[] loadAllUsersOlderThan(<span class="keyword">int</span> minAge);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>当该查询是在编译时处理室的匹配:minAge与绑定参数minAge方法参数。<br>执行室使用的参数名称匹配。<br>如果不匹配，为你的应用程序编译时发生错误。</p>
+<p>还可以将多个参数传递或多次引用它们中的查询，如图下面的代码片断：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Dao</span></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">MyDao</span> </span>&#123;</div><div class="line">    <span class="meta">@Query</span>(<span class="string">"SELECT * FROM user WHERE age BETWEEN :minAge AND :maxAge"</span>)</div><div class="line">    <span class="keyword">public</span> User[] loadAllUsersBetweenAges(<span class="keyword">int</span> minAge, <span class="keyword">int</span> maxAge);</div><div class="line"></div><div class="line">    <span class="meta">@Query</span>(<span class="string">"SELECT * FROM user WHERE first_name LIKE :search "</span></div><div class="line">           + <span class="string">"OR last_name LIKE :search"</span>)</div><div class="line">    <span class="function"><span class="keyword">public</span> List&lt;User&gt; <span class="title">findUserWithName</span><span class="params">(String search)</span></span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<font color="#00ffff" size="4.5">返回列的子集(Returning subsets of columns)</font>
+
+<p>在大多数情况下，你需要获得唯一的一个实体的几个领域。<br>例如，您的用户界面可能会只显示一个用户的名字和姓氏，而不是对用户的每一个细节。<br>通过仅提取出现在你的应用程序的UI中的列，为您节省宝贵的资源，和您的查询更迅速地完成。</p>
+<p>房间可以让你回到您查询的任何Java对象，只要设定结果列都可以映射到返回的对象。<br>例如，您可以创建以下POJO来抓取用户的姓氏和名字：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">NameTuple</span> </span>&#123;</div><div class="line">    <span class="meta">@ColumnInfo</span>(name=<span class="string">"first_name"</span>)</div><div class="line">    <span class="keyword">public</span> String firstName;</div><div class="line"></div><div class="line">    <span class="meta">@ColumnInfo</span>(name=<span class="string">"last_name"</span>)</div><div class="line">    <span class="keyword">public</span> String lastName;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>现在，你可以在你的查询方法使用POJO：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Dao</span></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">MyDao</span> </span>&#123;</div><div class="line">    <span class="meta">@Query</span>(<span class="string">"SELECT first_name, last_name FROM user"</span>)</div><div class="line">    <span class="function"><span class="keyword">public</span> List&lt;NameTuple&gt; <span class="title">loadFullName</span><span class="params">()</span></span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>了解，查询的返回值first_name和 last_name列，这些值可以被映射到的领域 NameTuple类。<br>因此，Room可以生成正确的代码。如果查询返回太多的列，或者说不会在存在的列NameTuple 级，间显示警告。</p>
+<blockquote>
+<p>注意：这些POJO的也可以使用 @Embedded 注解。</p>
+</blockquote>
+<font size="4.5"><b>传递的参数集合(Passing a collection of arguments)M<b></b></b></font>
+
+<p>一些您的查询可能需要你的参数变量数传，用不知道，直到运行参数的确切人数。<br>例如，您可能要检索从区域子集所有用户的信息。<br>当一个参数代表收集室理解并自动根据所提供的参数的数量在运行时扩展它。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Dao</span></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">MyDao</span> </span>&#123;</div><div class="line">    <span class="meta">@Query</span>(<span class="string">"SELECT first_name, last_name FROM user WHERE region IN (:regions)"</span>)</div><div class="line">    <span class="function"><span class="keyword">public</span> List&lt;NameTuple&gt; <span class="title">loadUsersFromRegions</span><span class="params">(List&lt;String&gt; regions)</span></span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<font size="4.5"><b>可观察的查询(Observable queries)</b></font>
+
+<p>当执行查询，你经常会想你的应用程序的用户界面自动更新当数据变化。<br>要做到这一点，使用类型的返回值LiveData的查询方法的说明。<br>房间生成所有必要的代码更新 LiveData时更新数据库。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Dao</span></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">MyDao</span> </span>&#123;</div><div class="line">    <span class="meta">@Query</span>(<span class="string">"SELECT first_name, last_name FROM user WHERE region IN (:regions)"</span>)</div><div class="line">    <span class="keyword">public</span> LiveData&lt;List&lt;User&gt;&gt; loadUsersFromRegionsSync(List&lt;String&gt; regions);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<blockquote>
+<p>注：由于1.0版本的，房间使用查询访问的表的列表，以决定是否更新LiveData对象。</p>
+</blockquote>
+ <font size="4.5"> <b>RxJava</b></font>
+
+
+<p>房间还可以返回RxJava2 Publisher并Flowable从您定义的查询对象。<br>要使用此功能，添加 android.arch.persistence.room:rxjava2从房间组神器到您的构建摇篮依赖。<br>然后，您可以返回的RxJava2定义的类型对象，如下面的代码片段：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Dao</span></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">MyDao</span> </span>&#123;</div><div class="line">    <span class="meta">@Query</span>(<span class="string">"SELECT * from user where id = :id LIMIT 1"</span>)</div><div class="line">    <span class="function"><span class="keyword">public</span> Flowable&lt;User&gt; <span class="title">loadUserById</span><span class="params">(<span class="keyword">int</span> id)</span></span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<font size="4.5"> <b>直接光标访问(Direct cursor access)</b></font>
+
+<p>如果您的应用程序的逻辑要求返回行的直接访问，可以返回一个Cursor从你的查询对象，如下面的代码片段：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Dao</span></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">MyDao</span> </span>&#123;</div><div class="line">    <span class="meta">@Query</span>(<span class="string">"SELECT * FROM user WHERE age &gt; :minAge LIMIT 5"</span>)</div><div class="line">    <span class="function"><span class="keyword">public</span> Cursor <span class="title">loadRawUsersOlderThan</span><span class="params">(<span class="keyword">int</span> minAge)</span></span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<pre><code>注意：这是非常泄气用光标API的工作，因为它不能保证是否存在行或什么值的行包含.使用此功能，
+只有当你已经有预期的光标代码，并且你不能轻易重构。
+</code></pre><font size="4.5"> <b>查询多个表(Querying multiple tables)</b></font>
+
+
+<p>一些您的查询可能需要访问多个表来计算结果。房间让你写任何查询，所以你也可以加入表。<br>此外，如果响应是可观察到的数据类型，如Flowable或 LiveData室手表在查询为无效引用的所有表。</p>
+<p>下面的代码片段展示了如何执行表连接，以巩固含有谁是图书借阅和用户表之间的信息包含有关书籍目前贷款数据表：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Dao</span></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">MyDao</span> </span>&#123;</div><div class="line">    <span class="meta">@Query</span>(<span class="string">"SELECT * FROM book "</span></div><div class="line">           + <span class="string">"INNER JOIN loan ON loan.book_id = book.id "</span></div><div class="line">           + <span class="string">"INNER JOIN user ON user.id = loan.user_id "</span></div><div class="line">           + <span class="string">"WHERE user.name LIKE :userName"</span>)</div><div class="line">   <span class="function"><span class="keyword">public</span> List&lt;Book&gt; <span class="title">findBooksBorrowedByNameSync</span><span class="params">(String userName)</span></span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>您也可以从这些查询返回的POJO。例如，你可以写加载一个用户和他们的宠物的名字，如下所示的查询：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Dao</span></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">MyDao</span> </span>&#123;</div><div class="line">   <span class="meta">@Query</span>(<span class="string">"SELECT user.name AS userName, pet.name AS petName "</span></div><div class="line">          + <span class="string">"FROM user, pet "</span></div><div class="line">          + <span class="string">"WHERE user.id = pet.user_id"</span>)</div><div class="line">   <span class="keyword">public</span> LiveData&lt;List&lt;UserPet&gt;&gt; loadUserAndPetNames();</div><div class="line"></div><div class="line">   <span class="comment">// You can also define this class in a separate file, as long as you add the</span></div><div class="line">   <span class="comment">// "public" access modifier.</span></div><div class="line">   <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">UserPet</span> </span>&#123;</div><div class="line">       <span class="keyword">public</span> String userName;</div><div class="line">       <span class="keyword">public</span> String petName;</div><div class="line">   &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="使用类型转换器-Using-type-converters"><a href="#使用类型转换器-Using-type-converters" class="headerlink" title="使用类型转换器(Using type converters)"></a><b>使用类型转换器(Using type converters)</b></h3><p>客房提供了原语及其盒装替代内置支持。不过，有时你使用自定义的数据类型，它的值，你想在数据库存储在单个列。<br>要添加这种自定义类型的支持，你提供 TypeConverter，其自定义类转换，并从一个已知类型的房间能坚持。</p>
+<p>例如，如果我们想坚持的情况下Date，我们可以写出下面的 TypeConverter 等效Unix时间戳存储在数据库中：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Converters</span> </span>&#123;</div><div class="line">    <span class="meta">@TypeConverter</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Date <span class="title">fromTimestamp</span><span class="params">(Long value)</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> value == <span class="keyword">null</span> ? <span class="keyword">null</span> : <span class="keyword">new</span> Date(value);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@TypeConverter</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Long <span class="title">dateToTimestamp</span><span class="params">(Date date)</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> date == <span class="keyword">null</span> ? <span class="keyword">null</span> : date.getTime();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>前面的例子中定义了两个函数，一个一个转换Date对象到Long对象和另一个执行逆变换，从Long到Date。<br>由于房间已经知道如何坚持Long的对象，就可以使用此转换器持续类型的值 Date。</p>
+<p>接下来，您将添加 @TypeConverters 注释到AppDatabase类，这样可以房间使用你在每个实体和DAO定义的转换器AppDatabase：</p>
+<p>AppDatabase.java<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="meta">@Database</span>(entities = &#123;User.java&#125;, version = <span class="number">1</span>)</div><div class="line"><span class="meta">@TypeConverters</span>(&#123;Converter.class&#125;)</div><div class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">AppDatabase</span> <span class="keyword">extends</span> <span class="title">RoomDatabase</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> UserDao <span class="title">userDao</span><span class="params">()</span></span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>使用这些转换器，就可以使用您的自定义类型的其他查询，就像你会使用原始的类型，如下面的代码片段：</p>
+<p>User.java<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Entity</span></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">User</span> </span>&#123;</div><div class="line">    ...</div><div class="line">    <span class="keyword">private</span> Date birthday;</div><div class="line">&#125;</div><div class="line">UserDao.java</div><div class="line"><span class="meta">@Dao</span></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">UserDao</span> </span>&#123;</div><div class="line">    ...</div><div class="line">    <span class="meta">@Query</span>(<span class="string">"SELECT * FROM user WHERE birthday BETWEEN :from AND :to"</span>)</div><div class="line">    <span class="function">List&lt;User&gt; <span class="title">findUsersBornBetweenDates</span><span class="params">(Date from, Date to)</span></span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>您还可以限制 @TypeConverters 范围不同，包括个人实体的DAO和DAO方法。有关详细信息，请参阅参考文档 @TypeConverters 注释。</p>
+<h3 id="数据库迁移-Database-migration"><a href="#数据库迁移-Database-migration" class="headerlink" title="数据库迁移(Database migration)"></a><b>数据库迁移(Database migration)</b></h3><p>正如你在你的应用程序添加和更改的功能，你需要修改你的实体类，以反映这些变化。<br>当用户更新到您的应用程序的最新版本，你不希望他们失去所有的现有数据，特别是如果你不能从远程服务器恢复数据。</p>
+<p>房间让你写 Migration 的类以这种方式保存用户数据。<br>每一 Migration 类指定startVersion和endVersion。在运行时，运行室每个 Migration 类的 migrate() 方法，<br>用正确的顺序将数据库迁移到更高版本。</p>
+<pre><code>注意：如果不提供必要的迁移，重建室数据库，而不是，这意味着你将失去所有的数据在数据库中。
+</code></pre><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">Room.databaseBuilder(getApplicationContext(), MyDb.class, <span class="string">"database-name"</span>)</div><div class="line">        .addMigrations(MIGRATION_1_2, MIGRATION_2_3).build();</div><div class="line"></div><div class="line"><span class="keyword">static</span> <span class="keyword">final</span> Migration MIGRATION_1_2 = <span class="keyword">new</span> Migration(<span class="number">1</span>, <span class="number">2</span>) &#123;</div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">migrate</span><span class="params">(SupportSQLiteDatabase database)</span> </span>&#123;</div><div class="line">        database.execSQL(<span class="string">"CREATE TABLE `Fruit` (`id` INTEGER, "</span></div><div class="line">                + <span class="string">"`name` TEXT, PRIMARY KEY(`id`))"</span>);</div><div class="line">    &#125;</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="keyword">static</span> <span class="keyword">final</span> Migration MIGRATION_2_3 = <span class="keyword">new</span> Migration(<span class="number">2</span>, <span class="number">3</span>) &#123;</div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">migrate</span><span class="params">(SupportSQLiteDatabase database)</span> </span>&#123;</div><div class="line">        database.execSQL(<span class="string">"ALTER TABLE Book "</span></div><div class="line">                + <span class="string">" ADD COLUMN pub_year INTEGER"</span>);</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<pre><code>注意：为了使您的迁移逻辑功能如预期，而不是使用引用代表查询常量全查询。
+</code></pre><p>迁移过程完成后，房验证模式，以确保正确地发生的迁移。如果房间发现一个问题，它抛出一个包含不匹配的信息异常。</p>
+<h4 id="测试迁移-Testing-migrations"><a href="#测试迁移-Testing-migrations" class="headerlink" title="测试迁移(Testing migrations)"></a>测试迁移(Testing migrations)</h4><p>迁移是不平凡的编写，以及未能妥善他们写可能导致您的应用程序崩溃循环。为了保护您的应用程序的稳定性，<br>你应该先测试你的迁移。客房提供了一个测试 Maven构件，以协助这个测试过程。然而，对于这个神器的工作<br>，你需要导出数据库的模式。</p>
+<h4 id="导出模式-Exporting-schemas"><a href="#导出模式-Exporting-schemas" class="headerlink" title="导出模式(Exporting schemas)"></a>导出模式(Exporting schemas)</h4><p>在编译时，房间出口你的数据库的架构信息成JSON文件。要导出模式，<br>将room.schemaLocation在您的注解处理器特性build.gradle文件，如下面的代码片段：</p>
+<p>的build.gradle<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">android &#123;</div><div class="line">    ...</div><div class="line">    defaultConfig &#123;</div><div class="line">        ...</div><div class="line">        javaCompileOptions &#123;</div><div class="line">            annotationProcessorOptions &#123;</div><div class="line">                arguments = [<span class="string">"room.schemaLocation"</span>:</div><div class="line">                             <span class="string">"$projectDir/schemas"</span>.toString()]</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>你应该存储导出文件，JSON，这代表你的数据库的架构历史在你的版本控制系统，因为它允许室来创建用于测试的旧版本的数据库。</p>
+<p>为了测试这些迁移，添加android.arch.persistence.room:testing 从房间Maven构件到测试的依赖，<br>并添加架构位置作为资产的文件夹，如下面的代码片段：</p>
+<p>的build.gradle<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">android &#123;</div><div class="line">    ...</div><div class="line">    sourceSets &#123;</div><div class="line">        androidTest.assets.srcDirs += files(<span class="string">"$projectDir/schemas"</span>.toString())</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>测试包提供了一个 MigrationTestHelper 类，它可以读取这些架构文件。这也是一个Junit4 TestRule 类，<br>所以它可以管理创建的数据库。</p>
+<p>样品迁移测试显示在下面的代码段：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@RunWith</span>(AndroidJUnit4.class)</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MigrationTest</span> </span>&#123;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String TEST_DB = <span class="string">"migration-test"</span>;</div><div class="line"></div><div class="line">    <span class="meta">@Rule</span></div><div class="line">    <span class="keyword">public</span> MigrationTestHelper helper;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">MigrationTest</span><span class="params">()</span> </span>&#123;</div><div class="line">        helper = <span class="keyword">new</span> MigrationTestHelper(InstrumentationRegistry.getContext(),</div><div class="line">                MigrationDb.class.getCanonicalName(),</div><div class="line">                <span class="keyword">new</span> FrameworkSQLiteOpenHelperFactory());</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Test</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">migrate1To2</span><span class="params">()</span> <span class="keyword">throws</span> IOException </span>&#123;</div><div class="line">        SupportSQLiteDatabase db = helper.createDatabase(TEST_DB, <span class="number">1</span>);</div><div class="line"></div><div class="line">        <span class="comment">// db has schema version 1. insert some data using SQL queries.</span></div><div class="line">        <span class="comment">// You cannot use DAO classes because they expect the latest schema.</span></div><div class="line">        db.execSQL(...);</div><div class="line"></div><div class="line">        <span class="comment">// Prepare for the next version.</span></div><div class="line">        db.close();</div><div class="line"></div><div class="line">        <span class="comment">// Re-open the database with version 2 and provide</span></div><div class="line">        <span class="comment">// MIGRATION_1_2 as the migration process.</span></div><div class="line">        db = helper.runMigrationsAndValidate(TEST_DB, <span class="number">2</span>, <span class="keyword">true</span>, MIGRATION_1_2);</div><div class="line"></div><div class="line">        <span class="comment">// MigrationTestHelper automatically verifies the schema changes,</span></div><div class="line">        <span class="comment">// but you need to validate that the data was migrated properly.</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="测试你的数据库-Testing-your-database"><a href="#测试你的数据库-Testing-your-database" class="headerlink" title="测试你的数据库(Testing your database)"></a>测试你的数据库(Testing your database)</h3><p>当运行你的应用程序的测试，你不应该需要创建一个完整的数据库，如果你不是测试数据库本身。<br>房间可以让你轻松地嘲笑你的测试数据访问层。这个过程是可能的，因为你的DAO不会泄露你的数据库的任何细节。<br>在测试您的应用程序的其余部分，你应该创建你的DAO类的模拟或假的实例。</p>
+<p>有2种方式来测试你的数据库：</p>
+<p>在您的主机开发机。<br>在Android设备上。</p>
+<h4 id="测试你的主机上-Testing-on-your-host-machine"><a href="#测试你的主机上-Testing-on-your-host-machine" class="headerlink" title="测试你的主机上(Testing on your host machine)"></a>测试你的主机上(Testing on your host machine)</h4><p>客房使用SQLite的支持库，它提供匹配在Android框架类，接口。这种支持允许你通过支持库的自定义实现，以测试你的数据库查询。</p>
+<p>尽管此设置可以让你的测试非常快速地运行，不建议这样做，因为你的设备和您的用户运行的SQLite版本的设备，<br>可能不符合你的主机上的版本。</p>
+<h4 id="测试在Android设备上-Testing-on-an-Android-device"><a href="#测试在Android设备上-Testing-on-an-Android-device" class="headerlink" title="测试在Android设备上(Testing on an Android device)"></a>测试在Android设备上(Testing on an Android device)</h4><p>测试你的数据库实现建议的方法是编写一个Android设备上运行的JUnit测试。<br>因为这些测试并不需要创建活动，他们应该是快于你的UI测试执行。</p>
+<p>当设置你的测试，您应该创建一个内存版本的数据库，使您的测试更密闭，如在下面的例子：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@RunWith</span>(AndroidJUnit4.class)</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SimpleEntityReadWriteTest</span> </span>&#123;</div><div class="line">    <span class="keyword">private</span> UserDao mUserDao;</div><div class="line">    <span class="keyword">private</span> TestDatabase mDb;</div><div class="line"></div><div class="line">    <span class="meta">@Before</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">createDb</span><span class="params">()</span> </span>&#123;</div><div class="line">        Context context = InstrumentationRegistry.getTargetContext();</div><div class="line">        mDb = Room.inMemoryDatabaseBuilder(context, TestDatabase.class).build();</div><div class="line">        mUserDao = mDb.getUserDao();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@After</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">closeDb</span><span class="params">()</span> <span class="keyword">throws</span> IOException </span>&#123;</div><div class="line">        mDb.close();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Test</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">writeUserAndReadInList</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</div><div class="line">        User user = TestUtil.createUser(<span class="number">3</span>);</div><div class="line">        user.setName(<span class="string">"george"</span>);</div><div class="line">        mUserDao.insert(user);</div><div class="line">        List&lt;User&gt; byName = mUserDao.findUsersByName(<span class="string">"george"</span>);</div><div class="line">        assertThat(byName.get(<span class="number">0</span>), equalTo(user));</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>有关测试数据库迁移的详细信息，请参阅<a href="#测试迁移-Testing-migrations">迁移测试</a>。</p>
+<h3 id="附录：实体之间没有对象引用-Addendum-No-object-references-between-entities"><a href="#附录：实体之间没有对象引用-Addendum-No-object-references-between-entities" class="headerlink" title="附录：实体之间没有对象引用(Addendum: No object references between entities)"></a>附录：实体之间没有对象引用(Addendum: No object references between entities)</h3><p>从数据库到各自的对象模型的映射关系是一种常见的做法，工作得非常好，在服务器端它是高性能的，<br>因为它们可以访问懒洋洋地加载领域。</p>
+<p>然而，在客户端，延迟加载，因为它很可能在UI线程上发生，并查询在UI线程的磁盘信息造成显著的性能问题是不可行的。<br>在UI线程具有约16毫秒来计算和绘制活动的最新布局，这样即使查询只需要5毫秒，<br>它仍然可能是您的应用程序将运行的时间来绘制框架，造成明显的JANK。<br>更糟糕的是，查询可能需要更多的时间来完成，如果有并行运行一个单独的事务，或者如果该设备是忙于其他磁盘繁重的任务。<br>如果你不使用延迟加载，但是，应用程序获取更多的数据比实际需要，建立内存消耗问题。</p>
+<p>奥姆斯通常会离开这个决定给开发人员，使他们能够做什么是最适合他们的应用程序的使用情况。<br>不幸的是，开发者通常最终会分享他们的应用程序和UI之间的模式。随着时间的用户界面的变化，出现问题难以预料和调试。</p>
+<p>例如，采取加载的列表的UI Book对象，每个书具有Author对象。<br>你可能一开始设计自己的查询中使用延迟加载这样的情况下，Book使用getAuthor()方法返回的作者。<br>在第一次调用getAuthor()调用查询数据库。一段时间后，你意识到你需要在你的应用程序的用户界面，显示作者的名字，<br>也是如此。您可以添加的方法调用很轻松了，因为显示在下面的代码片段：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">authorNameTextView.setText(user.getAuthor().getName());</div></pre></td></tr></table></figure></p>
+<p>然而，这种看似无辜的变化导致Author主线程上进行查询的表。</p>
+<p>如果你急切地询问作者的信息，就很难改变，如果您在不再需要数据加载的数据，<br>例如当你的应用程序的用户界面不再需要显示有关特定信息的情况Author。<br>因此，您的应用程序必须继续加载数据，它不再显示。如果这种情况甚至更糟Author类引用另一个表，如与 getBooks()方法。</p>
+<p>由于这些原因，Room不允许实体类之间的对象引用。相反，你必须明确地要求你的应用程序需要的数据。</p>
+
+            <div class="post-copyright">
+    <div class="content">
+        <p>最后更新： 2017年06月06日 18:58</p>
+        <p>原始链接： <a class="post-url" href="/2017/06/05/room-blod/" title="Architecture_Components Room Persistence">http://yangchaojiang.cn/2017/06/05/room-blod/</a></p>
+        <footer>
+            <a href="http://yangchaojiang.cn">
+                <img src="/images/logo.png" alt="杨 江">
+                杨 江
+            </a>
+        </footer>
+    </div>
+</div>
+
+      
+    </div>
+    <footer class="article-footer">
+        <ul class="article-footer-menu">
+            
+            
+  <li class="article-footer-tags">
+    <i class="fa fa-tags"></i>
+      
+    <a href="/tags/RoomPersistence/" class="color2">Room Persistence</a>
+      
+  </li>
+
+        </ul>
+        
+    </footer>
+  </div>
+</article>
+
+
+    <aside class="post-toc-pos">
+        <nav class="post-toc-wrap">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Room持久性库-Room-Persistence-Library"><span class="post-toc-text">Room持久性库(Room Persistence Library)</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#实体-Entities"><span class="post-toc-text">实体(Entities)</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#主键-Primary-key"><span class="post-toc-text">主键(Primary key)</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#指标和唯一性-Indices-and-uniqueness"><span class="post-toc-text">指标和唯一性(Indices and uniqueness)</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#使用方法-Query-Methods-using-Query"><span class="post-toc-text">使用方法@Query(Methods using @Query)</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#使用类型转换器-Using-type-converters"><span class="post-toc-text">使用类型转换器(Using type converters)</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#数据库迁移-Database-migration"><span class="post-toc-text">数据库迁移(Database migration)</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#测试迁移-Testing-migrations"><span class="post-toc-text">测试迁移(Testing migrations)</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#导出模式-Exporting-schemas"><span class="post-toc-text">导出模式(Exporting schemas)</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#测试你的数据库-Testing-your-database"><span class="post-toc-text">测试你的数据库(Testing your database)</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#测试你的主机上-Testing-on-your-host-machine"><span class="post-toc-text">测试你的主机上(Testing on your host machine)</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#测试在Android设备上-Testing-on-an-Android-device"><span class="post-toc-text">测试在Android设备上(Testing on an Android device)</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#附录：实体之间没有对象引用-Addendum-No-object-references-between-entities"><span class="post-toc-text">附录：实体之间没有对象引用(Addendum: No object references between entities)</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+    
+
+<nav id="article-nav">
+  
+    <a href="/2017/06/05/leficycle-blog/" id="article-nav-newer" class="article-nav-link-wrap">
+
+      <span class="article-nav-title">
+        <i class="fa fa-hand-o-left" aria-hidden="true"></i>
+        
+          Architecture_Components  leficycle
+        
+      </span>
+    </a>
+  
+  
+    <a href="/2017/06/05/livedata-blog/" id="article-nav-older" class="article-nav-link-wrap">
+      <span class="article-nav-title">Architecture_Components  LiveData 学习</span>
+      <i class="fa fa-hand-o-right" aria-hidden="true"></i>
+    </a>
+  
+</nav>
+
+
+
+    
+        <div id="SOHUCS" sid="room-blod" ></div>
+<script type="text/javascript">
+    (function(){
+        var appid = 'cyt36tWXs';
+        var conf = '42b79e0329709ef48318d7d6739122c2';
+        var width = window.innerWidth || document.documentElement.clientWidth;
+        if (width < 960) {
+            window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("https://changyan.sohu.com/upload/changyan.js",function(){window.changyan.api.config({appid:appid,conf:conf})}); } })(); </script>
+    
+</section>
+        
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+      <p>
+        Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+        Theme <a href="//github.com/wongminho/hexo-theme-miho" target="_blank">MiHo</a>
+      &copy; 2017 杨 江<br>
+      </p>
+    </div>
+  </div>
+</footer>
+    <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script>
+  var mihoConfig = {
+      root: "http://yangchaojiang.cn",
+      animate: true,
+      isHome: false
+  }
+</script>
+<div class="sidebar">
+    <div id="sidebar-search">
+        <i class="fa fa-search"></i>
+    </div>
+    <div class="sidebar-menu">
+        <i class="fa fa-bars"></i>
+    </div>
+    <div id="sidebar-top">
+        <span class="sidebar-top-icon"><i class="fa fa-angle-up"></i></span>
+    </div>
+</div>
+<div class="sidebar-menu-box">
+    <div class="sidebar-menu-box-container">
+        <div id="sidebar-menu-box-tags">
+            <a href="/tags/Android/" style="font-size: 20px;">Android</a> <a href="/tags/Architecture-Components/" style="font-size: 10px;">Architecture Components</a> <a href="/tags/Architecture-Components/" style="font-size: 13.33px;">Architecture_Components</a> <a href="/tags/Gradle/" style="font-size: 10px;">Gradle</a> <a href="/tags/Kotlin/" style="font-size: 16.67px;">Kotlin</a> <a href="/tags/LiveData/" style="font-size: 10px;">LiveData</a> <a href="/tags/Room-Persistence/" style="font-size: 10px;">Room Persistence</a> <a href="/tags/leficycle/" style="font-size: 10px;">leficycle</a>
+        </div>
+    </div>
+    <a href="javascript:;" class="sidebar-menu-box-close">&times;</a>
+</div>
+<div class="search-wrap">
+    <span class="search-close">&times;</span>
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+            <i class="icon icon-lg icon-chevron-left"></i>
+        </a>
+        <input class="search-field" placeholder="Search..." id="keywords">
+        <a id="search-submit" href="javascript:;">
+            <i class="fa fa-search"></i>
+        </a>
+</div>
+
+<div class="search-container" id="search-container">
+    <ul class="search-result" id="search-result">
+    </ul>
+</div>
+<div id="search-tpl">
+    <li class="search-result-item">
+        <a href="{url}" class="search-item-li">
+            <span class="search-item-li-title" title="{title}">{title}</span>
+        </a>
+    </li>
+</div>
+<script src="/js/search.js"></script>
+<script src="/js/sidebar-menu-box.js"></script>
+
+
+  <script src="//cdn.bootcss.com/particles.js/2.0.0/particles.min.js"></script>
+  <div id="particles"></div>
+  <script src="/js/particles.js"></script>
+
+
+
+
+
+
+
+  <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+  <script src="//cdn.bootcss.com/scrollReveal.js/3.0.5/scrollreveal.js"></script>
+  <script src="/js/animate.js"></script>
+
+  </div>
+</body>
+</html>

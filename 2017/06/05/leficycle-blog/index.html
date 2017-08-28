@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Architecture_Components  leficycle | yangjiang</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="yangjiang Blog" />
+  
+  <meta name="description" content="Handling Lifecycles（处理生命周期）在自定义活动和片段实现LifecycleOwner 该android.arch.lifecycle 包提供的类和接口，让您构建生命周期感知 组件-这是可以基于一个活动或片段的当前生命周期自动调整自己的行为组件。  注意：要导adding components to your project。">
+<meta name="keywords" content="Architecture_Components,leficycle">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Architecture_Components  leficycle">
+<meta property="og:url" content="http://yangchaojiang.cn/2017/06/05/leficycle-blog/index.html">
+<meta property="og:site_name" content="yangjiang">
+<meta property="og:description" content="Handling Lifecycles（处理生命周期）在自定义活动和片段实现LifecycleOwner 该android.arch.lifecycle 包提供的类和接口，让您构建生命周期感知 组件-这是可以基于一个活动或片段的当前生命周期自动调整自己的行为组件。  注意：要导adding components to your project。">
+<meta property="og:image" content="http://yangchaojiang.cn/img/lifecycle-states.png">
+<meta property="og:updated_time" content="2017-06-06T10:47:28.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Architecture_Components  leficycle">
+<meta name="twitter:description" content="Handling Lifecycles（处理生命周期）在自定义活动和片段实现LifecycleOwner 该android.arch.lifecycle 包提供的类和接口，让您构建生命周期感知 组件-这是可以基于一个活动或片段的当前生命周期自动调整自己的行为组件。  注意：要导adding components to your project。">
+<meta name="twitter:image" content="http://yangchaojiang.cn/img/lifecycle-states.png">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="/js/pace.min.js"></script>
+  
+
+  
+  
+
+</head>
+
+<body>
+  <div id="container">
+      <header id="header">
+    <div id="banner"></div>
+    <div id="header-outer">
+        <div id="header-row">
+            <div id="logo">
+                <a href="/">
+                    <img src="/images/logo.png" alt="logo">
+                </a>
+            </div>
+            <div class="header-info">
+                <div id="header-title">
+                    
+                    <h2>
+                        杨 江
+                    </h2>
+                    
+                </div>
+                <div id="header-description">
+                    
+                    <h3>
+                        海迷、爱运动、爱交友、爱旅行、喜欢接触新鲜事物、迎接新的挑战，更爱游离于错综复杂的编码与逻辑中
+                    </h3>
+                    
+                </div>
+            </div>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a title="Home" target="_blank" href="//yanganan.cn">
+                            <i class="fa fa-home fa-2x"></i></a>
+                    
+                        <a title="Github" target="_blank" href="//github.com/yangchaojiang">
+                            <i class="fa fa-github fa-2x"></i></a>
+                    
+                        <a title="Weibo" target="_blank" href="//weibo.com/u/5114674051?topnav=1&wvr=6&topsug=1&is_all=1">
+                            <i class="fa fa-weibo fa-2x"></i></a>
+                    
+                        <a title="Mail" target="_blank" href="//mailto:yangchaojiang@outlook.com">
+                            <i class="fa fa-mail fa-2x"></i></a>
+                    
+                        <a title="qq" target="_blank" href="//wpa.qq.com/msgrd?v=3&uin=1007181167&site=qq&menu=yes">
+                            <i class="fa fa-qq fa-2x"></i></a>
+                    
+                </div>
+            </nav>
+        </div>
+    </div>
+</header>
+      <div class="outer">
+        <section id="main" class="body-wrap"><article id="post-leficycle-blog" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="post-title" itemprop="name">
+      Architecture_Components  leficycle
+    </h1>
+    <div class="post-title-bar">
+      <ul>
+          
+        <li>
+          <i class="fa fa-calendar"></i>  2017-06-05
+        </li>
+        <li>
+          <i class="fa fa-eye"></i>
+          <span id="busuanzi_value_page_pv"></span>
+        </li>
+      </ul>
+    </div>
+  
+
+          
+      </header>
+    
+    <div class="article-entry post-content" itemprop="articleBody">
+      
+            
+            <h2 id="Handling-Lifecycles（处理生命周期）"><a href="#Handling-Lifecycles（处理生命周期）" class="headerlink" title="Handling Lifecycles（处理生命周期）"></a>Handling Lifecycles（处理生命周期）</h2><p>在自定义活动和片段实现<a href="https://developer.android.google.cn/reference/android/arch/lifecycle/package-summary.html" target="_blank" rel="external">LifecycleOwner</a></p>
+<p>该android.arch.lifecycle 包提供的类和接口，让您构建生命周期感知 组件-这是可以基于一个活动或片段的当前生命周期自动调整自己的行为组件。</p>
+<blockquote>
+<p>注意：要导<a href="https://developer.android.google.cn/topic/libraries/architecture/adding-components.html" target="_blank" rel="external">adding components to your project</a>。</p>
+</blockquote>
+<a id="more"></a>
+<p>大多数在Android框架中定义的应用程序组件都安装到他们的生命周期。这些生命周期是由操作系统或在你的进程中运行的框架代码管理。</p>
+<p>他们是核心到Android是如何工作的，你的应用程序必须尊重他们。不这样做可能会触发内存泄漏，甚至应用程序崩溃。</p>
+<p>试想一下，我们有一个在屏幕上显示的设备位置的活动。一个常见的实现可能像下面这样：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyLocationListener</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">MyLocationListener</span><span class="params">(Context context, Callback callback)</span> </span>&#123;</div><div class="line">        <span class="comment">// ...</span></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">start</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="comment">// connect to system location service</span></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">stop</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="comment">// disconnect from system location service</span></div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyActivity</span> <span class="keyword">extends</span> <span class="title">AppCompatActivity</span> </span>&#123;</div><div class="line">    <span class="keyword">private</span> MyLocationListener myLocationListener;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(...)</span> </span>&#123;</div><div class="line">        myLocationListener = <span class="keyword">new</span> MyLocationListener(<span class="keyword">this</span>, (location) -&gt; &#123;</div><div class="line">            <span class="comment">// update UI</span></div><div class="line">        &#125;);</div><div class="line">  &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onStart</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>.onStart();</div><div class="line">        myLocationListener.start();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onStop</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>.onStop();</div><div class="line">        myLocationListener.stop();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>尽管这个样品看起来不错，在一个真正的应用程序，你最终有太多的电话像这样和onStart()和onStop()方法变得非常大。</p>
+<p>此外，一些部件不能刚刚开始onStart()。如果我们需要在开始位置的观察者之前检查一些配置？这可能是在某些情况下，活动后检查结束停止</p>
+<p>，这意味着myLocationListener.start()被称为之后 myLocationListener.stop()被调用时，基本上保持连接直到永远。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyActivity</span> <span class="keyword">extends</span> <span class="title">AppCompatActivity</span> </span>&#123;</div><div class="line">    <span class="keyword">private</span> MyLocationListener myLocationListener;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(...)</span> </span>&#123;</div><div class="line">        myLocationListener = <span class="keyword">new</span> MyLocationListener(<span class="keyword">this</span>, location -&gt; &#123;</div><div class="line">            <span class="comment">// update UI</span></div><div class="line">        &#125;);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onStart</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>.onStart();</div><div class="line">        Util.checkUserStatus(result -&gt; &#123;</div><div class="line">            <span class="comment">// what if this callback is invoked AFTER activity is stopped?</span></div><div class="line">            <span class="keyword">if</span> (result) &#123;</div><div class="line">                myLocationListener.start();</div><div class="line">            &#125;</div><div class="line">        &#125;);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onStop</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>.onStop();</div><div class="line">        myLocationListener.stop();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>该<a href="https://developer.android.google.cn/reference/android/arch/lifecycle/package-summary.html" target="_blank" rel="external">android.arch.lifecycle</a> 包提供的类和接口，帮助您解决在弹性和孤立的方式这些问题。</p>
+<h2 id="Lifecycle"><a href="#Lifecycle" class="headerlink" title="Lifecycle"></a>Lifecycle</h2><p><a href="https://developer.android.google.cn/reference/android/arch/lifecycle/Lifecycle.html" target="_blank" rel="external">Lifecycle</a> 是，其保持关于一个组件的生命周期状态的信息（如一个活动或片段），并允许其它的目的，观察该状态的一个类。</p>
+<p><a href="https://developer.android.google.cn/reference/android/arch/lifecycle/Lifecycle.html" target="_blank" rel="external">Lifecycle</a> 使用两个主要的枚举跟踪其相关组件的生命周期状态。</p>
+<p>  <img src="/img/lifecycle-states.png" alt="">  </p>
+<p>事件<br>这是从架构和调度的生命周期事件 <a href="https://developer.android.google.cn/reference/android/arch/lifecycle/Lifecycle.html" target="_blank" rel="external">Lifecycle类</a>。这些事件映射到活动和片段的回调事件。</p>
+<p>的组件的当前状态由跟踪 Lifecycle对象。</p>
+<p>状态看作图的节点和事件，这些节点之间的边缘。</p>
+<p>一个类可以通过添加注解它的方法监控组件的生命周期状态。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyObserver</span> <span class="keyword">implements</span> <span class="title">LifecycleObserver</span> </span>&#123;</div><div class="line">    <span class="meta">@OnLifecycleEvent</span>(Lifecycle.Event.ON_RESUME)</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onResume</span><span class="params">()</span> </span>&#123;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@OnLifecycleEvent</span>(Lifecycle.Event.ON_PAUSE)</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onPause</span><span class="params">()</span> </span>&#123;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="comment">//实现类调用 MainActivity extends LifecycleActivity 或者   interfaceLifecycleActivity extends AppCompatActivity implements LifecycleRegistryOwner</span></div><div class="line"></div><div class="line">aLifecycleOwner.getLifecycle().addObserver(<span class="keyword">new</span> MyObserver());</div></pre></td></tr></table></figure></p>
+<h3 id="LifecycleOwner"><a href="#LifecycleOwner" class="headerlink" title="LifecycleOwner"></a>LifecycleOwner</h3><p><a href="https://developer.android.google.cn/reference/android/arch/lifecycle/Lifecycle.html" target="_blank" rel="external">LifecycleOwner</a>是表示该类有一个单一的方法接口 Lifecycle。它有一个方法 getLifecycle()，它必须由类实现。</p>
+<p>这类抽象的所有权 <a href="https://developer.android.google.cn/reference/android/arch/lifecycle/Lifecycle.html" target="_blank" rel="external">Lifecycle</a>从个人类（例如，活动和片段），并允许编写的组件，它可以与他们的工作。</p>
+<p>任何自定义应用程序类可以实现 LifecycleOwner 接口。</p>
+<p>注：由于架构的组件是处于alpha阶段，Fragment而AppCompatActivity类不能执行它（因为我们不能从一个稳定的组件添加依赖不稳定的API）。</p>
+<p>直到 Lifecycle稳定， LifecycleActivity 并 LifecycleFragment 提供了便利类。</p>
+<p>在生命周期项目发布后，支持文库片段和活动将实现 LifecycleOwner 接口; LifecycleActivity 并且 LifecycleFragment 将在那个时候被弃用。</p>
+<p>此外，请参阅实现LifecycleOwner定制活动和片段。</p>
+<p>对于上面的例子，我们可以让我们的MyLocationListener类 LifecycleObserver，然后用我们的初始化 Lifecycle在onCreate。</p>
+<p>这允许MyLocationListener类是自给自足的，这意味着它可以在必要的时候做自己的清理工作。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyActivity</span> <span class="keyword">extends</span> <span class="title">LifecycleActivity</span> </span>&#123;</div><div class="line">    <span class="keyword">private</span> MyLocationListener myLocationListener;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(...)</span> </span>&#123;</div><div class="line">        myLocationListener = <span class="keyword">new</span> MyLocationListener(<span class="keyword">this</span>, getLifecycle(), location -&gt; &#123;</div><div class="line">            <span class="comment">// update UI</span></div><div class="line">        &#125;);</div><div class="line">        Util.checkUserStatus(result -&gt; &#123;</div><div class="line">            <span class="keyword">if</span> (result) &#123;</div><div class="line">                myLocationListener.enable();</div><div class="line">            &#125;</div><div class="line">        &#125;);</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>一个常见的情况是为了避免调用一定的回调，如果 Lifecycle在一个良好的状态，是不是现在。</p>
+<p>例如，如果回调的活动状态被保存后运行一个片段事务时，它会引发崩溃，所以我们绝不会想要调用该回调。</p>
+<p>为了使这个用例方便， Lifecycle类允许其他对象来查询当前状态。</p>
+<pre><code class="Java"><span class="class"><span class="keyword">class</span> <span class="title">MyLocationListener</span> <span class="keyword">implements</span> <span class="title">LifecycleObserver</span> </span>{
+    <span class="keyword">private</span> <span class="keyword">boolean</span> enabled = <span class="keyword">false</span>;
+    <span class="function"><span class="keyword">public</span> <span class="title">MyLocationListener</span><span class="params">(Context context, Lifecycle lifecycle, Callback callback)</span> </span>{
+       ...
+    }
+
+    <span class="meta">@OnLifecycleEvent</span>(Lifecycle.Event.ON_START)
+    <span class="function"><span class="keyword">void</span> <span class="title">start</span><span class="params">()</span> </span>{
+        <span class="keyword">if</span> (enabled) {
+           <span class="comment">// connect</span>
+        }
+    }
+
+    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">enable</span><span class="params">()</span> </span>{
+        enabled = <span class="keyword">true</span>;
+        <span class="keyword">if</span> (lifecycle.getState().isAtLeast(STARTED)) {
+            <span class="comment">// connect if not connected</span>
+        }
+    }
+
+    <span class="meta">@OnLifecycleEvent</span>(Lifecycle.Event.ON_STOP)
+    <span class="function"><span class="keyword">void</span> <span class="title">stop</span><span class="params">()</span> </span>{
+        <span class="comment">// disconnect if connected</span>
+    }
+}
+</code></pre>
+<p>与此实现，我们LocationListener班是完全生命周期感知; 它可以做自己的初始化和清理，而不由活动进行管理。</p>
+<p>如果我们需要使用我们LocationListener的另一项活动或另一个片段中，我们只需要初始化。所有的安装和拆卸操作是由类本身来管理。</p>
+<p>可与工作类 Lifecycle被称为 生命周期感知组件。</p>
+<p>鼓励提供需要的是Android生命周期工作类图书馆提供生命周期数据的组件，从而使他们的客户可以很容易地集成在客户端无需人工生命周期管理这些类。</p>
+<p>LiveData在生命周期的感知部件的一个例子。使用 LiveData连同 ViewModel使得它更容易填充的用户界面与数据，同时尊重Android的生命周期。</p>
+<h3 id="Best-practices-for-Lifecycles-对于生命周期的最佳实践"><a href="#Best-practices-for-Lifecycles-对于生命周期的最佳实践" class="headerlink" title="Best practices for Lifecycles (对于生命周期的最佳实践)"></a>Best practices for Lifecycles (对于生命周期的最佳实践)</h3><ul>
+<li><p>保持您的UI控制器（活动和碎片）尽可能瘦。他们不应该试图获取自己的数据;而是使用<a href="https://developer.android.google.cn/reference/android/arch/lifecycle/ViewModel.html" target="_blank" rel="external">ViewModel</a><br>来执行此操作，并观察<a href="https://developer.android.google.cn/reference/android/arch/lifecycle/LiveData.html" target="_blank" rel="external">LiveData</a>以将更改反映到视图中<br>试着写数据驱动的用户界面在您的UI控制器的责任是更新视图的数据变化，或通知用户操作回 ViewModel。</p>
+</li>
+<li><p>尝试编写数据驱动的UI，您的UI控制器的责任是在数据更改时更新视图，或将用户操作通知给<a href="https://developer.android.google.cn/reference/android/arch/lifecycle/ViewModel.html" target="_blank" rel="external">ViewModel</a></p>
+</li>
+<li><p>将您的数据逻辑放在<a href="https://developer.android.google.cn/reference/android/arch/lifecycle/ViewModel.html" target="_blank" rel="external">ViewModel</a>l类中。<br> <a href="https://developer.android.google.cn/reference/android/arch/lifecycle/ViewModel.html" target="_blank" rel="external">ViewModel</a>应该用作UI控制器和其他应用程序之间的连接器。<br>请注意， <a href="https://developer.android.google.cn/reference/android/arch/lifecycle/ViewModel.html" target="_blank" rel="external">ViewModel</a>不是提取数据（例如，从网络）的责任。<br>相反，<a href="https://developer.android.google.cn/reference/android/arch/lifecycle/ViewModel.html" target="_blank" rel="external">ViewModel</a>应该调用相应的组件来执行此操作，然后将结果提供给UI控制器</p>
+</li>
+<li><p>使用<a href="https://developer.android.google.cn/topic/libraries/data-binding/index.html" target="_blank" rel="external">Data Binding</a>来保持视图和UI控制器之间的干净接口。<br>这样可以让您的视图更具声明性，并尽可能减少您在活动和片段中编写的更新代码。<br>如果您更喜欢在Java中执行此操作，请使用像<a href="http://jakewharton.github.io/butterknife/" target="_blank" rel="external">Butter Knife</a>这样的库来避免使用样板代码并进行更好的抽象,分離代碼</p>
+</li>
+<li><p>您的UI很复杂，请考虑创建一个Presenter类来处理UI修改。这通常是过度的，但可能会使您的UI更容易测试</p>
+</li>
+<li><p>不要在<a href="https://developer.android.google.cn/reference/android/arch/lifecycle/ViewModel.html" target="_blank" rel="external">ViewModel</a> 中引用 View 或Activity context。<br>如果 <a href="https://developer.android.google.cn/reference/android/arch/lifecycle/ViewModel.html" target="_blank" rel="external">ViewModel</a> 超过活动（在配置更改的情况下），您的活动将被泄漏，而不是正确的垃圾回收</p>
+</li>
+</ul>
+<h3 id="附录"><a href="#附录" class="headerlink" title="附录"></a>附录</h3><p>####在自定义活动和片段实现LifecycleOwner<br>任何自定义片段或活性可以变成一个 LifecycleOwner通过实现内置 LifecycleRegistryOwner 接口（而不是延伸 LifecycleFragment 或 LifecycleActivity）。</p>
+<pre><code class="Java"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyFragment</span> <span class="keyword">extends</span> <span class="title">Fragment</span> <span class="keyword">implements</span> <span class="title">LifecycleRegistryOwner</span> </span>{
+    LifecycleRegistry lifecycleRegistry = <span class="keyword">new</span> LifecycleRegistry(<span class="keyword">this</span>);
+
+    <span class="meta">@Override</span>
+    <span class="function"><span class="keyword">public</span> LifecycleRegistry <span class="title">getLifecycle</span><span class="params">()</span> </span>{
+        <span class="keyword">return</span> lifecycleRegistry;
+    }
+
+}
+`
+</code></pre>
+<p>如果你有，你想使一个自定义类 LifecycleOwner，你可以使用 LifecycleRegistry 类，但你需要事件转发到这个类。这种转发</p>
+<p>，如果他们执行的片段和活动自动完成 LifecycleRegistryOwner界面</p>
+
+            <div class="post-copyright">
+    <div class="content">
+        <p>最后更新： 2017年06月06日 18:47</p>
+        <p>原始链接： <a class="post-url" href="/2017/06/05/leficycle-blog/" title="Architecture_Components  leficycle">http://yangchaojiang.cn/2017/06/05/leficycle-blog/</a></p>
+        <footer>
+            <a href="http://yangchaojiang.cn">
+                <img src="/images/logo.png" alt="杨 江">
+                杨 江
+            </a>
+        </footer>
+    </div>
+</div>
+
+      
+    </div>
+    <footer class="article-footer">
+        <ul class="article-footer-menu">
+            
+            
+  <li class="article-footer-tags">
+    <i class="fa fa-tags"></i>
+      
+    <a href="/tags/Architecture_Components/" class="color4">Architecture_Components</a>
+      
+    <a href="/tags/leficycle/" class="color5">leficycle</a>
+      
+  </li>
+
+        </ul>
+        
+    </footer>
+  </div>
+</article>
+
+
+    <aside class="post-toc-pos">
+        <nav class="post-toc-wrap">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Handling-Lifecycles（处理生命周期）"><span class="post-toc-text">Handling Lifecycles（处理生命周期）</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Lifecycle"><span class="post-toc-text">Lifecycle</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#LifecycleOwner"><span class="post-toc-text">LifecycleOwner</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Best-practices-for-Lifecycles-对于生命周期的最佳实践"><span class="post-toc-text">Best practices for Lifecycles (对于生命周期的最佳实践)</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#附录"><span class="post-toc-text">附录</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+    
+
+<nav id="article-nav">
+  
+    <a href="/2017/06/08/kotlin-blog/" id="article-nav-newer" class="article-nav-link-wrap">
+
+      <span class="article-nav-title">
+        <i class="fa fa-hand-o-left" aria-hidden="true"></i>
+        
+          快速上手Kotlin11招
+        
+      </span>
+    </a>
+  
+  
+    <a href="/2017/06/05/room-blod/" id="article-nav-older" class="article-nav-link-wrap">
+      <span class="article-nav-title">Architecture_Components Room Persistence</span>
+      <i class="fa fa-hand-o-right" aria-hidden="true"></i>
+    </a>
+  
+</nav>
+
+
+
+    
+        <div id="SOHUCS" sid="leficycle-blog" ></div>
+<script type="text/javascript">
+    (function(){
+        var appid = 'cyt36tWXs';
+        var conf = '42b79e0329709ef48318d7d6739122c2';
+        var width = window.innerWidth || document.documentElement.clientWidth;
+        if (width < 960) {
+            window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("https://changyan.sohu.com/upload/changyan.js",function(){window.changyan.api.config({appid:appid,conf:conf})}); } })(); </script>
+    
+</section>
+        
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+      <p>
+        Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+        Theme <a href="//github.com/wongminho/hexo-theme-miho" target="_blank">MiHo</a>
+      &copy; 2017 杨 江<br>
+      </p>
+    </div>
+  </div>
+</footer>
+    <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script>
+  var mihoConfig = {
+      root: "http://yangchaojiang.cn",
+      animate: true,
+      isHome: false
+  }
+</script>
+<div class="sidebar">
+    <div id="sidebar-search">
+        <i class="fa fa-search"></i>
+    </div>
+    <div class="sidebar-menu">
+        <i class="fa fa-bars"></i>
+    </div>
+    <div id="sidebar-top">
+        <span class="sidebar-top-icon"><i class="fa fa-angle-up"></i></span>
+    </div>
+</div>
+<div class="sidebar-menu-box">
+    <div class="sidebar-menu-box-container">
+        <div id="sidebar-menu-box-tags">
+            <a href="/tags/Android/" style="font-size: 20px;">Android</a> <a href="/tags/Architecture-Components/" style="font-size: 10px;">Architecture Components</a> <a href="/tags/Architecture-Components/" style="font-size: 13.33px;">Architecture_Components</a> <a href="/tags/Gradle/" style="font-size: 10px;">Gradle</a> <a href="/tags/Kotlin/" style="font-size: 16.67px;">Kotlin</a> <a href="/tags/LiveData/" style="font-size: 10px;">LiveData</a> <a href="/tags/Room-Persistence/" style="font-size: 10px;">Room Persistence</a> <a href="/tags/leficycle/" style="font-size: 10px;">leficycle</a>
+        </div>
+    </div>
+    <a href="javascript:;" class="sidebar-menu-box-close">&times;</a>
+</div>
+<div class="search-wrap">
+    <span class="search-close">&times;</span>
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+            <i class="icon icon-lg icon-chevron-left"></i>
+        </a>
+        <input class="search-field" placeholder="Search..." id="keywords">
+        <a id="search-submit" href="javascript:;">
+            <i class="fa fa-search"></i>
+        </a>
+</div>
+
+<div class="search-container" id="search-container">
+    <ul class="search-result" id="search-result">
+    </ul>
+</div>
+<div id="search-tpl">
+    <li class="search-result-item">
+        <a href="{url}" class="search-item-li">
+            <span class="search-item-li-title" title="{title}">{title}</span>
+        </a>
+    </li>
+</div>
+<script src="/js/search.js"></script>
+<script src="/js/sidebar-menu-box.js"></script>
+
+
+  <script src="//cdn.bootcss.com/particles.js/2.0.0/particles.min.js"></script>
+  <div id="particles"></div>
+  <script src="/js/particles.js"></script>
+
+
+
+
+
+
+
+  <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+  <script src="//cdn.bootcss.com/scrollReveal.js/3.0.5/scrollreveal.js"></script>
+  <script src="/js/animate.js"></script>
+
+  </div>
+</body>
+</html>

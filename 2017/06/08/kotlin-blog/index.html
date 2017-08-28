@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>快速上手Kotlin11招 | yangjiang</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="yangjiang Blog" />
+  
+  <meta name="description" content="最近经常会收到一些 “用 Kotlin 怎么写” 的问题，我们已经掌握了一门或者多门语言，那么学 Kotlin 的时候就经常会有类似 “ ‘再见’用日语怎么说？”、“ ‘你好’ 用西班牙语怎么说？” 的问题，所以我决定把一些常用的语法对照列举出来，如果大家熟悉 Java，那么快速上手 Kotlin 会变得非常地容易。">
+<meta name="keywords" content="Android,Kotlin">
+<meta property="og:type" content="article">
+<meta property="og:title" content="快速上手Kotlin11招">
+<meta property="og:url" content="http://yangchaojiang.cn/2017/06/08/kotlin-blog/index.html">
+<meta property="og:site_name" content="yangjiang">
+<meta property="og:description" content="最近经常会收到一些 “用 Kotlin 怎么写” 的问题，我们已经掌握了一门或者多门语言，那么学 Kotlin 的时候就经常会有类似 “ ‘再见’用日语怎么说？”、“ ‘你好’ 用西班牙语怎么说？” 的问题，所以我决定把一些常用的语法对照列举出来，如果大家熟悉 Java，那么快速上手 Kotlin 会变得非常地容易。">
+<meta property="og:updated_time" content="2017-07-14T04:56:44.620Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="快速上手Kotlin11招">
+<meta name="twitter:description" content="最近经常会收到一些 “用 Kotlin 怎么写” 的问题，我们已经掌握了一门或者多门语言，那么学 Kotlin 的时候就经常会有类似 “ ‘再见’用日语怎么说？”、“ ‘你好’ 用西班牙语怎么说？” 的问题，所以我决定把一些常用的语法对照列举出来，如果大家熟悉 Java，那么快速上手 Kotlin 会变得非常地容易。">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="/js/pace.min.js"></script>
+  
+
+  
+  
+
+</head>
+
+<body>
+  <div id="container">
+      <header id="header">
+    <div id="banner"></div>
+    <div id="header-outer">
+        <div id="header-row">
+            <div id="logo">
+                <a href="/">
+                    <img src="/images/logo.png" alt="logo">
+                </a>
+            </div>
+            <div class="header-info">
+                <div id="header-title">
+                    
+                    <h2>
+                        杨 江
+                    </h2>
+                    
+                </div>
+                <div id="header-description">
+                    
+                    <h3>
+                        海迷、爱运动、爱交友、爱旅行、喜欢接触新鲜事物、迎接新的挑战，更爱游离于错综复杂的编码与逻辑中
+                    </h3>
+                    
+                </div>
+            </div>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a title="Home" target="_blank" href="//yanganan.cn">
+                            <i class="fa fa-home fa-2x"></i></a>
+                    
+                        <a title="Github" target="_blank" href="//github.com/yangchaojiang">
+                            <i class="fa fa-github fa-2x"></i></a>
+                    
+                        <a title="Weibo" target="_blank" href="//weibo.com/u/5114674051?topnav=1&wvr=6&topsug=1&is_all=1">
+                            <i class="fa fa-weibo fa-2x"></i></a>
+                    
+                        <a title="Mail" target="_blank" href="//mailto:yangchaojiang@outlook.com">
+                            <i class="fa fa-mail fa-2x"></i></a>
+                    
+                        <a title="qq" target="_blank" href="//wpa.qq.com/msgrd?v=3&uin=1007181167&site=qq&menu=yes">
+                            <i class="fa fa-qq fa-2x"></i></a>
+                    
+                </div>
+            </nav>
+        </div>
+    </div>
+</header>
+      <div class="outer">
+        <section id="main" class="body-wrap"><article id="post-kotlin-blog" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="post-title" itemprop="name">
+      快速上手Kotlin11招
+    </h1>
+    <div class="post-title-bar">
+      <ul>
+          
+        <li>
+          <i class="fa fa-calendar"></i>  2017-06-08
+        </li>
+        <li>
+          <i class="fa fa-eye"></i>
+          <span id="busuanzi_value_page_pv"></span>
+        </li>
+      </ul>
+    </div>
+  
+
+          
+      </header>
+    
+    <div class="article-entry post-content" itemprop="articleBody">
+      
+            
+            <p>最近经常会收到一些 “用 Kotlin 怎么写” 的问题，我们已经掌握了一门或者多门语言，那么学 Kotlin 的时候就经常会有类似 “ ‘再见’用日语怎么说？”、“ ‘你好’ 用西班牙语怎么说？” 的问题，所以我决定把一些常用的语法对照列举出来，如果大家熟悉 Java，那么快速上手 Kotlin 会变得非常地容易。<br><a id="more"></a></p>
+<p>这篇文章主要是写给需要快速上手 Kotlin 的 Java 程序员看的，这时候他们关注的是如何 Kotlin 写出类似某些 Java 的写法，所以本文基本不涉及 Kotlin 的高级特性。</p>
+<h2 id="1-如何定义变量"><a href="#1-如何定义变量" class="headerlink" title="1. 如何定义变量"></a>1. 如何定义变量</h2><ul>
+<li>Java 定义变量的写法：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">String string = &quot;Hello&quot;;</div></pre></td></tr></table></figure>
+<p>基本等价的 Kotlin 定义变量的写法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">var string: String = &quot;Hello&quot;</div></pre></td></tr></table></figure>
+<ul>
+<li>Java 定义 final 变量的写法：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">final String string = &quot;Hello&quot;;</div></pre></td></tr></table></figure>
+<p>注意到前面的是一个编译期常量，Kotlin 当中应该这么写：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">const val string: String = &quot;Hello&quot;</div></pre></td></tr></table></figure>
+<ul>
+<li>同样是 final 变量，Java 这么写：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">final String string = getString();</div></pre></td></tr></table></figure>
+<p>注意到，这个不是编译期常量，Kotlin 这么写：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">val string: String = getString()</div></pre></td></tr></table></figure>
+<p>另外， Kotlin 有类型推导的特性，因此上述变量定义基本上都可以省略掉类型 String。</p>
+<h2 id="2-如何定义函数"><a href="#2-如何定义函数" class="headerlink" title="2. 如何定义函数"></a>2. 如何定义函数</h2><p>Java 当中如何定义函数，也就是方法，需要定义到一个类当中：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">public boolean testString(String name)&#123;</div><div class="line">    ...</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>等价的 Kotlin 写法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">fun testString(name: String): Boolean &#123;</div><div class="line">    ...</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>注意到返回值的位置放到了参数之后。</p>
+<h2 id="3-如何定义静态变量、方法"><a href="#3-如何定义静态变量、方法" class="headerlink" title="3. 如何定义静态变量、方法"></a>3. 如何定义静态变量、方法</h2><p>Java 的静态方法或者变量只需要加一个 static 即可：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">public class Singleton&#123;  </div><div class="line"></div><div class="line">  private static Singleton instance = ...; </div><div class="line"></div><div class="line">       public static Singleton getInstance()&#123;</div><div class="line"></div><div class="line">        ...                return instance;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>用 Kotlin 直译过来就是：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">class KotlinSingleton&#123;</div><div class="line"></div><div class="line">    companion object&#123;     </div><div class="line"></div><div class="line">   private val kotlinSingleton = KotlinSingleton()   </div><div class="line"></div><div class="line">       @JvmStatic</div><div class="line"></div><div class="line">        fun getInstance() = kotlinSingleton</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>注意 getInstance 的写法。 JvmStatic 这个注解会将 getInstance 这个方法编译成与 Java 的静态方法一样的签名，如果不加这个注解，Java 当中无法像调用 Java 静态方法那样调用这个方法。</p>
+<p>另外，对于静态方法、变量的场景，在 Kotlin 当中建议使用包级函数。</p>
+<h2 id="4-如何定义数组"><a href="#4-如何定义数组" class="headerlink" title="4. 如何定义数组"></a>4. 如何定义数组</h2><p>Java 的数组非常简单，当然也有些抽象，毕竟是编译期生成的类：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">String[] names = new String[]&#123;&quot;Kyo&quot;, &quot;Ryu&quot;, &quot;Iory&quot;&#125;;</div><div class="line"></div><div class="line">String[] emptyStrings = new String[10];</div></pre></td></tr></table></figure>
+<p>Kotlin 的数组其实更真实一些，看上去更让人容易理解：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">val names: Array&lt;String&gt; = arrayOf(&quot;Kyo&quot;, &quot;Ryu&quot;, &quot;Iory&quot;)</div><div class="line"></div><div class="line">val emptyStrings: Array&lt;String?&gt; = arrayOfNulls(10)</div></pre></td></tr></table></figure>
+<p>注意到，ArrayT 即数组元素的类型。另外，String? 表示可以为 null 的 String 类型。</p>
+<p>数组的使用基本一致。需要注意的是，为了避免装箱和拆箱的开销，Kotlin 对基本类型包括 Int、Short、Byte、Long、Float、Double、Char 等基本类型提供了定制版数组类型，写法为 XArray，例如 Int 的定制版数组为 IntArray，如果我们要定义一个整型数组，写法如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">val ints = intArrayOf(1, 3, 5)</div></pre></td></tr></table></figure>
+<h2 id="5-如何写变长参数"><a href="#5-如何写变长参数" class="headerlink" title="5. 如何写变长参数"></a>5. 如何写变长参数</h2><p>Java 的变长参数写法如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">void hello(String... names)&#123;</div><div class="line">    ...</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>Kotlin 的变长参数写法如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">fun hello(vararg names: String)&#123;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="6-如何写三元运算符"><a href="#6-如何写三元运算符" class="headerlink" title="6. 如何写三元运算符"></a>6. 如何写三元运算符</h2><p>Java 可以写三元运算符：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">int code = isSuccessfully? 200: 400;</div></pre></td></tr></table></figure>
+<p>很多人抱怨 Kotlin 为什么没有这个运算符。。。据说是因为 Kotlin 当中 : 使用的场景比 Java 复杂得多，因此如果加上这个三元运算符的话，会给语法解析器带来较多的麻烦，Scala 也是类似的情况。那么这中情况下，我们用 Kotlin 该怎么写呢？</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">int code = if(isSuccessfully) 200 else 400</div></pre></td></tr></table></figure>
+<p>注意到，if else 这样的语句也是表达式，这一点与 Java 不同。</p>
+<h2 id="7-如何写-main-函数"><a href="#7-如何写-main-函数" class="headerlink" title="7. 如何写 main 函数"></a>7. 如何写 main 函数</h2><p>Java 的写法只有一种：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">class Main&#123;</div><div class="line"></div><div class="line">    public static void main(String... args)&#123;</div><div class="line">        ...</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>注意到参数可以是变长参数或者数组，这二者都可。</p>
+<p>对应 Kotlin，main 函数的写法如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">class KotlinMain&#123;</div><div class="line"></div><div class="line">    companion object&#123;</div><div class="line"></div><div class="line">        @JvmStatic</div><div class="line"></div><div class="line">        fun main(args: Array&lt;String&gt;) &#123;</div><div class="line"></div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>Kotlin 可以有包级函数，因此我们并不需要声明一个类来包装 main 函数：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">fun main(args: Array&lt;String&gt;)&#123;</div><div class="line">    ...</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="8-如何实例化类"><a href="#8-如何实例化类" class="headerlink" title="8. 如何实例化类"></a>8. 如何实例化类</h2><p>Java 和 C++ 这样的语言，在构造对象的时候经常需要用到 new 这个关键字，比如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Date date = new Date();</div></pre></td></tr></table></figure>
+<p>Kotlin 构造对象时，不需要 new 这个关键字，所以上述写法等价于：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">val date = Date()</div></pre></td></tr></table></figure>
+<h2 id="9-如何写-Getter-和-Setter-方法"><a href="#9-如何写-Getter-和-Setter-方法" class="headerlink" title="9. 如何写 Getter 和 Setter 方法"></a>9. 如何写 Getter 和 Setter 方法</h2><p>Java 的 Getter 和 Setter 是一种约定俗称，而不是语法特性，所以定义起来相对自由：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">public class GetterAndSetter&#123;  </div><div class="line">  private int x = 0;  </div><div class="line">  public int getX() &#123;  </div><div class="line"></div><div class="line">      return x;</div><div class="line"></div><div class="line">    &#125;   </div><div class="line"></div><div class="line"> public void setX(int x) &#123;  </div><div class="line"></div><div class="line">      this.x = x;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>Kotlin 是有属性的：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">class KotlinGetterAndSetter&#123;</div><div class="line"></div><div class="line">    var x: Int = 0</div><div class="line"></div><div class="line">        set(value) &#123; field = value &#125;</div><div class="line"></div><div class="line">        get() = field</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>注意看到，我们为 x 显式定义了 getter 和 setter，field 是 x 背后真正的变量，所以 setter 当中其实就是为 field 赋值，而 getter 则是返回 field。如果你想要对 x 的访问做控制，那么你就可以通过自定义 getter 和 setter 来实现了：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">class KotlinGetterAndSetter&#123;</div><div class="line">    var x: Int = 0</div><div class="line">        set(value) &#123;</div><div class="line">            val date = Calendar.getInstance().apply &#123;</div><div class="line">                set(2017, 2, 18)</div><div class="line"></div><div class="line">            &#125;            if(System.currentTimeMillis() &lt; date.timeInMillis)&#123;</div><div class="line"></div><div class="line">                println(&quot;Cannot be set before 2017.3.18&quot;)</div><div class="line"></div><div class="line">            &#125;else&#123;</div><div class="line">                field = value</div><div class="line">            &#125;</div><div class="line"></div><div class="line">        &#125;</div><div class="line">        get()&#123;</div><div class="line">            println(&quot;Get field x: $field&quot;)   </div><div class="line">         return field</div><div class="line"></div><div class="line">        &#125;   </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="10-如何延迟初始化成员变量"><a href="#10-如何延迟初始化成员变量" class="headerlink" title="10. 如何延迟初始化成员变量"></a>10. 如何延迟初始化成员变量</h2><p>Java 定义的类成员变量如果不初始化，那么基本类型被初始化为其默认值，比如 int 初始化为 0，boolean 初始化为 false，非基本类型的成员则会被初始化为 null。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">public class Hello&#123;  </div><div class="line"></div><div class="line">  private String name;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>类似的代码在 Kotlin 当中直译为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">class Hello&#123; </div><div class="line"></div><div class="line">   private var name: String? = null</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>使用了可空类型，副作用就是后面每次你想要用 name 的时候，都需要判断其是否为 null。如果不使用可控类型，需要加 lateinit 关键字：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">class Hello&#123;  </div><div class="line"></div><div class="line">  private lateinit var name: String</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>lateinit 是用来告诉编译器，name 这个变量后续会妥善处置的。</p>
+<p>对于 final 的成员变量，Java 要求它们必须在构造方法或者构造块当中对他们进行初始化：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">public class Hello&#123; </div><div class="line"></div><div class="line">   private final String name = &quot;Peter&quot;;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>也就是说，如果我要想定义一个可以延迟到一定实际再使用并初始化的 final 变量，这在 Java 中是做不到的。</p>
+<p>Kotlin 有办法，使用 lazy 这个 delegate 即可：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">class Hello&#123;  </div><div class="line"></div><div class="line">  private val name by lazy&#123;</div><div class="line"></div><div class="line">        NameProvider.getName() </div><div class="line"></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>只有使用到 name 这个属性的时候，lazy 后面的 Lambda 才会执行，name 的值才会真正计算出来。</p>
+<h2 id="11-如何获得-class-的实例"><a href="#11-如何获得-class-的实例" class="headerlink" title="11. 如何获得 class 的实例"></a>11. 如何获得 class 的实例</h2><p>Java 当中：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">public class Hello&#123;</div><div class="line">    ...</div><div class="line">&#125;</div><div class="line">...</div><div class="line"></div><div class="line">Class&lt;?&gt; clazz = Hello.class;</div><div class="line"></div><div class="line">Hello hello = new Hello();</div><div class="line"></div><div class="line">Class&lt;?&gt; clazz2 = hello.getClass();</div></pre></td></tr></table></figure>
+<p>前面我们展示了两种获得 class 的途径，一种直接用类名，一种通过类实例。刚刚接触 Kotlin 的时候，获取 Java Class 的方法却是容易让人困惑。</p>
+<p>同样效果的 Kotlin 代码看上去确实很奇怪，实际上 Hello::class 拿到的是 Kotlin 的 KClass，这个是 Kotlin 的类型，如果想要拿到 Java 的 Class 实例，那么就需要前面的办法了。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">class Helloval clazz = Hello::class.javaval hello = Hello()</div><div class="line"></div><div class="line">val clazz2 = hello.javaClass</div></pre></td></tr></table></figure>
+<p>demo: <a href="https://github.com/yangchaojiang/FrameWorkDemo" target="_blank" rel="external">https://github.com/yangchaojiang/FrameWorkDemo</a></p>
+<p>demo 只能在 Android Sudio 3.0 编译的，</p>
+
+            <div class="post-copyright">
+    <div class="content">
+        <p>最后更新： 2017年07月14日 12:56</p>
+        <p>原始链接： <a class="post-url" href="/2017/06/08/kotlin-blog/" title="快速上手Kotlin11招">http://yangchaojiang.cn/2017/06/08/kotlin-blog/</a></p>
+        <footer>
+            <a href="http://yangchaojiang.cn">
+                <img src="/images/logo.png" alt="杨 江">
+                杨 江
+            </a>
+        </footer>
+    </div>
+</div>
+
+      
+    </div>
+    <footer class="article-footer">
+        <ul class="article-footer-menu">
+            
+            
+  <li class="article-footer-tags">
+    <i class="fa fa-tags"></i>
+      
+    <a href="/tags/Android/" class="color3">Android</a>
+      
+    <a href="/tags/Kotlin/" class="color2">Kotlin</a>
+      
+  </li>
+
+        </ul>
+        
+    </footer>
+  </div>
+</article>
+
+
+    <aside class="post-toc-pos">
+        <nav class="post-toc-wrap">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#1-如何定义变量"><span class="post-toc-text">1. 如何定义变量</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#2-如何定义函数"><span class="post-toc-text">2. 如何定义函数</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#3-如何定义静态变量、方法"><span class="post-toc-text">3. 如何定义静态变量、方法</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#4-如何定义数组"><span class="post-toc-text">4. 如何定义数组</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#5-如何写变长参数"><span class="post-toc-text">5. 如何写变长参数</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#6-如何写三元运算符"><span class="post-toc-text">6. 如何写三元运算符</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#7-如何写-main-函数"><span class="post-toc-text">7. 如何写 main 函数</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#8-如何实例化类"><span class="post-toc-text">8. 如何实例化类</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#9-如何写-Getter-和-Setter-方法"><span class="post-toc-text">9. 如何写 Getter 和 Setter 方法</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#10-如何延迟初始化成员变量"><span class="post-toc-text">10. 如何延迟初始化成员变量</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#11-如何获得-class-的实例"><span class="post-toc-text">11. 如何获得 class 的实例</span></a></li></ol>
+        </nav>
+    </aside>
+    
+
+<nav id="article-nav">
+  
+    <a href="/2017/06/23/android-imageview-blog/" id="article-nav-newer" class="article-nav-link-wrap">
+
+      <span class="article-nav-title">
+        <i class="fa fa-hand-o-left" aria-hidden="true"></i>
+        
+          Android ImageView 正确使用姿势
+        
+      </span>
+    </a>
+  
+  
+    <a href="/2017/06/05/leficycle-blog/" id="article-nav-older" class="article-nav-link-wrap">
+      <span class="article-nav-title">Architecture_Components  leficycle</span>
+      <i class="fa fa-hand-o-right" aria-hidden="true"></i>
+    </a>
+  
+</nav>
+
+
+
+    
+        <div id="SOHUCS" sid="kotlin-blog" ></div>
+<script type="text/javascript">
+    (function(){
+        var appid = 'cyt36tWXs';
+        var conf = '42b79e0329709ef48318d7d6739122c2';
+        var width = window.innerWidth || document.documentElement.clientWidth;
+        if (width < 960) {
+            window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("https://changyan.sohu.com/upload/changyan.js",function(){window.changyan.api.config({appid:appid,conf:conf})}); } })(); </script>
+    
+</section>
+        
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+      <p>
+        Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+        Theme <a href="//github.com/wongminho/hexo-theme-miho" target="_blank">MiHo</a>
+      &copy; 2017 杨 江<br>
+      </p>
+    </div>
+  </div>
+</footer>
+    <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script>
+  var mihoConfig = {
+      root: "http://yangchaojiang.cn",
+      animate: true,
+      isHome: false
+  }
+</script>
+<div class="sidebar">
+    <div id="sidebar-search">
+        <i class="fa fa-search"></i>
+    </div>
+    <div class="sidebar-menu">
+        <i class="fa fa-bars"></i>
+    </div>
+    <div id="sidebar-top">
+        <span class="sidebar-top-icon"><i class="fa fa-angle-up"></i></span>
+    </div>
+</div>
+<div class="sidebar-menu-box">
+    <div class="sidebar-menu-box-container">
+        <div id="sidebar-menu-box-tags">
+            <a href="/tags/Android/" style="font-size: 20px;">Android</a> <a href="/tags/Architecture-Components/" style="font-size: 10px;">Architecture Components</a> <a href="/tags/Architecture-Components/" style="font-size: 13.33px;">Architecture_Components</a> <a href="/tags/Gradle/" style="font-size: 10px;">Gradle</a> <a href="/tags/Kotlin/" style="font-size: 16.67px;">Kotlin</a> <a href="/tags/LiveData/" style="font-size: 10px;">LiveData</a> <a href="/tags/Room-Persistence/" style="font-size: 10px;">Room Persistence</a> <a href="/tags/leficycle/" style="font-size: 10px;">leficycle</a>
+        </div>
+    </div>
+    <a href="javascript:;" class="sidebar-menu-box-close">&times;</a>
+</div>
+<div class="search-wrap">
+    <span class="search-close">&times;</span>
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+            <i class="icon icon-lg icon-chevron-left"></i>
+        </a>
+        <input class="search-field" placeholder="Search..." id="keywords">
+        <a id="search-submit" href="javascript:;">
+            <i class="fa fa-search"></i>
+        </a>
+</div>
+
+<div class="search-container" id="search-container">
+    <ul class="search-result" id="search-result">
+    </ul>
+</div>
+<div id="search-tpl">
+    <li class="search-result-item">
+        <a href="{url}" class="search-item-li">
+            <span class="search-item-li-title" title="{title}">{title}</span>
+        </a>
+    </li>
+</div>
+<script src="/js/search.js"></script>
+<script src="/js/sidebar-menu-box.js"></script>
+
+
+  <script src="//cdn.bootcss.com/particles.js/2.0.0/particles.min.js"></script>
+  <div id="particles"></div>
+  <script src="/js/particles.js"></script>
+
+
+
+
+
+
+
+  <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+  <script src="//cdn.bootcss.com/scrollReveal.js/3.0.5/scrollreveal.js"></script>
+  <script src="/js/animate.js"></script>
+
+  </div>
+</body>
+</html>
