@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>基于exoPlayer 自定义播放器 | yangjiang</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="yangjiang Blog" />
+  
+  <meta name="description" content="基于exoPlayer 自定义播放器 Jplayer支持功能： 1 ExoUserPlayer  基本播放 2 GestureVideoPlayer   增加手势  亮度，音量，快进，等手势 3 ManualPlayer  默认手动播放，增加默认图 5 增加广告视频预览切换 6 增加视频清晰度切换 7 增加缓存视频功能 8 支持自定义各种数据源加载 Okttp,Rtmp, 缓存，Cronet等协议">
+<meta name="keywords" content="Android,Video,ListVideo">
+<meta property="og:type" content="article">
+<meta property="og:title" content="基于exoPlayer 自定义播放器">
+<meta property="og:url" content="http://yangchaojiang.cn/2017/09/05/jPlayer-blog/index.html">
+<meta property="og:site_name" content="yangjiang">
+<meta property="og:description" content="基于exoPlayer 自定义播放器 Jplayer支持功能： 1 ExoUserPlayer  基本播放 2 GestureVideoPlayer   增加手势  亮度，音量，快进，等手势 3 ManualPlayer  默认手动播放，增加默认图 5 增加广告视频预览切换 6 增加视频清晰度切换 7 增加缓存视频功能 8 支持自定义各种数据源加载 Okttp,Rtmp, 缓存，Cronet等协议">
+<meta property="og:image" content="http://yangchaojiang.cn/img/jplayer/20170905164501.png">
+<meta property="og:updated_time" content="2017-09-05T13:28:27.432Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="基于exoPlayer 自定义播放器">
+<meta name="twitter:description" content="基于exoPlayer 自定义播放器 Jplayer支持功能： 1 ExoUserPlayer  基本播放 2 GestureVideoPlayer   增加手势  亮度，音量，快进，等手势 3 ManualPlayer  默认手动播放，增加默认图 5 增加广告视频预览切换 6 增加视频清晰度切换 7 增加缓存视频功能 8 支持自定义各种数据源加载 Okttp,Rtmp, 缓存，Cronet等协议">
+<meta name="twitter:image" content="http://yangchaojiang.cn/img/jplayer/20170905164501.png">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="/js/pace.min.js"></script>
+  
+
+  
+  
+
+</head>
+
+<body>
+  <div id="container">
+      <header id="header">
+    <div id="banner"></div>
+    <div id="header-outer">
+        <div id="header-row">
+            <div id="logo">
+                <a href="/">
+                    <img src="/images/logo.png" alt="logo">
+                </a>
+            </div>
+            <div class="header-info">
+                <div id="header-title">
+                    
+                    <h2>
+                        杨 江
+                    </h2>
+                    
+                </div>
+                <div id="header-description">
+                    
+                    <h3>
+                        海迷、爱运动、爱交友、爱旅行、喜欢接触新鲜事物、迎接新的挑战，更爱游离于错综复杂的编码与逻辑中
+                    </h3>
+                    
+                </div>
+            </div>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a title="Home" target="_blank" href="//yanganan.cn">
+                            <i class="fa fa-home fa-2x"></i></a>
+                    
+                        <a title="Github" target="_blank" href="//github.com/yangchaojiang">
+                            <i class="fa fa-github fa-2x"></i></a>
+                    
+                        <a title="Weibo" target="_blank" href="//weibo.com/u/5114674051?topnav=1&wvr=6&topsug=1&is_all=1">
+                            <i class="fa fa-weibo fa-2x"></i></a>
+                    
+                        <a title="Mail" target="_blank" href="//mailto:yangchaojiang@outlook.com">
+                            <i class="fa fa-mail fa-2x"></i></a>
+                    
+                        <a title="qq" target="_blank" href="//wpa.qq.com/msgrd?v=3&uin=1007181167&site=qq&menu=yes">
+                            <i class="fa fa-qq fa-2x"></i></a>
+                    
+                </div>
+            </nav>
+        </div>
+    </div>
+</header>
+      <div class="outer">
+        <section id="main" class="body-wrap"><article id="post-jPlayer-blog" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="post-title" itemprop="name">
+      基于exoPlayer 自定义播放器
+    </h1>
+    <div class="post-title-bar">
+      <ul>
+          
+        <li>
+          <i class="fa fa-calendar"></i>  2017-09-05
+        </li>
+        <li>
+          <i class="fa fa-eye"></i>
+          <span id="busuanzi_value_page_pv"></span>
+        </li>
+      </ul>
+    </div>
+  
+
+          
+      </header>
+    
+    <div class="article-entry post-content" itemprop="articleBody">
+      
+            
+            <h3 id="基于exoPlayer-自定义播放器-Jplayer支持功能："><a href="#基于exoPlayer-自定义播放器-Jplayer支持功能：" class="headerlink" title="基于exoPlayer 自定义播放器 Jplayer支持功能："></a>基于exoPlayer 自定义播放器 Jplayer支持功能：</h3><ul>
+<li>1 ExoUserPlayer  基本播放</li>
+<li>2 GestureVideoPlayer   增加手势  亮度，音量，快进，等手势</li>
+<li>3 ManualPlayer  默认手动播放，增加默认图</li>
+<li>5 增加广告视频预览切换</li>
+<li>6 增加视频清晰度切换</li>
+<li>7 增加缓存视频功能</li>
+<li>8 支持自定义各种数据源加载 Okttp,Rtmp, 缓存，Cronet等协议,</li>
+<li>9 支持列表播放视频</li>
+<li>10 支持多种文件类型，MP4，M4A，WebM，Matroska，Ogg，WAV，MP3，MPEG-TS，MPEG-PS，FLV，ADTS (AAC)，Flac，M3U8 等</li>
+<li>11 支持网络类型 提示是否播放<a id="more"></a>
+<h3 id="一-引用类库"><a href="#一-引用类库" class="headerlink" title="一.引用类库"></a>一.引用类库</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"> repositories &#123;</div><div class="line">        jcenter()</div><div class="line">        maven &#123; url &quot;https://jitpack.io&quot; &#125;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">dependencies &#123;</div><div class="line">   compile &apos;com.ycjiang:VideoPlayModule:1.4.8&apos;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="二-控件属性"><a href="#二-控件属性" class="headerlink" title="二.控件属性"></a>二.控件属性</h3><blockquote>
+<h4 id="1-控件属性引用"><a href="#1-控件属性引用" class="headerlink" title="1.控件属性引用"></a>1.控件属性引用</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">&lt;chuangyuan.ycj.videolibrary.widget.VideoPlayerView</div><div class="line">      android:id=&quot;@+id/exo_play_context_id&quot;</div><div class="line">      android:layout_width=&quot;match_parent&quot;</div><div class="line">      android:layout_height=&quot;match_parent&quot;</div><div class="line">      android:background=&quot;@android:color/transparent&quot;</div><div class="line">      app:resize_mode=&quot;fit&quot;</div><div class="line">      app:show_timeout=&quot;3000&quot;</div><div class="line">      app:controller_layout_id=&quot;@layout/simple_exo_playback_control_view&quot;</div><div class="line">      app:player_layout_id=&quot;@layout/simple_exo_view&quot;</div><div class="line">      app:surface_type=&quot;texture_view&quot;</div><div class="line">      app:use_artwork=&quot;true&quot;</div><div class="line">      app:paddingEnd=&quot;0dp&quot;</div><div class="line">      app:paddingStart=&quot;0dp&quot;</div><div class="line">      app:fastforward_increment=&quot;0&quot;</div><div class="line">      app:rewind_increment=&quot;0&quot;</div><div class="line">      app:user_watermark=&quot;@mipmap/watermark_big&quot;</div><div class="line">      app:player_list=&quot;true&quot;</div><div class="line">      app:use_controller=&quot;true&quot; /&gt;</div></pre></td></tr></table></figure>
+<h4 id="2-属性说明"><a href="#2-属性说明" class="headerlink" title="2.属性说明"></a>2.属性说明</h4><ol>
+<li>player_layout_id  播放器布局， //必选<blockquote>
+<pre><code>player_layout_id 目前支持指定布局simple_exo_playback_control_view 后续版本，开放自定义使用这自定义
+</code></pre></blockquote>
+</li>
+<li>controller_layout_id  控制器布局` //必选<blockquote>
+<pre><code>controller_layout_id  支持自定义布局
+</code></pre></blockquote>
+</li>
+<li>surface_type 视频渲染类型 //texture_view 和surface_view //枚举类型。默认surface_view <blockquote>
+<pre><code>列表播放只能选择texture_view 不能选择surface_view，详情页面播放推荐surface_view 
+</code></pre></blockquote>
+</li>
+<li>use_controller   是否用户控制控制器  布尔类型</li>
+<li>resize_mode  视频缩放渲染显示方式一共4种 //可选 美剧类型<blockquote>
+<pre><code>1.fit          //正常模式
+2.fixed_width  //保持的是视频宽度，拉伸视频高度
+3.fixed_height //保持的是视频高度，拉伸视频宽度
+4.fill          //全屏模式，拉伸视频宽高
+</code></pre></blockquote>
+</li>
+<li>default_artwork  占位图  //可选<blockquote>
+<pre><code>占位图 注意在控制布局后下面
+</code></pre></blockquote>
+</li>
+<li>show_timeout  控制布局隐藏时间  默认值为3秒  //可选</li>
+<li>paddingEnd，paddingStart 设置边距  默认值为0  //可选</li>
+<li>fastforward_increment  设置快进增量,以毫秒为单位。 //可选</li>
+<li>rewind_increment   设置快退增量,以毫秒为单位。  //可选</li>
+<li>user_watermark    水印图片 默认在右上角  //可选</li>
+<li>player_list      是否指定列表播放   //可选 默认 false  true 列表播放</li>
+</ol>
+<h4 id="3-修改网络对话框提示文字内容"><a href="#3-修改网络对话框提示文字内容" class="headerlink" title="3.修改网络对话框提示文字内容"></a>3.修改网络对话框提示文字内容</h4><blockquote>
+<pre><code>app.strings.xml
+&lt;string name=&quot;exo_play_reminder&quot;&gt;您当前网络不是wifi，是否继续观看视频&lt;/string&gt;
+&lt;string name=&quot;exo_play_wifi_hint_no&quot;&gt;提示&lt;/string&gt;
+</code></pre></blockquote>
+<h4 id="4-在功能清单声明-AndroidManifest-xml"><a href="#4-在功能清单声明-AndroidManifest-xml" class="headerlink" title="4.在功能清单声明 AndroidManifest.xml"></a>4.在功能清单声明 AndroidManifest.xml</h4><p>   在activity节点 加上“android:configChanges=”orientation|keyboardHidden|screenSize””<br>    如下实例：</p>
+<blockquote>
+<pre><code>&lt;activity android:name=&quot;chuangyuan.ycj.yjplay.MainListActivity&quot;
+ android:configChanges=&quot;orientation|keyboardHidden|screenSize&quot;
+ android:screenOrientation=&quot;portrait&quot;&gt;
+</code></pre></blockquote>
+</blockquote>
+<h3 id="3-JAVA-代码"><a href="#3-JAVA-代码" class="headerlink" title="3.JAVA 代码"></a>3.JAVA 代码</h3><blockquote>
+<h4 id="1-播放控制类"><a href="#1-播放控制类" class="headerlink" title="1 播放控制类"></a>1 播放控制类</h4><blockquote>
+<p>   1.ExoUserPlayer 基本播放父类，实现基本播放,设置setPlayUri();会自动加载播放<br>   2.GestureVideoPlayer  具有手势操作播放（调节亮度和视频进度，和音量）会自动加载播放<br>   2.ManualPlayer  点击开始按钮播放,具有手势功能，和列表播放     </p>
+</blockquote>
+<h4 id="2-播放"><a href="#2-播放" class="headerlink" title="2 播放"></a>2 播放</h4><pre><code>//实例化播放控制类
+ ManualPlayer exoPlayerManager = new ManualPlayer(this,R.id.exo_play_context_id);
+//自定义你的数据源，后面详细介绍如何自定义数据源类
+ // ManualPlayer exoPlayerManager = new ManualPlayer(this,R.id.exo_play_context_id,new DataSource(this));
+ //加载m3u8
+ exoPlayerManager.setPlayUri(&quot;http://dlhls.cdn.zhanqi.tv/zqlive/35180_KUDhx.m3u8&quot;);
+ //加载ts.文件
+ exoPlayerManager.setPlayUri(&quot;http://185.73.239.15:25461/live/1/1/924.ts&quot;);
+ //播放本地视频
+ // exoPlayerManager.setPlayUri(&quot;/storage/emulated/0/DCIM/Camera/VID_20170717_011150.mp4&quot;);
+ //下面开启多线路播放
+ //  exoPlayerManager.setShowVideoSwitch(true); //开启切换按钮，默认关闭
+ //String [] test={&quot;http://120.25.246.21/vrMobile/travelVideo/zhejiang_xuanchuanpian.mp4&quot;,&quot;http://120.25.246.21/vrMobile/travelVideo/zhejiang_xuanchuanpian.mp4&quot;,&quot;http://120.25.246.21/vrMobile/travelVideo/zhejiang_xuanchuanpian.mp4&quot;};
+ // String[] name={&quot;超清&quot;,&quot;高清&quot;,&quot;标清&quot;};
+ //exoPlayerManager.setPlaySwitchUri(test,name);
+ //添加水印图片
+ // exoPlayerManager.setExoPlayWatermarkImg();
+</code></pre></blockquote>
+<p>   1.实例化播放控制类</p>
+<blockquote>
+<blockquote>
+<pre><code>ManualPlayer exoPlayerManager = new ManualPlayer(this,R.id.exo_play_context_id);
+ManualPlayer exoPlayerManager = new ManualPlayer(this,videoPlayerView);
+</code></pre></blockquote>
+</blockquote>
+<p>   2.自定义你的数据源，后面详细介绍如何自定义数据源类</p>
+<blockquote>
+<blockquote>
+<pre><code>ManualPlayer exoPlayerManager = new ManualPlayer(this,R.id.exo_play_context_id,new DataSource(this));
+ManualPlayer exoPlayerManager = new ManualPlayer(this,videoPlayerView,new DataSource(this));
+</code></pre></blockquote>
+</blockquote>
+<p>   3.设置视频标题</p>
+<blockquote>
+<blockquote>
+<pre><code>exoPlayerManager.setTitle(&quot;视频标题&quot;);
+</code></pre></blockquote>
+</blockquote>
+<p>   4.添加水印图片</p>
+<blockquote>
+<blockquote>
+<pre><code>exoPlayerManager.setExoPlayWatermarkImg(R.mipmap.watermark_big);     
+</code></pre></blockquote>
+</blockquote>
+<p>   5.设置开始播放进度      </p>
+<blockquote>
+<blockquote>
+<pre><code>exoPlayerManager.setPosition(1000)
+</code></pre></blockquote>
+</blockquote>
+<p>   6.设置视频路径</p>
+<blockquote>
+<blockquote>
+<pre><code>exoPlayerManager.setPlayUri(&quot;http://dlhls.cdn.zhanqi.tv/zqlive/35180_KUDhx.m3u8&quot;);
+exoPlayerManager.setPlayUri(Uri.parse(&quot;http://dlhls.cdn.zhanqi.tv/zqlive/35180_KUDhx.m3u8&quot;));
+exoPlayerManager.setPlayUri(Environment.getExternalStorageDirectory().getAbsolutePath()+&quot;/test.h264&quot;); //本地视频
+</code></pre></blockquote>
+</blockquote>
+<p>   7.设置多线路播放</p>
+<blockquote>
+<blockquote>
+<pre><code>//开启多线路设置，默认关闭 
+exoPlayerManager.setShowVideoSwitch(true);
+//支持List列表
+String [] test={&quot;http://120.25.246.21/vrMobile/travelVideo/zhejiang_xuanchuanpian.mp4&quot;,
+&quot;http://120.25.246.21/vrMobile/travelVideo/zhejiang_xuanchuanpian.mp4&quot;,
+ http://120.25.246.21/vrMobile/travelVideo/zhejiang_xuanchuanpian.mp4&quot;};
+ String[] name={&quot;超清&quot;,&quot;高清&quot;,&quot;标清&quot;};
+ exoPlayerManager.setPlaySwitchUri(test,name);
+</code></pre></blockquote>
+</blockquote>
+<p>   8.设置监听回调VideoInfoListener</p>
+<blockquote>
+<blockquote>
+<pre><code>exoPlayerManager.setVideoInfoListener(new VideoInfoListener() {
+              @Override
+              public void onPlayStart() {
+                    //开始播放
+              }
+
+              @Override
+              public void onLoadingChanged() {
+                        //加载变化
+              }
+
+              @Override
+              public void onPlayerError(ExoPlaybackException e) {
+                        //加载错误
+             }
+
+              @Override
+              public void onPlayEnd() {
+                     //播放结束
+              }
+
+              @Override
+              public void onBack() {
+                  //返回回调
+                  Toast.makeText(MainDetailedActivity.this,&quot;f返回&quot;,Toast.LENGTH_LONG).show();
+                  finish();
+
+              }
+              @Override
+              public void onRepeatModeChanged(int repeatMode) {
+                  //模式变化
+              }
+          });  
+</code></pre><p>   9.覆写Activity和Fragment周期方法 </p>
+<pre><code>Override
+public void onResume() {
+    super.onResume();
+    Log.d(TAG, &quot;onResume&quot;);
+    exoPlayerManager.onResume();
+}
+
+@Override
+public void onPause() {
+    super.onPause();
+    Log.d(TAG, &quot;onPause&quot;);
+    exoPlayerManager.onPause();
+}
+
+
+@Override
+protected void onDestroy() {
+    exoPlayerManager.onDestroy();
+    super.onDestroy();
+
+}
+
+@Override
+public void onConfigurationChanged(Configuration newConfig) {
+    exoPlayerManager.onConfigurationChanged(newConfig);//横竖屏切换
+    super.onConfigurationChanged(newConfig);
+}
+
+@Override
+public void onBackPressed() {//使用播放返回键监听
+   exoPlayerManager.onBackPressed();
+}
+</code></pre></blockquote>
+</blockquote>
+<h3 id="三-列表"><a href="#三-列表" class="headerlink" title="三.列表"></a>三.列表</h3><p>   1.列表播放，只能使用ManualPlayer,在你的VideoHolder</p>
+<ul>
+<li>1在列表控件使用属性 ”app:controller_layout_id=”@layout/simple_exo_playback＿list_view”“  //提供默列表控制布局</li>
+<li>2.player_list=”true” 设置为true 开启列表模式</li>
+<li>3.demo:<blockquote>
+<blockquote>
+<pre><code>public class VideoAdapter extends RecyclerView.Adapter&lt;VideoAdapter.VideoViewHolder&gt; {
+
+  private Context mContext;
+ private List&lt;String&gt; mVideoList;
+ public VideoAdapter(Context context, List&lt;String&gt; videoList) {
+     mContext = context;
+     mVideoList = videoList;
+ }
+
+ @Override
+ public int getItemCount() {
+     return mVideoList.size();
+ }
+ @Override
+ public VideoViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+     View itemView = LayoutInflater.from(mContext).inflate(R.layout.item_video1, parent, false);
+     return new VideoViewHolder(itemView);
+ }
+
+ @Override
+ public void onBindViewHolder(VideoViewHolder holder, int position) {
+     String video = mVideoList.get(position);
+     holder.bindData(video);
+ }
+
+ public class VideoViewHolder extends RecyclerView.ViewHolder {
+     ManualPlayer userPlayer;
+     VideoPlayerView playerView;
+     public VideoViewHolder(View itemView) {
+         super(itemView);
+         //初始化控件
+         playerView = (VideoPlayerView) itemView.findViewById(R.id.item_exo_player_view);
+         userPlayer = new ManualPlayer((Activity) mContext, playerView);
+     }
+
+    /**
+    *绑定数据源
+    ***/
+     public void bindData(String videoBean) {
+         userPlayer.setTitle(&quot;&quot; + getAdapterPosition());
+         userPlayer.setPlayUri(videoBean);
+         Glide.with(mContext)
+         .load(&quot;http://i3.letvimg.com/lc08_yunzhuanma/201707/29/20/49/3280a525bef381311b374579f360e80a_v2_MTMxODYyNjMw/thumb/2_960_540.jpg&quot;)
+         .into(playerView.getPreviewImage());
+     }
+ }
+</code></pre><p>2.列表播放周期方法 列表在Activity或者Fragment  实现相应周期方法</p>
+<pre><code>protected void onPause() {
+    super.onPause();
+    VideoPlayerManager.getInstance().onPause();
+}
+@Override
+ protected void onResume() {
+    super.onResume();
+    VideoPlayerManager.getInstance().onResume();
+}
+@Override
+protected void onDestroy() {
+    super.onDestroy();
+    VideoPlayerManager.getInstance().onDestroy();
+}
+@Override
+public void onBackPressed() {
+    //返回监听类
+    if (!VideoPlayerManager.getInstance().onBackPressed()){
+        finish();
+    }
+} 
+</code></pre></blockquote>
+</blockquote>
+</li>
+</ul>
+<h3 id="四-数据源工厂类"><a href="#四-数据源工厂类" class="headerlink" title="四.数据源工厂类"></a>四.数据源工厂类</h3><h4 id="1-默认数据源"><a href="#1-默认数据源" class="headerlink" title="1.默认数据源"></a>1.默认数据源</h4><blockquote>
+<blockquote>
+<pre><code>缓存 : CacheDataSinkFactory,CacheDataSourceFactory
+http : DefaultDataSourceFactory,DefaultHttpDataSourceFactory
+Priority : PriorityDataSourceFactory      
+</code></pre><h4 id="2-自定义数据源引用"><a href="#2-自定义数据源引用" class="headerlink" title="2 自定义数据源引用"></a>2 自定义数据源引用</h4><pre><code>compile &apos;com.google.android.exoplayer:extension-okhttp:r2.5.1&apos;
+compile &apos;com.google.android.exoplayer:extension-rtmp:r2.5.1&apos;
+</code></pre><h4 id="3-自定义数据源工厂类"><a href="#3-自定义数据源工厂类" class="headerlink" title="3.自定义数据源工厂类:"></a>3.自定义数据源工厂类:</h4><ul>
+<li>实现接口 DataSourceListener  然后在getDataSourceFactory方法里 自定义 数据源</li>
+<li><p>在你使用播放控件时中实例化类</p>
+<p>  exoPlayerManager = new GestureVideoPlayer(this,videoPlayerView,new DataSource(this));<br>  exoPlayerManager = new GestureVideoPlayer(this,(R.id.exo_play_context_id,new DataSource(this));</p>
+</li>
+</ul>
+</blockquote>
+</blockquote>
+<ul>
+<li><p>demo代码:</p>
+<blockquote>
+<blockquote>
+<pre><code>public class DataSource implements DataSourceListener {
+      public static final String TAG = &quot;DataSource&quot;;
+      private Context context;
+       public   DataSource (Context context){
+           this.context=context;
+       }
+      @Override
+      public com.google.android.exoplayer2.upstream.DataSource.Factory getDataSourceFactory() {
+           OkHttpClient  okHttpClient = new OkHttpClient();
+           OkHttpDataSourceFactory OkHttpDataSourceFactory=    new OkHttpDataSourceFactory(okHttpClient, Util.getUserAgent(context, context.getApplicationContext().getPackageName()),new DefaultBandwidthMeter() );
+              //使用OkHttpClient 数据源工厂
+            //return  OkHttpDataSourceFactory; ;
+            //默认数据源工厂
+            // return new JDefaultDataSourceFactory(context);
+            // Rtmp数据源工厂 对 Rtmp 协议支持
+            // return  new RtmpDataSourceFactory();
+           //缓存使用和组合使用
+            LeastRecentlyUsedCacheEvictor evictor = new LeastRecentlyUsedCacheEvictor(1000000000);
+           SimpleCache   simpleCache = new SimpleCache(new File(context.getCacheDir(), &quot;media&quot;), evictor);
+           //缓存数据源使用，内部使用DefaultDataSourceFactory数据源工厂类
+           // return  new CacheDataSinkFactory(simpleCache,10000);
+           // 配合okHttp数据源工厂类
+           return  new CacheDataSourceFactory(simpleCache, OkHttpDataSourceFactory);
+           //使用配合默认数据源红工厂类
+           // return  new CacheDataSourceFactory(simpleCache, new JDefaultDataSourceFactory(context));
+           //使用提供缓存数据源工厂类
+           // return new CacheDataSourceFactory(context,1000,1000);
+          }
+</code></pre><p>   }</p>
+</blockquote>
+</blockquote>
+</li>
+</ul>
+<h3 id="五-自定义控制布局"><a href="#五-自定义控制布局" class="headerlink" title="五.自定义控制布局"></a>五.自定义控制布局</h3><ul>
+<li>1.使用自定义控制布局  app:controller_layout_id=”@layout/simple_exo_playback_control_view” 详细看 demo<blockquote>
+<blockquote>
+<pre><code>app:controller_layout_id  指向您的布局名称 
+</code></pre><p>  <img src="/img/jplayer/20170905164501.png" alt=""></p>
+<ul>
+<li><strong><em>2.注意自定义控制布局事项 不能改变控件类型，可以改变控件的样式，位置，属性等</em></strong></li>
+</ul>
+</blockquote>
+</blockquote>
+</li>
+</ul>
+<h3 id="项目地址－戳我"><a href="#项目地址－戳我" class="headerlink" title="项目地址－戳我"></a><a href="https://github.com/yangchaojiang/yjPlay" target="_blank" rel="external">项目地址－戳我</a></h3>
+            <div class="post-copyright">
+    <div class="content">
+        <p>最后更新： 2017年09月05日 21:28</p>
+        <p>原始链接： <a class="post-url" href="/2017/09/05/jPlayer-blog/" title="基于exoPlayer 自定义播放器">http://yangchaojiang.cn/2017/09/05/jPlayer-blog/</a></p>
+        <footer>
+            <a href="http://yangchaojiang.cn">
+                <img src="/images/logo.png" alt="杨 江">
+                杨 江
+            </a>
+        </footer>
+    </div>
+</div>
+
+      
+    </div>
+    <footer class="article-footer">
+        <ul class="article-footer-menu">
+            
+            
+  <li class="article-footer-tags">
+    <i class="fa fa-tags"></i>
+      
+    <a href="/tags/Android/" class="color3">Android</a>
+      
+    <a href="/tags/Video/" class="color1">Video</a>
+      
+    <a href="/tags/ListVideo/" class="color5">ListVideo</a>
+      
+  </li>
+
+        </ul>
+        
+    </footer>
+  </div>
+</article>
+
+
+    <aside class="post-toc-pos">
+        <nav class="post-toc-wrap">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#基于exoPlayer-自定义播放器-Jplayer支持功能："><span class="post-toc-text">基于exoPlayer 自定义播放器 Jplayer支持功能：</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#一-引用类库"><span class="post-toc-text">一.引用类库</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#二-控件属性"><span class="post-toc-text">二.控件属性</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#1-控件属性引用"><span class="post-toc-text">1.控件属性引用</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#2-属性说明"><span class="post-toc-text">2.属性说明</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#3-修改网络对话框提示文字内容"><span class="post-toc-text">3.修改网络对话框提示文字内容</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#4-在功能清单声明-AndroidManifest-xml"><span class="post-toc-text">4.在功能清单声明 AndroidManifest.xml</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3-JAVA-代码"><span class="post-toc-text">3.JAVA 代码</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#1-播放控制类"><span class="post-toc-text">1 播放控制类</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#2-播放"><span class="post-toc-text">2 播放</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#三-列表"><span class="post-toc-text">三.列表</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#四-数据源工厂类"><span class="post-toc-text">四.数据源工厂类</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#1-默认数据源"><span class="post-toc-text">1.默认数据源</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#2-自定义数据源引用"><span class="post-toc-text">2 自定义数据源引用</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#3-自定义数据源工厂类"><span class="post-toc-text">3.自定义数据源工厂类:</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#五-自定义控制布局"><span class="post-toc-text">五.自定义控制布局</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#项目地址－戳我"><span class="post-toc-text">项目地址－戳我</span></a></li></ol>
+        </nav>
+    </aside>
+    
+
+<nav id="article-nav">
+  
+  
+    <a href="/2017/08/26/bintray-release-blog/" id="article-nav-older" class="article-nav-link-wrap">
+      <span class="article-nav-title">新版Bintray-极简上传Library到JCenter，可上传自定义maven仓库</span>
+      <i class="fa fa-hand-o-right" aria-hidden="true"></i>
+    </a>
+  
+</nav>
+
+
+
+    
+        <div id="SOHUCS" sid="jPlayer-blog" ></div>
+<script type="text/javascript">
+    (function(){
+        var appid = 'cyt36tWXs';
+        var conf = '42b79e0329709ef48318d7d6739122c2';
+        var width = window.innerWidth || document.documentElement.clientWidth;
+        if (width < 960) {
+            window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("https://changyan.sohu.com/upload/changyan.js",function(){window.changyan.api.config({appid:appid,conf:conf})}); } })(); </script>
+    
+</section>
+        
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+      <p>
+        Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+        Theme <a href="//github.com/wongminho/hexo-theme-miho" target="_blank">MiHo</a>
+      &copy; 2017 杨 江<br>
+      </p>
+    </div>
+  </div>
+</footer>
+    <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script>
+  var mihoConfig = {
+      root: "http://yangchaojiang.cn",
+      animate: true,
+      isHome: false
+  }
+</script>
+<div class="sidebar">
+    <div id="sidebar-search">
+        <i class="fa fa-search"></i>
+    </div>
+    <div class="sidebar-menu">
+        <i class="fa fa-bars"></i>
+    </div>
+    <div id="sidebar-top">
+        <span class="sidebar-top-icon"><i class="fa fa-angle-up"></i></span>
+    </div>
+</div>
+<div class="sidebar-menu-box">
+    <div class="sidebar-menu-box-container">
+        <div id="sidebar-menu-box-tags">
+            <a href="/tags/Android/" style="font-size: 20px;">Android</a> <a href="/tags/Architecture-Components/" style="font-size: 10px;">Architecture Components</a> <a href="/tags/Architecture-Components/" style="font-size: 13.33px;">Architecture_Components</a> <a href="/tags/Gradle/" style="font-size: 10px;">Gradle</a> <a href="/tags/Kotlin/" style="font-size: 16.67px;">Kotlin</a> <a href="/tags/ListVideo/" style="font-size: 10px;">ListVideo</a> <a href="/tags/LiveData/" style="font-size: 10px;">LiveData</a> <a href="/tags/Room-Persistence/" style="font-size: 10px;">Room Persistence</a> <a href="/tags/Video/" style="font-size: 10px;">Video</a> <a href="/tags/leficycle/" style="font-size: 10px;">leficycle</a>
+        </div>
+    </div>
+    <a href="javascript:;" class="sidebar-menu-box-close">&times;</a>
+</div>
+<div class="search-wrap">
+    <span class="search-close">&times;</span>
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+            <i class="icon icon-lg icon-chevron-left"></i>
+        </a>
+        <input class="search-field" placeholder="Search..." id="keywords">
+        <a id="search-submit" href="javascript:;">
+            <i class="fa fa-search"></i>
+        </a>
+</div>
+
+<div class="search-container" id="search-container">
+    <ul class="search-result" id="search-result">
+    </ul>
+</div>
+<div id="search-tpl">
+    <li class="search-result-item">
+        <a href="{url}" class="search-item-li">
+            <span class="search-item-li-title" title="{title}">{title}</span>
+        </a>
+    </li>
+</div>
+<script src="/js/search.js"></script>
+<script src="/js/sidebar-menu-box.js"></script>
+
+
+  <script src="//cdn.bootcss.com/particles.js/2.0.0/particles.min.js"></script>
+  <div id="particles"></div>
+  <script src="/js/particles.js"></script>
+
+
+
+
+
+
+
+  <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+  <script src="//cdn.bootcss.com/scrollReveal.js/3.0.5/scrollreveal.js"></script>
+  <script src="/js/animate.js"></script>
+
+  </div>
+</body>
+</html>
