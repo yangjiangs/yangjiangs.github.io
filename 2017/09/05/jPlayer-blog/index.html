@@ -6,7 +6,7 @@
   <title>基于exoPlayer 自定义播放器 | yangjiang</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-    <meta name="keywords" content="yangjiang Blog" />
+    <meta name="keywords" content="yangjiang,yangjiang Blog" />
   
   <meta name="description" content="基于exoPlayer 自定义播放器 Jplayer支持功能： 1 ExoUserPlayer  基本播放 2 GestureVideoPlayer   增加手势  亮度，音量，快进，等手势 3 ManualPlayer  默认手动播放，增加默认图 5 增加广告视频预览切换 6 增加视频清晰度切换 7 增加缓存视频功能 8 支持自定义各种数据源加载 Okttp,Rtmp, 缓存，Cronet等协议">
 <meta name="keywords" content="Android,Video,ListVideo">
@@ -26,9 +26,6 @@
   
     <link rel="icon" href="/favicon.ico">
   
-  
-    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
-  
   <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
   <link rel="stylesheet" href="/css/style.css">
   <script src="/js/pace.min.js"></script>
@@ -44,6 +41,34 @@
       <header id="header">
     <div id="banner"></div>
     <div id="header-outer">
+        <div id="header-menu" class="header-menu-pos animated">
+            <div class="header-menu-container">
+                <a href="/" class="left">
+                    <span class="site-title">杨 江</span>
+                </a>
+                <nav id="header-menu-nav" class="right">
+                    
+                    <a target="_blank" href="//yanganan.cn">
+                        <i class="fa fa-home"></i>
+                        <span>Home</span>
+                    </a>
+                    
+                    <a  href="/archives">
+                        <i class="fa fa-archive"></i>
+                        <span>Archives</span>
+                    </a>
+                    
+                    <a target="_blank" href="http://www.yanganan.cn/server/about/aboutme.html">
+                        <i class="fa fa-user"></i>
+                        <span>About</span>
+                    </a>
+                    
+                </nav>
+                <a class="mobile-header-menu-button">
+                    <i class="fa fa-bars"></i>
+                </a>
+            </div>
+        </div>
         <div id="header-row">
             <div id="logo">
                 <a href="/">
@@ -69,7 +94,7 @@
             <nav class="header-nav">
                 <div class="social">
                     
-                        <a title="Home" target="_blank" href="//yanganan.cn">
+                        <a title="Home" target="_blank" href="//yangchaojiang.cn">
                             <i class="fa fa-home fa-2x"></i></a>
                     
                         <a title="Github" target="_blank" href="//github.com/yangchaojiang">
@@ -484,6 +509,58 @@ compile &apos;com.google.android.exoplayer:extension-rtmp:r2.5.1&apos;
       
     </div>
     <footer class="article-footer">
+        
+        
+<div class="post-share">
+    <a href="javascript:;" id="share-sub" class="post-share-fab">
+        <i class="fa fa-share-alt"></i>
+    </a>
+    <div class="post-share-list" id="share-list">
+        <ul class="share-icons">
+          <li>
+            <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yangchaojiang.cn/2017/09/05/jPlayer-blog/&title=《基于exoPlayer 自定义播放器》 — yangjiang&pic=http://yangchaojiang.cnimages/logo.png" data-title="微博">
+              <i class="fa fa-weibo"></i>
+            </a>
+          </li>
+          <li>
+            <a class="weixin share-sns" id="wxFab" href="javascript:;" data-title="微信">
+              <i class="fa fa-weixin"></i>
+            </a>
+          </li>
+          <li>
+            <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yangchaojiang.cn/2017/09/05/jPlayer-blog/&title=《基于exoPlayer 自定义播放器》 — yangjiang&source=基于exoPlayer 自定义播放器 Jplayer支持功能：
+1 ExoUserPlayer  基本播放
+2 GestureVideoPlayer   ..." data-title="QQ">
+              <i class="fa fa-qq"></i>
+            </a>
+          </li>
+          <li>
+            <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yangchaojiang.cn/2017/09/05/jPlayer-blog/" data-title="Facebook">
+              <i class="fa fa-facebook"></i>
+            </a>
+          </li>
+          <li>
+            <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《基于exoPlayer 自定义播放器》 — yangjiang&url=http://yangchaojiang.cn/2017/09/05/jPlayer-blog/&via=http://yangchaojiang.cn" data-title="Twitter">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+          <li>
+            <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yangchaojiang.cn/2017/09/05/jPlayer-blog/" data-title="Google+">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        </ul>
+     </div>
+</div>
+<div class="post-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;" id="wxShare-close">×</a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=http://yangchaojiang.cn/2017/09/05/jPlayer-blog/" alt="微信分享二维码">
+</div>
+
+<div class="mask"></div>
+
+        
         <ul class="article-footer-menu">
             
             
@@ -505,9 +582,8 @@ compile &apos;com.google.android.exoplayer:extension-rtmp:r2.5.1&apos;
 </article>
 
 
-    <aside class="post-toc-pos">
+    <aside class="post-toc-pos post-toc-top" id="post-toc">
         <nav class="post-toc-wrap">
-            <h4>TOC</h4>
             <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#基于exoPlayer-自定义播放器-Jplayer支持功能："><span class="post-toc-text">基于exoPlayer 自定义播放器 Jplayer支持功能：</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#预览-显示有点卡，帧数低，实际很流畅"><span class="post-toc-text">预览 显示有点卡，帧数低，实际很流畅</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#一-引用类库"><span class="post-toc-text">一.引用类库</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#二-控件属性"><span class="post-toc-text">二.控件属性</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#1-控件属性引用"><span class="post-toc-text">1.控件属性引用</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#2-属性说明"><span class="post-toc-text">2.属性说明</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#3-修改网络对话框提示文字内容"><span class="post-toc-text">3.修改网络对话框提示文字内容</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#4-在功能清单声明-AndroidManifest-xml"><span class="post-toc-text">4.在功能清单声明 AndroidManifest.xml</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3-JAVA-代码"><span class="post-toc-text">3.JAVA 代码</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#1-播放控制类"><span class="post-toc-text">1 播放控制类</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#2-播放"><span class="post-toc-text">2 播放</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#三-列表"><span class="post-toc-text">三.列表</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#四-数据源工厂类"><span class="post-toc-text">四.数据源工厂类</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#1-默认数据源"><span class="post-toc-text">1.默认数据源</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#2-自定义数据源引用"><span class="post-toc-text">2 自定义数据源引用</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#3-自定义数据源工厂类"><span class="post-toc-text">3.自定义数据源工厂类:</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#五-自定义控制布局"><span class="post-toc-text">五.自定义控制布局</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#项目地址－戳我"><span class="post-toc-text">项目地址－戳我</span></a></li></ol>
         </nav>
     </aside>
@@ -525,15 +601,6 @@ compile &apos;com.google.android.exoplayer:extension-rtmp:r2.5.1&apos;
 
 
 
-    
-        <div id="SOHUCS" sid="jPlayer-blog" ></div>
-<script type="text/javascript">
-    (function(){
-        var appid = 'cyt36tWXs';
-        var conf = '42b79e0329709ef48318d7d6739122c2';
-        var width = window.innerWidth || document.documentElement.clientWidth;
-        if (width < 960) {
-            window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("https://changyan.sohu.com/upload/changyan.js",function(){window.changyan.api.config({appid:appid,conf:conf})}); } })(); </script>
     
 </section>
         
@@ -553,7 +620,7 @@ compile &apos;com.google.android.exoplayer:extension-rtmp:r2.5.1&apos;
 
 
       <p>
-        Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+        Powered by  <a href="http://hexo.io/" target="_blank">Hexo</a>
         Theme <a href="//github.com/wongminho/hexo-theme-miho" target="_blank">MiHo</a>
       &copy; 2017 杨 江<br>
       </p>
@@ -566,27 +633,60 @@ compile &apos;com.google.android.exoplayer:extension-rtmp:r2.5.1&apos;
   var mihoConfig = {
       root: "http://yangchaojiang.cn",
       animate: true,
-      isHome: false
+      isHome: false,
+      share: true
   }
 </script>
 <div class="sidebar">
-    <div id="sidebar-search">
+    <div id="sidebar-search" title="Search">
         <i class="fa fa-search"></i>
     </div>
-    <div class="sidebar-menu">
-        <i class="fa fa-bars"></i>
+    <div id="sidebar-category" title="Categories">
+        <i class="fa fa-book"></i>
+    </div>
+    <div id="sidebar-tag" title="Tags">
+        <i class="fa fa-tags"></i>
     </div>
     <div id="sidebar-top">
         <span class="sidebar-top-icon"><i class="fa fa-angle-up"></i></span>
     </div>
 </div>
-<div class="sidebar-menu-box">
+<div class="sidebar-menu-box" id="sidebar-menu-box">
     <div class="sidebar-menu-box-container">
+        <div id="sidebar-menu-box-categories">
+            
+        </div>
         <div id="sidebar-menu-box-tags">
             <a href="/tags/Android/" style="font-size: 20px;">Android</a> <a href="/tags/Architecture-Components/" style="font-size: 10px;">Architecture Components</a> <a href="/tags/Architecture-Components/" style="font-size: 13.33px;">Architecture_Components</a> <a href="/tags/Gradle/" style="font-size: 10px;">Gradle</a> <a href="/tags/Kotlin/" style="font-size: 16.67px;">Kotlin</a> <a href="/tags/ListVideo/" style="font-size: 10px;">ListVideo</a> <a href="/tags/LiveData/" style="font-size: 10px;">LiveData</a> <a href="/tags/Room-Persistence/" style="font-size: 10px;">Room Persistence</a> <a href="/tags/Video/" style="font-size: 10px;">Video</a> <a href="/tags/leficycle/" style="font-size: 10px;">leficycle</a>
         </div>
     </div>
     <a href="javascript:;" class="sidebar-menu-box-close">&times;</a>
+</div>
+<div class="mobile-header-menu-nav" id="mobile-header-menu-nav">
+    <div id="mobile-header-menu-container">
+        <span class="title">Menu</span>
+        <ul class="mobile-header-menu-navbar">
+            
+            <li>
+                <a target="_blank" href="//yanganan.cn">
+                    <i class="fa fa-home"></i><span>Home</span>
+                </a>
+            </li>
+            
+            <li>
+                <a  href="/archives">
+                    <i class="fa fa-archive"></i><span>Archives</span>
+                </a>
+            </li>
+            
+            <li>
+                <a target="_blank" href="http://www.yanganan.cn/server/about/aboutme.html">
+                    <i class="fa fa-user"></i><span>About</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
 </div>
 <div class="search-wrap">
     <span class="search-close">&times;</span>
@@ -597,12 +697,12 @@ compile &apos;com.google.android.exoplayer:extension-rtmp:r2.5.1&apos;
         <a id="search-submit" href="javascript:;">
             <i class="fa fa-search"></i>
         </a>
+    <div class="search-container" id="search-container">
+        <ul class="search-result" id="search-result">
+        </ul>
+    </div>
 </div>
 
-<div class="search-container" id="search-container">
-    <ul class="search-result" id="search-result">
-    </ul>
-</div>
 <div id="search-tpl">
     <li class="search-result-item">
         <a href="{url}" class="search-item-li">
@@ -611,7 +711,7 @@ compile &apos;com.google.android.exoplayer:extension-rtmp:r2.5.1&apos;
     </li>
 </div>
 <script src="/js/search.js"></script>
-<script src="/js/sidebar-menu-box.js"></script>
+<script src="/js/main.js"></script>
 
 
   <script src="//cdn.bootcss.com/particles.js/2.0.0/particles.min.js"></script>
