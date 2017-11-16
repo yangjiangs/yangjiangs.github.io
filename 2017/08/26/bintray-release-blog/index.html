@@ -8,13 +8,13 @@
   
     <meta name="keywords" content="yangjiang,yangjiang Blog" />
   
-  <meta name="description" content="背景最近得闲 将封装的开源项目上传到JCenter上，方便供大家使用，但是突然发现Bintray网站更新变化很大，以前老方法上传，过于复杂，代码量也很多，每次编写新库上传，复制代码心累，大家都懂。于是百度,有没有更简便上传方式,我在网上网上很多博客讲解的 Bintray-极简上传Library到JCenter,发现对自定义maven仓库名配置。很多博客文章里没有说明，这一篇文章是讲解如何上传自定义">
+  <meta name="description" content="背景最近得闲 将封装的开源项目上传到JCenter上，方便供大家使用，但是突然发现Bintray网站更新变化很大，以前老方法上传，过于复杂，代码量也很多，每次编写新库上传，复制代码心累，大家都懂。于是百度，有没有更简便上传方式我在网上网上很多博客讲解的 Bintray-极简上传Library到JCenter  发现对自定义maven仓库名配置， 很多博客文章里没有说明，这一篇文章是讲解如何上传自定">
 <meta name="keywords" content="Android,Kotlin,Gradle">
 <meta property="og:type" content="article">
 <meta property="og:title" content="新版Bintray-极简上传Library到JCenter，可上传自定义maven仓库">
 <meta property="og:url" content="http://yangchaojiang.cn/2017/08/26/bintray-release-blog/index.html">
 <meta property="og:site_name" content="yangjiang">
-<meta property="og:description" content="背景最近得闲 将封装的开源项目上传到JCenter上，方便供大家使用，但是突然发现Bintray网站更新变化很大，以前老方法上传，过于复杂，代码量也很多，每次编写新库上传，复制代码心累，大家都懂。于是百度,有没有更简便上传方式,我在网上网上很多博客讲解的 Bintray-极简上传Library到JCenter,发现对自定义maven仓库名配置。很多博客文章里没有说明，这一篇文章是讲解如何上传自定义">
+<meta property="og:description" content="背景最近得闲 将封装的开源项目上传到JCenter上，方便供大家使用，但是突然发现Bintray网站更新变化很大，以前老方法上传，过于复杂，代码量也很多，每次编写新库上传，复制代码心累，大家都懂。于是百度，有没有更简便上传方式我在网上网上很多博客讲解的 Bintray-极简上传Library到JCenter  发现对自定义maven仓库名配置， 很多博客文章里没有说明，这一篇文章是讲解如何上传自定">
 <meta property="og:image" content="http://yangchaojiang.cn/img/bintray/20161217134804632.png">
 <meta property="og:image" content="http://yangchaojiang.cn/img/bintray/20170823112843.png">
 <meta property="og:image" content="http://yangchaojiang.cn/img/bintray/20170823113242.png">
@@ -26,10 +26,10 @@
 <meta property="og:image" content="http://yangchaojiang.cn/img/bintray/20170826191257.png">
 <meta property="og:image" content="http://yangchaojiang.cn/img/bintray/20170823124104.png">
 <meta property="og:image" content="http://yangchaojiang.cn/img/bintray/20170826192820.png">
-<meta property="og:updated_time" content="2017-08-28T07:56:37.616Z">
+<meta property="og:updated_time" content="2017-11-16T12:22:30.236Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="新版Bintray-极简上传Library到JCenter，可上传自定义maven仓库">
-<meta name="twitter:description" content="背景最近得闲 将封装的开源项目上传到JCenter上，方便供大家使用，但是突然发现Bintray网站更新变化很大，以前老方法上传，过于复杂，代码量也很多，每次编写新库上传，复制代码心累，大家都懂。于是百度,有没有更简便上传方式,我在网上网上很多博客讲解的 Bintray-极简上传Library到JCenter,发现对自定义maven仓库名配置。很多博客文章里没有说明，这一篇文章是讲解如何上传自定义">
+<meta name="twitter:description" content="背景最近得闲 将封装的开源项目上传到JCenter上，方便供大家使用，但是突然发现Bintray网站更新变化很大，以前老方法上传，过于复杂，代码量也很多，每次编写新库上传，复制代码心累，大家都懂。于是百度，有没有更简便上传方式我在网上网上很多博客讲解的 Bintray-极简上传Library到JCenter  发现对自定义maven仓库名配置， 很多博客文章里没有说明，这一篇文章是讲解如何上传自定">
 <meta name="twitter:image" content="http://yangchaojiang.cn/img/bintray/20161217134804632.png">
   
   
@@ -153,7 +153,7 @@
     <div class="article-entry post-content" itemprop="articleBody">
       
             
-            <h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>最近得闲 将封装的开源项目上传到<code>JCenter</code>上，方便供大家使用，但是突然发现<code>Bintray</code>网站更新变化很大，<br>以前老方法上传，过于复杂，代码量也很多，每次编写新库上传，复制代码心累，大家都懂。于是百度,有没有更简便上传方式,<br>我在网上网上很多博客讲解的 Bintray-极简上传Library到JCenter,发现对自定义maven仓库名配置。<br>很多博客文章里没有说明，这一篇文章是讲解如何上传自定义maven仓库下。<br><a id="more"></a></p>
+            <h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>最近得闲 将封装的开源项目上传到<code>JCenter</code>上，方便供大家使用，但是突然发现<code>Bintray</code>网站更新变化很大，<br>以前老方法上传，过于复杂，代码量也很多，每次编写新库上传，复制代码心累，大家都懂。于是百度，有没有更简便上传方式<br>我在网上网上很多博客讲解的 Bintray-极简上传Library到JCenter  发现对自定义maven仓库名配置，<br> 很多博客文章里没有说明，这一篇文章是讲解如何上传自定义maven仓库下。<br><a id="more"></a></p>
 <p>开始我们的上传之路！</p>
 <hr>
 <h3 id="注册"><a href="#注册" class="headerlink" title="注册"></a>注册</h3><p>注册是踩坑的第一步，很多博客或者网站都是直接推荐去官网<a href="https://bintray.com/" target="_blank" rel="external">首页</a>注册：</p>
@@ -184,10 +184,18 @@
 <h4 id="2-library的moudel中加入-apply"><a href="#2-library的moudel中加入-apply" class="headerlink" title="2.library的moudel中加入 apply"></a>2.<code>library</code>的<code>moudel</code>中加入 <code>apply</code></h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">apply plugin: &apos;com.novoda.bintray-release&apos;</div></pre></td></tr></table></figure>
 <ul>
 <li><p><strong><font color="red" size="4">注意：bintray-releas的版本 依赖，对应你项目使用  Gradle 版本</font></strong></p>
-<p>1.bintray-releas version   0.5.0  对应 Gradle  是 version  3.4+ (包括3.4)</p>
-<p>2.bintray-releas version   0.4.0  对应 Gradle  是 version  3.3+ (包括3.3)</p>
-<p>3.bintray-releas version   0.3.4  对应 Gradle  是 version  1.3.0+(包括1.3)</p>
+<p>1.bintray-releas version   0.7.0  对应 Gradle  是 version  4.2.1+ (包括4.2.1)</p>
+<p>2.bintray-releas version   0.5.0  对应 Gradle  是 version  4.1+ (包括4.1)  </p>
+<p>3.bintray-releas version   0.5.0  对应 Gradle  是 version  3.4+ (包括3.4)</p>
+<p>4.bintray-releas version   0.4.0  对应 Gradle  是 version  3.3+ (包括3.3)</p>
+<p>5.bintray-releas version   0.3.4  对应 Gradle  是 version  1.3.0+(包括1.3)</p>
 <p>如果版本不对应 就有可能项目库上传失败 红线内没有版本号信息</p>
+<blockquote>
+<blockquote>
+<p>在3.0Android Studio3.0 上注意</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">buildscript &#123;</div><div class="line">    repositories &#123;</div><div class="line">        jcenter()</div><div class="line">        google()</div><div class="line">    &#125;</div><div class="line">   &#125;</div></pre></td></tr></table></figure>
+</blockquote>
+</blockquote>
 <p><img src="/img/bintray/20170826184107.png" alt="这里写图片描述"></p>
 <p><img src="/img/bintray/20170826184635.png" alt="这里写图片描述"></p>
 </li>
@@ -235,7 +243,7 @@
 
             <div class="post-copyright">
     <div class="content">
-        <p>最后更新： 2017年08月28日 15:56</p>
+        <p>最后更新： 2017年11月16日 20:22</p>
         <p>原始链接： <a class="post-url" href="/2017/08/26/bintray-release-blog/" title="新版Bintray-极简上传Library到JCenter，可上传自定义maven仓库">http://yangchaojiang.cn/2017/08/26/bintray-release-blog/</a></p>
         <footer>
             <a href="http://yangchaojiang.cn">
